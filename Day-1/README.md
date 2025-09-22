@@ -204,7 +204,7 @@ To invoke Yosys and Synthesize design we need to be at the verilog_files directo
 ```
 ## Step.3 Read the Verilog RTL Design
    ```bash
-   read_verilog verilog_files/bad_counter.v
+   read_verilog bad_counter.v
 ```
 ## Step.4 Run Synthesis
    ```bash
@@ -219,4 +219,4 @@ To invoke Yosys and Synthesize design we need to be at the verilog_files directo
    show
 ```
 
-<div align="center"> <img src="Images/yosys_output.png" alt="Bad Counter Yosys Output" width="70%"> <p><i>Gate-level schematic of the Bad Counter synthesized using Yosys</i></p> </div>
+<div align="center"> <img src="Images/yosys_output.png" alt="Bad Counter Yosys Output" width="100%"> <p><i>Gate-level schematic of the Bad Counter synthesized using Yosys</i></p> </div>
