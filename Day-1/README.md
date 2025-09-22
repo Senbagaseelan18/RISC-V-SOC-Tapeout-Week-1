@@ -179,3 +179,44 @@ This ensures the final netlist is **optimized for the target application**.
 
 ---
 
+---
+
+## 7. Lab: Synthesis with Yosys and Sky130 PDK (Bad Counter)
+
+In this lab, we perform **logic synthesis** of the `bad_counter` design using **Yosys** and the **Sky130 standard cell library**.
+
+### ⚙️ Step-by-Step Yosys Flow
+
+To invoke Yosys and Synthesize design we need to be at the verilog_files directory
+
+## Path
+   ```bash
+   your_directory/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+## Step.1 Start Yosys
+   ```bash
+   yosys
+```
+
+## Step.2 Load the Sky130 Standard Cell Library
+   ```bash
+   read_liberty -lib /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+## Step.3 Read the Verilog RTL Design
+   ```bash
+   read_verilog verilog_files/bad_counter.v
+```
+## Step.4 Run Synthesis
+   ```bash
+   synth -top bad_counter
+```
+## Step.5 Perform Technology Mapping
+   ```bash
+   abc -liberty /path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+## Step.6 Visualize the Gate-Level Netlist
+   ```bash
+   show
+```
+
+<div align="center"> <img src="Images/yosys_output.png" alt="Bad Counter Yosys Output" width="70%"> <p><i>Gate-level schematic of the Bad Counter synthesized using Yosys</i></p> </div>
