@@ -63,3 +63,5 @@ First, we need to clone the repository and prepare the environment for running V
 ```bash
 git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 cd sky130RTLDesignAndSynthesisWorkshop/verilog_files
+```
+<div align="center"> <img src="Images/iverilog_lib_setup.png" alt="Iverilog Setup" width="70%"> <p><i>Cloning repository and exploring all lib and code files</i></p> </div>
