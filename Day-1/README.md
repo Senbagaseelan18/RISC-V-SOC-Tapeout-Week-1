@@ -30,7 +30,7 @@ A **testbench** is a simulation environment that applies inputs and verifies you
 - The simulator produces a `.vcd` file that can be viewed in GTKWave to inspect waveforms.
 
 <div align="center">
-  <img src="Images/iverilog_lib_setup.png" alt="iverilog setup" width="70%">
+  <img src="Images/iverilog_lib_setup.png" alt="iverilog setup" width="100%">
   <p><i>Compiling design and testbench in iverilog</i></p>
 </div>
 
