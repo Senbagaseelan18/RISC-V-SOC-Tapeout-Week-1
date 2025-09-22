@@ -95,3 +95,87 @@ GTKWave will display the waveform of the Bad Counter output.
 
 <div align="center"> <img src="Images/gtkwaveform.png" alt="Bad Counter GTKWave Output" width="70%"> <p><i>Waveform output showing the Bad Counter behavior</i></p> </div>
 ```
+
+---
+
+## 4. Introduction to Yosys and Logic Synthesis
+
+### 🛠️ What is a Synthesizer?
+A **synthesizer** is a tool that translates your high-level **RTL design** (Verilog code) into a **gate-level netlist** using a standard cell library.  
+It ensures that your design can be mapped to actual hardware cells, optimizing for **area, power, and timing**.
+
+<div align="center">
+  <img src="Images/yosys_workflow.png" alt="Yosys Workflow for Netlist Generation" width="70%">
+  <p><i>How Yosys generates the gate-level netlist</i></p>
+</div>
+
+---
+
+## 5. Verifying the Synthesis
+
+Once synthesis is complete, we need to **verify** whether the netlist behaves the same as the RTL design.  
+The flow is:
+
+1. Use the **netlist** and **testbench** as inputs.  
+2. Run the simulation with **iverilog**.  
+3. Dump the results into a **VCD file**.  
+4. Open in **GTKWave** to check functional correctness.  
+
+<div align="center">
+  <img src="Images/syn_verify.png" alt="Synthesis Verification Flow" width="70%">
+  <p><i>Verification flow: Netlist + Testbench → Icarus Verilog → VCD → GTKWave</i></p>
+</div>
+
+---
+
+## 6. Logic Synthesis Explained
+
+Logic synthesis bridges the gap between **RTL design** and **physical logic gates**.
+
+- **RTL Design** → Written in Verilog  
+- **Frontend Libraries (.lib)** → Contain cell definitions (timing, power, area)  
+- **Synthesis** → Maps RTL onto actual library cells  
+- **Output** → Gate-level netlist  
+
+<div align="center">
+  <img src="Images/syn.png" alt="RTL to Netlist Flow" width="70%">
+  <p><i>RTL + Libraries → Synthesis → Netlist</i></p>
+</div>
+
+---
+
+### ⚡ Why Do We Need Different Flavors of Gates?
+
+Libraries provide **multiple versions of the same gate** (e.g., AND, OR, MUX) with different trade-offs:
+
+- **Performance (Speed)**: Faster cells reduce delay.  
+- **Power**: Slower cells consume less power.  
+- **Area**: Smaller gates fit better in tight layouts.  
+- **Drive Strength**: Stronger cells drive larger loads.  
+
+---
+
+### 🏎️ Faster vs 🐢 Slower Cells
+
+- **Faster Cells**  
+  - Use **wider transistors** → lower resistance → faster switching.  
+  - Formula: `Delay ∝ Load Capacitance / Drive Strength` (lower delay).  
+  - Trade-off: Higher area & power.  
+
+- **Slower Cells**  
+  - Use **narrow transistors** → smaller area, lower power.  
+  - Trade-off: More delay.  
+
+---
+
+### 🎯 Cell Selection Using Constraints
+
+The synthesis tool decides which cell flavor to use based on:  
+- **Timing constraints** (e.g., maximum clock delay).  
+- **Power budgets** (e.g., low-power vs high-speed design).  
+- **Area constraints** (e.g., chip size limitations).  
+
+This ensures the final netlist is **optimized for the target application**.
+
+---
+
