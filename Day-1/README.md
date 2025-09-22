@@ -20,7 +20,7 @@ Today, you'll start your journey into digital design by learning **Verilog**, **
 A **testbench** is a simulation environment that applies inputs and verifies your design’s outputs.  
 
 <div align="center">
-  <img src="Simulator_working.png" alt="Simulator Overview" width="70%">
+  <img src="Images/Simulator_working.png" alt="Simulator Overview" width="70%">
   <p><i>Overview of simulator workflow</i></p>
 </div>
 
@@ -30,7 +30,7 @@ A **testbench** is a simulation environment that applies inputs and verifies you
 - The simulator produces a `.vcd` file that can be viewed in GTKWave to inspect waveforms.
 
 <div align="center">
-  <img src="iverilog_lib_setup.png" alt="iverilog setup" width="70%">
+  <img src="Images/iverilog_lib_setup.png" alt="iverilog setup" width="70%">
   <p><i>Compiling design and testbench in iverilog</i></p>
 </div>
 
