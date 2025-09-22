@@ -65,3 +65,33 @@ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 cd sky130RTLDesignAndSynthesisWorkshop/verilog_files
 ```
 <div align="center"> <img src="Images/iverilog_lib_setup.png" alt="Iverilog Setup" width="100%"> <p><i>Cloning repository and exploring all lib and code files</i></p> </div>
+
+## 3. Lab: Iverilog Simulation & GTKWave Analysis (Bad Counter)
+
+In this lab, we simulate the **Bad Counter** design and analyze its waveform using **Icarus Verilog** and **GTKWave**.
+
+### Step 1: Navigate to Verilog Files
+```bash
+cd verilog_files
+```
+
+### Step 2: Compile Design and Testbench with Iverilog
+```bash
+iverilog bad_counter.v tb_bad_counter.v -o a.out
+```
+This will create the executable a.out in the verilog_files directory.
+
+### Step 3: Run the Simulation
+```bash
+./a.out
+```
+Running this will dump the simulation results into a .vcd file.
+
+### Step 4: Open the VCD File in GTKWave
+```bash
+gtkwave tb_bad_counter.vcd
+```
+GTKWave will display the waveform of the Bad Counter output.
+
+<div align="center"> <img src="Images/gtkwaveform.png" alt="Bad Counter GTKWave Output" width="70%"> <p><i>Waveform output showing the Bad Counter behavior</i></p> </div>
+```
