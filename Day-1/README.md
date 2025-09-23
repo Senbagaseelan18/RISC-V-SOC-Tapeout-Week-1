@@ -5,13 +5,22 @@ Today, you'll learn **Verilog**, open-source simulation with **Icarus Verilog (i
 
 ---
 
-## 📘 Table of Contents
+# 📘 Table of Contents  
 
-1. [Introduction to Verilog Simulation](#1-introduction-to-verilog-simulation)  
-2. [Lab: Cloning the Workshop & Setup](#2-lab-cloning-the-workshop--setup)  
-3. [Lab: Iverilog Simulation & GTKWave Analysis](#3-lab-iverilog-simulation--gtkwave-analysis)  
+| 🔢 # | 📂 Topic | 🔗 Link |
+|------|----------|---------|
+| 1 | **Introduction to Verilog Simulation** | [Go to Section](#1-introduction-to-verilog-simulation) |
+| 2 | **Lab: Cloning the Workshop & Setup** | [Go to Section](#2-lab-cloning-the-workshop--setup) |
+| 3 | **Lab: Iverilog Simulation & GTKWave Analysis (Bad Counter)** | [Go to Section](#3-lab-iverilog-simulation--gtkwave-analysis-bad-counter) |
+| 4 | **Introduction to Yosys and Logic Synthesis** | [Go to Section](#4-introduction-to-yosys-and-logic-synthesis) |
+| 5 | **Logic Synthesis Explained** | [Go to Section](#5-logic-synthesis-explained) |
+| 6 | **Synthesis Lab with Yosys (Bad Counter)** | [Go to Section](#6-synthesis-lab-with-yosys-bad-counter) |
+| 7 | **Technology Mapping & Gate-Level View** | [Go to Section](#7-technology-mapping--gate-level-view) |
+| 8 | **Writing Netlist Files in Yosys** | [Go to Section](#8-writing-netlist-files-in-yosys) |
 
 ---
+
+
 
 ## 1. Introduction to Verilog Simulation
 
