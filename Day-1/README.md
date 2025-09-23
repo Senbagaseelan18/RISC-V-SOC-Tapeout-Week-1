@@ -220,3 +220,52 @@ To invoke Yosys and Synthesize design we need to be at the verilog_files directo
 ```
 
 <div align="center"> <img src="Images/yosys_output.png" alt="Bad Counter Yosys Output" width="100%"> <p><i>Gate-level schematic of the Bad Counter synthesized using Yosys</i></p> </div>
+
+---
+
+---
+
+## 8. Writing Netlist Files in Yosys
+
+Before writing out synthesized netlists, we must be inside the correct working directory where our Verilog files are stored.  
+For example:  
+
+```bash
+cd lab1/sky130RTLDesignAndSynthesisWorkshop/verilog_files
+yosys
+```
+
+## 📝 Exporting Netlists with Yosys
+
+Once inside Yosys, we can write out the netlist in different forms:
+
+## 1. Write the synthesized netlist
+
+```bash
+write_verilog bad_counter_netlist.v
+```
+This command writes the synthesized gate-level netlist into a Verilog file named bad_counter_netlist.v
+
+## 2.Open the netlist in gVim
+```bash
+!gvim bad_counter_netlist.v
+```
+🔹 The ! allows running shell commands inside Yosys.
+🔹 This opens the generated netlist in the gvim editor for inspection.
+
+## 3. Write netlist without attributes
+
+```bash
+write_verilog -noattr bad_counter_netlist.v
+```
+🔹 This generates the netlist without additional attributes/annotations such as synthesis-specific details.
+🔹 It produces a cleaner file for readability.
+
+## 4. Open the cleaned netlist in gVim
+```bash
+!gvim bad_counter_netlist.v
+```
+🔹 Opens the new netlist file (without attributes) in the editor.
+
+<div align="center"> <img src="Images/write_out.png" alt="Yosys Netlist Output" width="70%"> <p><i>Netlist of Bad Counter written and inspected using Yosys</i></p> </div>
+
