@@ -115,3 +115,41 @@ cell ("sky130_fd_sc_hd__and2_4") {
   pin(A2) { direction : input; }
   pin(X)  { direction : output; function : "(A1 & A2)"; }
 }
+
+## 🏗️ 2. Hierarchical vs Flat Synthesis
+
+In digital design, **synthesis strategy** plays a crucial role in area, timing, and readability of the final gate-level netlist.  
+Two popular approaches are **Hierarchical** (modular) and **Flat** (flattened single netlist).  
+
+---
+
+<div align="center">
+
+| 🎯 Approach | 🧩 Concept | 📊 Pros | ⚠️ Cons |
+|-------------|------------|---------|---------|
+| **Hierarchical** | Break design into **modules** and connect in a top-level | ✔️ Easy debugging <br> ✔️ Reusable IPs <br> ✔️ Faster compile for large designs | ❌ Slightly larger area <br> ❌ Cross-module optimization limited |
+| **Flat** | Collapse all modules into a **single netlist** | ✔️ Global optimization <br> ✔️ Better area & timing in some cases | ❌ Harder to debug <br> ❌ No modular reuse |
+
+</div>
+
+---
+
+### 🔹 Hierarchical Example (Modular)
+
+```verilog
+// AND Gate
+module and_gate(input A, B, output Y);
+    assign Y = A & B;
+endmodule
+
+// OR Gate
+module or_gate(input A, B, output Y);
+    assign Y = A | B;
+endmodule
+
+// Top Module
+module top_hier(input X1, X2, X3, X4,
+                output Y_and, Y_or);
+    and_gate u1 (.A(X1), .B(X2), .Y(Y_and));
+    or_gate  u2 (.A(X3), .B(X4), .Y(Y_or));
+endmodule
