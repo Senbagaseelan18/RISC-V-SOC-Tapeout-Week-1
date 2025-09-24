@@ -86,180 +86,235 @@ Below is how the `.lib` describes different **drive strengths** of the same `AND
 |-----------|-----------|-----------|-----------|
 | **Area**  | `6.25`    | `7.50`    | `8.75`    |
 | **Function** | `(A1 & A2)` | `(A1 & A2)` | `(A1 & A2)` |
-| **Delay** | High ⏱️ | Medium ⏱️ | Very Low ⚡ |
-| **Power** | Very Low 🔋 | Moderate 🔋 | High 🔋 |
-| **Speed** | Very Slow 🐢 | Medium ⚖️ | Very Fast 🚀 |
+# 🌟 Week 1 — Day 2
+
+Timing libraries · Hierarchical vs Flat Synthesis · Flop coding styles
 
 ---
 
-### 📜 Example Liberty Snippets
+## 📚 What this page contains
+
+- A compact, practical guide to timing libraries (.lib) and PVT corners
+- Clear comparison and examples for hierarchical vs flat synthesis
+- Flop coding styles and synthesis-friendly RTL tips (lab-ready)
+- Ready-to-run Yosys snippets and image placeholders you can replace with screenshots
+
+---
+
+## Table of contents
+1. Introduction to timing libraries (.lib)
+2. PVT corners explained
+3. Example: SKY130 library filename breakdown
+4. Drive strengths (gate flavors) and liberty snippets
+5. Hierarchical vs flat synthesis (with examples)
+6. Yosys flows (hierarchical and flat)
+7. Flop coding styles & synthesis tips
+8. How to reproduce the labs (quick commands)
+
+---
+
+## 1) Introduction — what is a timing library (.lib)?
+
+A timing library (a `.lib` or Liberty file) is the synthesis tool's dictionary of standard cells. It describes each cell's:
+
+- Boolean function
+- Pin directions and timing arcs
+- Timing (propagation, setup, hold)
+- Power (leakage, dynamic switching)
+- Physical area
+
+The synthesizer uses `.lib` data to map RTL to technology cells and to estimate timing and power.
+
+---
+
+## 2) PVT corners (Process · Voltage · Temperature)
+
+Semiconductor characteristics depend on process, supply voltage and temperature. Common corners:
+
+| Corner | Voltage | Temperature | Process | Typical implication |
+|--------|---------|-------------|---------|---------------------|
+| SS     | ~1.60 V | 125 °C      | Slow-Slow | Worst timing, often used for timing pessimism |
+| TT     | 1.80 V  | 25 °C       | Typical   | Nominal behavior (functional validation) |
+| FF     | ~1.95 V | 0 °C        | Fast-Fast | Best timing, worst-case power/IR drop checks |
+
+Use the appropriate corner when doing static timing analysis and power estimation.
+
+---
+
+## 3) Example: SKY130 library filename
+
+`sky130_fd_sc_hd__tt_025C_1v80.lib`
+
+Meaning:
+- `sky130_fd_sc_hd` — SkyWater 130 nm, standard-cell high-density family
+- `tt` — typical process corner
+- `025C` — 25 °C
+- `1v80` — 1.80 V nominal supply
+
+---
+
+## 4) Drive strengths (gate flavors)
+
+Cells are provided in different drive strengths so the tool (or designer) can trade area, delay and power.
+
+| Cell | Area (µm²) | Relative delay | Power |
+|------|------------:|---------------:|:-----|
+| AND2_0 | 6.25  | slow  | low  |
+| AND2_2 | 7.50  | medium| moderate |
+| AND2_4 | 8.75  | fast  | higher |
+
+Liberty snippets (simplified) — all three implement the same Boolean function:
 
 ```liberty
 cell ("sky130_fd_sc_hd__and2_0") {
   area : 6.25;
-  pin(A1) { direction : input; }
-  pin(A2) { direction : input; }
-  pin(X)  { direction : output;
-            function : "(A1 & A2)"; }
-}
-
-cell ("sky130_fd_sc_hd__and2_2") {
-  area : 7.50;
-  pin(A1) { direction : input; }
-  pin(A2) { direction : input; }
-  pin(X)  { direction : output;
-            function : "(A1 & A2)"; }
-}
-
-cell ("sky130_fd_sc_hd__and2_4") {
-  area : 8.75;
-  pin(A1) { direction : input; }
-  pin(A2) { direction : input; }
-  pin(X)  { direction : output;
-            function : "(A1 & A2)"; }
+  pin (A1) { direction : input; }
+  pin (A2) { direction : input; }
+  pin (X)  { direction : output; function : "(A1 & A2)"; }
 }
 ```
-### ✅ Key Takeaways
 
-- `.lib` = the **blueprint of standard cells** used in synthesis  
-- Defines **delay, power, and functionality** at specific PVT corners  
-- Same gate comes in **different drive strengths (flavors)** for trade-offs  
-- Example: `sky130_fd_sc_hd__tt_025C_1v80.lib` → typical corner for SKY130 flow  
+Repeat for `and2_2` and `and2_4` with their respective area numbers.
 
-## 🏗️ 2. Hierarchical vs Flat Synthesis
-
-In digital design, **synthesis strategy** plays a crucial role in area, timing, and readability of the final gate-level netlist.  
-Two popular approaches are **Hierarchical** (modular) and **Flat** (flattened single netlist).  
+Key takeaway: choose drive strength to meet timing while minimizing power/area.
 
 ---
 
-<div align="center">
+## 5) Hierarchical vs Flat synthesis
 
-| 🎯 Approach | 🧩 Concept | 📊 Pros | ⚠️ Cons |
-|-------------|------------|---------|---------|
-| **Hierarchical** | Break design into **modules** and connect in a top-level | ✔️ Easy debugging <br> ✔️ Reusable IPs <br> ✔️ Faster compile for large designs | ❌ Slightly larger area <br> ❌ Cross-module optimization limited |
-| **Flat** | Collapse all modules into a **single netlist** | ✔️ Global optimization <br> ✔️ Better area & timing in some cases | ❌ Harder to debug <br> ❌ No modular reuse |
+Two common synthesis strategies:
 
-</div>
+- Hierarchical (module boundaries preserved)
+  - Pros: easier to debug, faster incremental runs, IP reuse
+  - Cons: limited cross-module optimizations, sometimes larger area
 
----
+- Flat (all modules collapsed)
+  - Pros: global optimization across the whole design, often better area/timing
+  - Cons: harder to debug, longer synthesis times for very large designs
 
-### 🔹 Hierarchical Example (Modular)
+When to pick which: use hierarchical flows for large projects and IP reuse; use flat for final optimization passes when timing closure requires it.
 
-Let’s start with two simple gates, **AND** and **OR**, kept as independent modules, and then instantiate them in a top-level module.
+### Example (Verilog)
+
+Hierarchical version (modules instantiated):
 
 ```verilog
-// AND Gate
-module and_gate(input A, B, output Y);
-    assign Y = A & B;
+// and_gate.v
+module and_gate(input wire A, input wire B, output wire Y);
+  assign Y = A & B;
 endmodule
 
-// OR Gate
-module or_gate(input A, B, output Y);
-    assign Y = A | B;
+// or_gate.v
+module or_gate(input wire A, input wire B, output wire Y);
+  assign Y = A | B;
 endmodule
 
-// Top Module
-module top_hier(input X1, X2, X3, X4,
-                output Y_and, Y_or);
-    and_gate u1 (.A(X1), .B(X2), .Y(Y_and));
-    or_gate  u2 (.A(X3), .B(X4), .Y(Y_or));
+// top_hier.v
+module top_hier(input wire X1, X2, X3, X4, output wire Y_and, Y_or);
+  and_gate u_and (.A(X1), .B(X2), .Y(Y_and));
+  or_gate  u_or  (.A(X3), .B(X4), .Y(Y_or));
 endmodule
-
-<p align="center"> <img src="path_to_your_image/hier_netlist.png" width="600" alt="Hierarchical Netlist"/> </p>
-
-📌 In this approach:  
-- Each gate remains **visible** in the final netlist.  
-- Debugging is easier as **boundaries** are maintained.  
-
-<p align="center">
-  <img src="path_to_your_image/hier_blocks.png" width="600" alt="Hierarchical Block Diagram"/>
-</p>
 ```
+
+Flat version (same functionality, collapsed):
+
+```verilog
+module top_flat(input wire X1, X2, X3, X4, output wire Y_and, Y_or);
+  assign Y_and = X1 & X2;
+  assign Y_or  = X3 | X4;
+endmodule
+```
+
 ---
 
-### 🔹 Yosys Flow for Hierarchical Netlist
+## 6) Yosys flows — quick commands
+
+Below are minimal Yosys sequences for hierarchical and flat flows. Replace the liberty path with your local library path.
+
+Hierarchical synthesis (preserve instantiation hierarchy):
 
 ```bash
-# Start yosys
-yosys
-
-# Load Liberty
+# start yosys and run these commands inside the yosys shell
 read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-# Load Verilog files
-read_verilog top_hier.v
-
-# Run synthesis
+read_verilog and_gate.v or_gate.v top_hier.v
 synth -top top_hier
-
-# Map cells using Liberty
 abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-# Show hierarchy preserved
-show top_hier
-
-# Write netlist with hierarchy
+show -format png -prefix hier_top
 write_verilog -noattr top_hier_netlist.v
 ```
-<p align="center"> <img src="path_to_your_image/hier_netlist.png" width="600" alt="Hierarchical Netlist"/> </p>
 
-🔹 Yosys Flow for Hierarchical Netlist
-# Start yosys
-yosys
+Flat synthesis (flatten and optimize globally):
 
-# Load Liberty
+```bash
 read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-# Load Verilog files
-read_verilog top_hier.v
-
-# Run synthesis
-synth -top top_hier
-
-# Map cells using Liberty
+read_verilog top_flat.v
+synth -flatten -top top_flat
 abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show -format png -prefix flat_top
+write_verilog -noattr top_flat_netlist.v
+```
 
-# Show hierarchy preserved
-show top_hier
+Notes:
+- `show` will create PNGs if Graphviz is installed. Replace or remove if not desired.
 
-# Write netlist with hierarchy
-write_verilog -noattr top_hier_netlist.v
+---
 
-<p align="center"> <img src="path_to_your_image/hier_netlist.png" width="600" alt="Hierarchical Netlist"/> </p>
-🔹 Flat Example (Collapsed)
-module top_flat(input X1, X2, X3, X4,
-                output Y_and, Y_or);
-    assign Y_and = X1 & X2;
-    assign Y_or  = X3 | X4;
-endmodule
+## 7) Flop coding styles & synthesis-friendly RTL tips
 
+- Always use non-blocking assignments for sequential logic (inside clocked always blocks) to avoid race conditions.
+- Prefer synchronous reset when timing is tight, asynchronous reset where required by the IP, but document clearly.
+- Avoid writing arithmetic with mixed bit-widths without explicit casting—synthesis may infer extra logic.
+- Keep combinational logic simple and use pipeline registers to meet timing.
 
-📌 In this approach:
+Example (recommended flop style):
 
-The design is optimized globally.
+```verilog
+always @(posedge clk or negedge rst_n) begin
+  if (!rst_n)
+    q <= 0;
+  else
+    q <= d; // non-blocking
+end
+```
 
-But module boundaries disappear, making debug and reuse harder.
+---
 
-<p align="center"> <img src="path_to_your_image/flat_blocks.png" width="600" alt="Flat Block Diagram"/> </p>
-🔍 Netlist Comparison
-<div align="center">
-Feature	Hierarchical Netlist	Flat Netlist
-Readability	Clear module boundaries	One large block
-Debugging	Easy to trace signals	Harder to isolate signals
-Reuse	IP blocks can be reused	No modular reuse
-Optimization	Limited to module scope	Global cross-optimization
-Compile Time	Faster for large designs	Slower for huge designs
-</div>
-🖼️ Visualization in CMOS
-<p align="center"> <img src="path_to_your_image/cmos_compare.png" width="600" alt="CMOS Visualization"/> </p>
+## 8) How to reproduce the labs (quick guide)
 
-🔑 Note: Stacked PMOS devices are inefficient due to poor mobility, hence synthesis tools often restructure logic to optimize for this.
+1. Install Yosys (and Graphviz if you want diagrams).
+2. Put your `.v` files and the correct `.lib` in a folder.
+3. Run the commands from section 6 inside the `yosys` shell.
 
-🚀 Key Takeaways
+Example quick terminal run (outside yosys):
 
-Hierarchical synthesis → modular, reusable, easier debug
+```bash
+# open yosys then paste the commands from section 6, or run a script:
+yosys -p "read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib; read_verilog and_gate.v or_gate.v top_hier.v; synth -top top_hier; abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib; write_verilog -noattr top_hier_netlist.v"
+```
 
-Flat synthesis → globally optimized, smaller area but harder debug
+---
 
-Choice depends on design size, reuse needs, and optimization goals
+## Images and screenshots
+Replace the placeholders below with your screenshots taken during the lab. Suggested files to add to `Day-2/Images/`:
+
+- `hier_netlist.png` — hierarchical netlist screenshot
+- `flat_netlist.png` — flat netlist screenshot
+- `yosys_flow.png` — yosys terminal output or flow diagram
+
+Embed images in this README using standard Markdown, e.g.:
+
+```markdown
+![Hierarchical netlist](Images/hier_netlist.png)
+```
+
+---
+
+## Final notes
+
+This file is intentionally concise and lab-focused. If you'd like, I can:
+
+- Add a complete lab step-by-step with downloadable Verilog and scripts
+- Generate PNG diagrams from the examples and embed them here
+- Add a short checklist for timing sign-off (STA steps)
+
+Tell me which of the above you'd like next and I'll implement it.
