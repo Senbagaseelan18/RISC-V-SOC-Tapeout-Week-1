@@ -13,6 +13,7 @@
    - 🌡️ PVT Corners  
    - 📂 Example: `sky130_fd_sc_hd__tt_025C_1v80.lib`  
    - 🏗️ AND Gate Flavors  
+   - 📜 Liberty Snippet Comparison  
 2. 🏗️ [Hierarchical vs Flat Synthesis](#-2-hierarchical-vs-flat-synthesis)  
    - 📌 Concept  
    - 🧪 Lab Experiments (Part 1 & 2)  
@@ -77,16 +78,42 @@ The same **2-input AND gate** is available in multiple drive strengths for perfo
 
 ---
 
-### 📂 Liberty Snippet Example
+### 📂 Liberty Snippet Comparison – AND Gate Flavors
+
+Below is how the `.lib` describes different **drive strengths** of the same `AND2` gate in **SKY130**:  
+
+| Parameter | AND2_0 🐢 | AND2_2 ⚖️ | AND2_4 🚀 |
+|-----------|-----------|-----------|-----------|
+| **Area**  | `6.25`    | `7.50`    | `8.75`    |
+| **Function** | `(A1 & A2)` | `(A1 & A2)` | `(A1 & A2)` |
+| **Delay** | High ⏱️ | Medium ⏱️ | Very Low ⚡ |
+| **Power** | Very Low 🔋 | Moderate 🔋 | High 🔋 |
+| **Speed** | Very Slow 🐢 | Medium ⚖️ | Very Fast 🚀 |
+
+---
+
+### 📜 Example Liberty Snippets
 
 ```liberty
-cell ("sky130_fd_sc_hd__a2111o_1") {
+cell ("sky130_fd_sc_hd__and2_0") {
   area : 6.25;
   pin(A1) { direction : input; }
   pin(A2) { direction : input; }
-  pin(B1) { direction : input; }
-  pin(C1) { direction : input; }
-  pin(D1) { direction : input; }
   pin(X)  { direction : output;
-            function : "((A1 & A2) | B1 | C1 | D1)"; }
+            function : "(A1 & A2)"; }
+}
+
+cell ("sky130_fd_sc_hd__and2_2") {
+  area : 7.50;
+  pin(A1) { direction : input; }
+  pin(A2) { direction : input; }
+  pin(X)  { direction : output;
+            function : "(A1 & A2)"; }
+}
+cell ("sky130_fd_sc_hd__and2_4") {
+  area : 8.75;
+  pin(A1) { direction : input; }
+  pin(A2) { direction : input; }
+  pin(X)  { direction : output;
+            function : "(A1 & A2)"; }
 }
