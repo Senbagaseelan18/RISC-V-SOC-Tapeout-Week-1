@@ -174,36 +174,26 @@ yosys
 ## 📂 Load Liberty
 ```bash
 read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
 ```
 ## 📂 Load Verilog Files
 ```bash
 read_verilog multiple_modules.v
-
-
 ```
 ## ⚙️ Run Synthesis
 ```bash
 read_verilog multiple_modules.v
-
-
 ```
 ## 🔗 Map Cells using Liberty
 ```bash
 abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
 ```
 ## 👁️ Show Hierarchy Preserved
 ```bash
 show top_module
-
-
 ```
 ## 📝 Write Netlist with Hierarchy
 ```bash
 write_verilog -noattr multiple_modules-hier.v
-
-
 ```
 ## 👓 Open Netlist in GVim
 ```bash
