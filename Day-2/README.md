@@ -161,7 +161,7 @@ endmodule
 - Debugging is easier as **boundaries** are maintained.  
 
 <p align="center">
-  <img src="path_to_your_image/hier_blocks.png" width="600" alt="Hierarchical Block Diagram"/>
+  <img src="block.png" width="1000" alt="Hierarchical Block Diagram"/>
 </p>
 
 ---
@@ -193,7 +193,7 @@ show top_module
 ```
 
 <p align="center">
-  <img src="Day2/Images/multimodule.png" width="1000" alt="Hierarchical Schematic"/>
+  <img src="Day-2/Images/multimodule.png" width="1000" alt="Hierarchical Schematic"/>
   <br>
   <em> Hierarchical Schematic (Yosys show output) </em>
 </p>
@@ -209,7 +209,7 @@ write_verilog -noattr multiple_modules-hier.v
 ```
 
 <p align="center">
-  <img src="Day2/Images/code.png" width="1000" alt="Hierarchical Netlist"/>
+  <img src="Day-2/Images/code.png" width="1000" alt="Hierarchical Netlist"/>
   <br>
   <em>Hierarchical Netlist (GVim output)</em>
 </p>
