@@ -1,36 +1,49 @@
 
 <style>
+/* Page container */
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: #0f172a; }
 .themed-bg {
-  background: linear-gradient(90deg, #f8fafc 0%, #e0e7ff 100%);
+  background: linear-gradient(90deg, #f8fafc 0%, #eef2ff 100%);
   border-radius: 16px;
-  padding: 24px 18px 18px 18px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px #dbeafe44;
+  padding: 28px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 24px rgba(14, 165, 233, 0.08);
 }
-.callout-info {
-  background: #e0f2fe;
-  border-left: 6px solid #38bdf8;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin: 12px 0;
-}
-.callout-tip {
-  background: #f0fdf4;
-  border-left: 6px solid #22c55e;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin: 12px 0;
-}
-.callout-warn {
-  background: #fef9c3;
-  border-left: 6px solid #facc15;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin: 12px 0;
-}
-.emoji-title {
-  font-size: 1.5em;
-  margin-bottom: 0.2em;
+.badges img { margin: 6px 8px; height: 24px; }
+
+/* Callouts */
+.callout-info { background: #e0f2fe; border-left: 6px solid #38bdf8; padding: 14px 18px; border-radius: 10px; margin: 14px 0; }
+.callout-tip  { background: #f0fdf4; border-left: 6px solid #22c55e; padding: 14px 18px; border-radius: 10px; margin: 14px 0; }
+.callout-warn { background: #fffbeb; border-left: 6px solid #f59e0b; padding: 14px 18px; border-radius: 10px; margin: 14px 0; }
+.emoji-title { font-size: 1.35rem; font-weight: 600; margin-bottom: 0.15rem; }
+
+/* Section headers */
+h1 { font-size: 2.1rem; margin: 0.1rem 0 0.3rem 0; }
+h2 { font-size: 1.2rem; color: #0b1220; margin: 0.2rem 0 0.8rem 0; }
+h3 { color: #0b1220; }
+.section-ribbon { display: inline-block; background: linear-gradient(90deg,#60a5fa,#7c3aed); color: white; padding: 6px 12px; border-radius: 999px; font-weight: 600; margin-bottom: 8px; }
+
+/* Tables */
+table { border-collapse: collapse; width: auto; margin: 8px 0 16px 0; }
+table th, table td { border: 1px solid #e6eef8; padding: 8px 12px; }
+table th { background: #f1f5f9; font-weight: 700; }
+
+/* Code blocks */
+pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace; }
+pre { background: #0f172a10; border-radius: 8px; padding: 12px; overflow: auto; }
+code.inline { background: #f8fafc; padding: 2px 6px; border-radius: 6px; }
+
+/* Details/summary */
+details summary { cursor: pointer; padding: 8px 10px; border-radius: 6px; background: #ffffff; border: 1px solid #eef2ff; }
+details[open] summary { box-shadow: inset 0 -1px 0 #eef2ff; }
+
+/* Make markdown anchors look nicer */
+a[id] { display: block; position: relative; top: -10px; visibility: hidden; }
+
+/* Responsive improvements */
+@media (max-width: 720px) {
+  .themed-bg { padding: 18px 14px; }
+  .badges img { height: 20px; }
 }
 </style>
 
@@ -65,6 +78,7 @@ This page turns tedious theory into a short, visual, hands-on lab so you can map
 
 ---
 
+<a id="timing-libraries-lib"></a>
 ## 🗂️ Timing libraries (.lib)
 
 A <b>.lib</b> (Liberty) file is the synthesizer's standard-cell dictionary: it describes each cell's Boolean function, pins, timing arcs, power and area. The synthesizer uses this to map RTL to real silicon.
@@ -78,6 +92,7 @@ What each cell entry typically contains:
 
 ---
 
+<a id="pvt-corners"></a>
 ## 🌡️ PVT corners
 
 | Corner | Voltage | Temp | Quick meaning |
@@ -92,6 +107,7 @@ What each cell entry typically contains:
 
 ---
 
+<a id="sky130-filename"></a>
 ## 🏷️ SKY130 filename breakdown
 
 <code>sky130_fd_sc_hd__tt_025C_1v80.lib</code>
@@ -103,131 +119,7 @@ What each cell entry typically contains:
 
 ---
 
-## 🏋️ Drive strengths & Liberty snippet
-
-Cells are available in multiple drive strengths to trade area, delay and power.
-
-| Cell | Area (µm²) | Delay | Power |
-|------:|-----------:|------:|:-----:|
-| AND2_0 | 6.25 | 🐢 slow   | 🔋 low |
-| AND2_2 | 7.50 | ⚖️ medium | ⚡ moderate |
-| AND2_4 | 8.75 | 🚀 fast   | 🔥 higher |
-
-<details>
-<summary>Liberty example (shows function + area)</summary>
-
-```liberty
-cell ("sky130_fd_sc_hd__and2_0") {
-  area : 6.25;
-  pin (A1) { direction : input; }
-  pin (A2) { direction : input; }
-  pin (X)  { direction : output; function : "(A1 & A2)"; }
-}
-```
-</details>
-
-<div class="callout-info">
-<b>Design tip:</b> Let the tool pick drive strengths by default, then selectively upsize cells on timing-critical paths.
-</div>
-
----
-
-## 🏗️ Hierarchical vs Flat synthesis — code + tips
-
-Why it matters: hierarchy controls optimization scope, debug friendliness and compile times.
-
-- <b>Hierarchical</b> (recommended during development)
-  - ✔️ easier debugging, faster incremental runs, modular IP reuse
-  - ⚠️ limited cross-module optimization
-
-- <b>Flat</b> (use for final optimization)
-  - ✔️ global optimizations, often better area/timing
-  - ⚠️ harder to debug, longer run-time on large designs
-
-<details>
-<summary>Example — hierarchical (files: <code>and_gate.v</code>, <code>or_gate.v</code>, <code>top_hier.v</code>)</summary>
-
-```verilog
-// and_gate.v
-module and_gate(input wire A, input wire B, output wire Y);
-  assign Y = A & B;
-endmodule
-
-// top_hier.v (instantiates modules)
-module top_hier(input wire X1, X2, X3, X4, output wire Y_and, Y_or);
-  and_gate u_and (.A(X1), .B(X2), .Y(Y_and));
-  // other instances...
-endmodule
-```
-</details>
-
-<details>
-<summary>Flat equivalent (all collapsed)</summary>
-
-```verilog
-module top_flat(input wire X1, X2, X3, X4, output wire Y_and, Y_or);
-  assign Y_and = X1 & X2;
-  assign Y_or  = X3 | X4;
-endmodule
-```
-</details>
-
-<div class="callout-tip">
-<b>Quick tip:</b> Keep hierarchy in early iterations for debugging; flatten for last-mile timing closure.
-</div>
-
----
-
-## 🔁 Flop coding styles — concise rules
-
-- ⏩ Use non-blocking assignments (<=) in sequential always blocks.
-- 🔄 Use synchronous resets where timing predictability is required.
-- 🚫 Avoid mixing blocking and non-blocking assignments in the same always block.
-- 🟢 Initialize registers in reset paths, not with implicit inference.
-
-<details>
-<summary>Good pattern</summary>
-
-```verilog
-always @(posedge clk or negedge rst_n) begin
-  if (!rst_n)
-    q <= 0;
-  else
-    q <= d;
-end
-```
-</details>
-
----
-
-## 📝 Cheatsheet — common pitfalls & fixes
-
-- ❌ STA fails? Check the loaded <b>.lib</b> file, clock constraints, and if false paths are set.
-- ⚠️ Inferred latch? Look for combinational always blocks missing assignments on some branches.
-- 📏 Unexpected width expansion? Explicitly size operands in arithmetic operations.
-
-<details>
-<summary>Common Yosys commands recap</summary>
-
-```bash
-# load liberty
-read_liberty -lib path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-# hierarchical synth
-read_verilog and_gate.v or_gate.v top_hier.v
-synth -top top_hier
-
-# flat synth
-read_verilog top_flat.v
-synth -flatten -top top_flat
-
-# technology mapping
-abc -liberty path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
-```
-</details>
-
----
-
+<a id="lab-card"></a>
 ## 🧪 Quick lab card (run this now)
 
 Create a directory <code>lab_day2</code> and copy the example Verilog files and a Liberty file there. Then run the following inside <b>yosys</b> or as a single <code>yosys -p "..."</code> command.
@@ -253,6 +145,7 @@ Expected results:
 
 ---
 
+<a id="images"></a>
 ## 🖼️ Images & notes
 
 Drop screenshots into <code>Day-2/Images/</code> and reference them here:
