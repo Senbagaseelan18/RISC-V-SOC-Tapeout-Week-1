@@ -1,86 +1,120 @@
-# 🌟 Week 1 — Day 2
 
-<div align="center">
-  <h1>Timing Libraries · Hierarchical vs Flat Synthesis · Flop Coding Styles</h1>
+<style>
+.themed-bg {
+  background: linear-gradient(90deg, #f8fafc 0%, #e0e7ff 100%);
+  border-radius: 16px;
+  padding: 24px 18px 18px 18px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px #dbeafe44;
+}
+.callout-info {
+  background: #e0f2fe;
+  border-left: 6px solid #38bdf8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.callout-tip {
+  background: #f0fdf4;
+  border-left: 6px solid #22c55e;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.callout-warn {
+  background: #fef9c3;
+  border-left: 6px solid #facc15;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.emoji-title {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+}
+</style>
+
+<div class="themed-bg" align="center">
+  <h1>🌟 Week 1 — Day 2</h1>
+  <h2>Timing Libraries · Hierarchical vs Flat Synthesis · Flop Coding Styles</h2>
+  <img src="https://img.shields.io/badge/Tool-Yosys-blue" alt="Yosys" />
+  <img src="https://img.shields.io/badge/Tech-SKY130-brightgreen" alt="SKY130" />
+  <img src="https://img.shields.io/badge/Level-Intro%2FLab-orange" alt="Lab" />
+</div>
+
+<div class="callout-info">
+<span class="emoji-title">🚀 At a glance</span><br>
+Duration: 1 day (lab + notes) &nbsp;|&nbsp; Focus: <b>.lib</b> (timing libraries), PVT corners, hierarchical vs flat synthesis, and flop coding best practices &nbsp;|&nbsp; Tools: Yosys, Liberty (.lib), optional Graphviz for diagrams
+</div>
+
+<div class="callout-tip">
+<span class="emoji-title">✨ Why this page?</span><br>
+This page turns tedious theory into a short, visual, hands-on lab so you can map RTL to cells, run hierarchical and flat synthesis, and understand how to meet timing.
+</div>
+
+## 📚 Table of Contents
+1. 🗂️ [Timing libraries (.lib)](#timing-libraries-lib)
+2. 🌡️ [PVT corners — quick intuition](#pvt-corners)
+3. 🏷️ [SKY130 filename breakdown](#sky130-filename)
+4. 🏋️ [Drive strengths & Liberty snippet](#drive-strengths)
+5. 🏗️ [Hierarchical vs Flat synthesis — code + tips](#hier-vs-flat)
+6. 🔁 [Flop coding styles — concise rules](#flop-styles)
+7. 📝 [Cheatsheet & quick commands](#cheatsheet)
+8. 🧪 [Quick lab card (run it)](#lab-card)
+9. 🖼️ [Images & notes](#images)
+
+---
+
+## 🗂️ Timing libraries (.lib)
+
+A <b>.lib</b> (Liberty) file is the synthesizer's standard-cell dictionary: it describes each cell's Boolean function, pins, timing arcs, power and area. The synthesizer uses this to map RTL to real silicon.
+
+What each cell entry typically contains:
+- 🧮 function (Boolean)
+- 🔌 pins & directions
+- ⏱️ timing arcs (input→output delays)
+- ⏳ timing metrics (setup / hold)
+- 🔋 power models and area
+
+---
+
+## 🌡️ PVT corners
+
+| Corner | Voltage | Temp | Quick meaning |
+|--------|--------:|-----:|:--------------|
+| 🐢 SS     | ~1.6 V  | 125 °C | Slow devices — worst-case timing (pessimistic) |
+| ⚖️ TT     | 1.8 V   | 25 °C  | Typical / nominal behavior |
+| 🚀 FF     | ~1.95 V | 0 °C   | Fast devices — best timing, higher leakage |
+
+<div class="callout-tip">
+<b>Tip:</b> Use <b>SS</b> for worst-case STA, <b>TT</b> for functional checks, <b>FF</b> for power/IR margin tests.
 </div>
 
 ---
 
-<!-- Hero / summary -->
-## � At a glance
+## 🏷️ SKY130 filename breakdown
 
-- Duration: 1 day (lab + notes)
-- Focus: `.lib` (timing libraries), PVT corners, hierarchical vs flat synthesis, and flop coding best practices
-- Tools: Yosys, Liberty (.lib), optional Graphviz for diagrams
+<code>sky130_fd_sc_hd__tt_025C_1v80.lib</code>
 
----
-
-## ✨ Why this page? (one-sentence)
-
-This page turns tedious theory into a short, visual, hands-on lab so you can map RTL to cells, run hierarchical and flat synthesis, and understand how to meet timing.
+- <b>sky130_fd_sc_hd</b> — SkyWater 130 nm, standard-cell (high-density) family<br>
+- <b>tt</b> — typical process corner<br>
+- <b>025C</b> — temperature = 25 °C<br>
+- <b>1v80</b> — operating voltage = 1.80 V
 
 ---
 
-## � Table of Contents
-1. [Timing libraries (.lib)](#timing-libraries-lib)
-2. [PVT corners — quick intuition](#pvt-corners)
-3. [SKY130 filename breakdown](#sky130-filename)
-4. [Drive strengths & Liberty snippet](#drive-strengths)
-5. [Hierarchical vs Flat synthesis — code + tips](#hier-vs-flat)
-6. [Flop coding styles — concise rules](#flop-styles)
-7. [Cheatsheet & quick commands](#cheatsheet)
-8. [Quick lab card (run it)](#lab-card)
-9. [Images & notes](#images)
-
----
-
-## Timing libraries (.lib)
-
-A `.lib` (Liberty) file is the synthesizer's standard-cell dictionary: it describes each cell's Boolean function, pins, timing arcs, power and area. The synthesizer uses this to map RTL to real silicon.
-
-What each cell entry typically contains:
-- function (Boolean)
-- pins & directions
-- timing arcs (input→output delays)
-- timing metrics (setup / hold)
-- power models and area
-
----
-
-## PVT corners
-
-| Corner | Voltage | Temp | Quick meaning |
-|--------|--------:|-----:|:--------------|
-| SS     | ~1.6 V  | 125 °C | Slow devices — worst-case timing (pessimistic) |
-| TT     | 1.8 V   | 25 °C  | Typical / nominal behavior |
-| FF     | ~1.95 V | 0 °C   | Fast devices — best timing, higher leakage |
-
-Tip: Use SS for worst-case STA, TT for functional checks, FF for power/IR margin tests.
-
----
-
-## SKY130 filename breakdown
-
-`sky130_fd_sc_hd__tt_025C_1v80.lib`
-
-- `sky130_fd_sc_hd` — SkyWater 130 nm, standard-cell (high-density) family
-- `tt` — typical process corner
-- `025C` — temperature = 25 °C
-- `1v80` — operating voltage = 1.80 V
-
----
-
-## Drive strengths & Liberty snippet
+## 🏋️ Drive strengths & Liberty snippet
 
 Cells are available in multiple drive strengths to trade area, delay and power.
 
 | Cell | Area (µm²) | Delay | Power |
 |------:|-----------:|------:|:-----:|
-| AND2_0 | 6.25 | slow   | low |
-| AND2_2 | 7.50 | medium | moderate |
-| AND2_4 | 8.75 | fast   | higher |
+| AND2_0 | 6.25 | 🐢 slow   | 🔋 low |
+| AND2_2 | 7.50 | ⚖️ medium | ⚡ moderate |
+| AND2_4 | 8.75 | 🚀 fast   | 🔥 higher |
 
-Simplified Liberty example (shows function + area):
+<details>
+<summary>Liberty example (shows function + area)</summary>
 
 ```liberty
 cell ("sky130_fd_sc_hd__and2_0") {
@@ -90,24 +124,28 @@ cell ("sky130_fd_sc_hd__and2_0") {
   pin (X)  { direction : output; function : "(A1 & A2)"; }
 }
 ```
+</details>
 
-Design tip: let the tool pick drive strengths by default, then selectively upsize cells on timing-critical paths.
+<div class="callout-info">
+<b>Design tip:</b> Let the tool pick drive strengths by default, then selectively upsize cells on timing-critical paths.
+</div>
 
 ---
 
-## Hierarchical vs Flat synthesis — code + tips
+## 🏗️ Hierarchical vs Flat synthesis — code + tips
 
 Why it matters: hierarchy controls optimization scope, debug friendliness and compile times.
 
-- Hierarchical (recommended during development)
-  - Pros: easier debugging, faster incremental runs, modular IP reuse
-  - Cons: limited cross-module optimization
+- <b>Hierarchical</b> (recommended during development)
+  - ✔️ easier debugging, faster incremental runs, modular IP reuse
+  - ⚠️ limited cross-module optimization
 
-- Flat (use for final optimization)
-  - Pros: global optimizations, often better area/timing
-  - Cons: harder to debug, longer run-time on large designs
+- <b>Flat</b> (use for final optimization)
+  - ✔️ global optimizations, often better area/timing
+  - ⚠️ harder to debug, longer run-time on large designs
 
-Example — hierarchical (files: `and_gate.v`, `or_gate.v`, `top_hier.v`):
+<details>
+<summary>Example — hierarchical (files: <code>and_gate.v</code>, <code>or_gate.v</code>, <code>top_hier.v</code>)</summary>
 
 ```verilog
 // and_gate.v
@@ -121,8 +159,10 @@ module top_hier(input wire X1, X2, X3, X4, output wire Y_and, Y_or);
   // other instances...
 endmodule
 ```
+</details>
 
-Flat equivalent (all collapsed):
+<details>
+<summary>Flat equivalent (all collapsed)</summary>
 
 ```verilog
 module top_flat(input wire X1, X2, X3, X4, output wire Y_and, Y_or);
@@ -130,19 +170,23 @@ module top_flat(input wire X1, X2, X3, X4, output wire Y_and, Y_or);
   assign Y_or  = X3 | X4;
 endmodule
 ```
+</details>
 
-Quick tip: keep hierarchy in early iterations for debugging; flatten for last-mile timing closure.
+<div class="callout-tip">
+<b>Quick tip:</b> Keep hierarchy in early iterations for debugging; flatten for last-mile timing closure.
+</div>
 
 ---
 
-## Flop coding styles — concise rules
+## 🔁 Flop coding styles — concise rules
 
-- Use non-blocking assignments (<=) in sequential always blocks.
-- Use synchronous resets where timing predictability is required.
-- Avoid mixing blocking and non-blocking assignments in the same always block.
-- Initialize registers in reset paths, not with implicit inference.
+- ⏩ Use non-blocking assignments (<=) in sequential always blocks.
+- 🔄 Use synchronous resets where timing predictability is required.
+- 🚫 Avoid mixing blocking and non-blocking assignments in the same always block.
+- 🟢 Initialize registers in reset paths, not with implicit inference.
 
-Good pattern:
+<details>
+<summary>Good pattern</summary>
 
 ```verilog
 always @(posedge clk or negedge rst_n) begin
@@ -152,18 +196,18 @@ always @(posedge clk or negedge rst_n) begin
     q <= d;
 end
 ```
-
-Bad pattern examples and explanations are left for exercises.
+</details>
 
 ---
 
-## Cheatsheet — common pitfalls & fixes
+## 📝 Cheatsheet — common pitfalls & fixes
 
-- STA fails? Check the loaded `.lib` file, clock constraints, and if false paths are set.
-- Inferred latch? Look for combinational always blocks missing assignments on some branches.
-- Unexpected width expansion? Explicitly size operands in arithmetic operations.
+- ❌ STA fails? Check the loaded <b>.lib</b> file, clock constraints, and if false paths are set.
+- ⚠️ Inferred latch? Look for combinational always blocks missing assignments on some branches.
+- 📏 Unexpected width expansion? Explicitly size operands in arithmetic operations.
 
-Common Yosys commands recap:
+<details>
+<summary>Common Yosys commands recap</summary>
 
 ```bash
 # load liberty
@@ -180,12 +224,13 @@ synth -flatten -top top_flat
 # technology mapping
 abc -liberty path/to/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
+</details>
 
 ---
 
-## Quick lab card (run this now)
+## 🧪 Quick lab card (run this now)
 
-Create a directory `lab_day2` and copy the example Verilog files and a Liberty file there. Then run the following inside `yosys` or as a single `yosys -p "..."` command.
+Create a directory <code>lab_day2</code> and copy the example Verilog files and a Liberty file there. Then run the following inside <b>yosys</b> or as a single <code>yosys -p "..."</code> command.
 
 ```bash
 # Hierarchical flow
@@ -203,14 +248,14 @@ write_verilog -noattr top_flat_netlist.v
 ```
 
 Expected results:
-- `top_hier_netlist.v` with instantiated modules
-- `top_flat_netlist.v` with flattened cells
+- <b>top_hier_netlist.v</b> with instantiated modules<br>
+- <b>top_flat_netlist.v</b> with flattened cells
 
 ---
 
-## Images & notes
+## 🖼️ Images & notes
 
-Drop screenshots into `Day-2/Images/` and reference them here:
+Drop screenshots into <code>Day-2/Images/</code> and reference them here:
 
 ```markdown
 ![Hierarchical netlist](Images/hier_netlist.png)
@@ -219,10 +264,10 @@ Drop screenshots into `Day-2/Images/` and reference them here:
 
 ---
 
-## Next steps (pick 1)
-1. I can add downloadable Verilog examples + `run_yosys.sh` (I will create and test the script).
-2. I can auto-generate PNG diagrams from the netlists (requires Graphviz locally).
-3. I can add a short STA checklist and sample constraint file.
+## 🎯 Next steps (pick 1)
+1. I can add downloadable Verilog examples + <code>run_yosys.sh</code> (I will create and test the script).<br>
+2. I can auto-generate PNG diagrams from the netlists (requires Graphviz locally).<br>
+3. I can add a short STA checklist and sample constraint file.<br>
 
 Tell me which and I'll create the files and test them in this workspace.
 
