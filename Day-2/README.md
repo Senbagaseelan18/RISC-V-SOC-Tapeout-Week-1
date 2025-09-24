@@ -118,7 +118,7 @@ cell ("sky130_fd_sc_hd__and2_4") {
   pin(X)  { direction : output;
             function : "(A1 & A2)"; }
 }
-
+```
 ### ✅ Key Takeaways
 
 - `.lib` = the **blueprint of standard cells** used in synthesis  
