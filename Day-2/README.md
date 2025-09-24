@@ -175,7 +175,7 @@ endmodule
 <p align="center">
   <img src="path_to_your_image/hier_blocks.png" width="600" alt="Hierarchical Block Diagram"/>
 </p>
-
+```
 ---
 
 ### 🔹 Yosys Flow for Hierarchical Netlist
