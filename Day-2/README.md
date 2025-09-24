@@ -191,7 +191,13 @@ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```bash
 show top_module
 ```
-<p align="center"> <img src="Images/multimodule.png" width="1000" alt="Hierarchical Netlist"/> </p>
+
+<p align="center">
+  <img src="Day2/Images/multimodule.png" width="1000" alt="Hierarchical Schematic"/>
+  <br>
+  <em> Hierarchical Schematic (Yosys show output) </em>
+</p>
+
 
 ## 📝 Write Netlist with Hierarchy
 ```bash
@@ -201,4 +207,10 @@ write_verilog -noattr multiple_modules-hier.v
 ```bash
 !gvim multiple_modules-hier.v
 ```
-<p align="center"> <img src="Images/code.png" width="1000" alt="Hierarchical Netlist"/> </p>
+
+<p align="center">
+  <img src="Day2/Images/code.png" width="1000" alt="Hierarchical Netlist"/>
+  <br>
+  <em>Hierarchical Netlist (GVim output)</em>
+</p>
+
