@@ -178,12 +178,14 @@ read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 ## 📂 Load Verilog Files
 ```bash
-read_verilog top_hier.v
+read_verilog multiple_modules.v
+
 
 ```
 ## ⚙️ Run Synthesis
 ```bash
-synth -top top_hier
+read_verilog multiple_modules.v
+
 
 ```
 ## 🔗 Map Cells using Liberty
@@ -193,11 +195,17 @@ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 ## 👁️ Show Hierarchy Preserved
 ```bash
-show top_hier
+show top_module
+
 
 ```
 ## 📝 Write Netlist with Hierarchy
 ```bash
-write_verilog -noattr top_hier_netlist.v
+write_verilog -noattr multiple_modules-hier.v
 
+
+```
+## 👓 Open Netlist in GVim
+```bash
+!gvim multiple_modules-hier.v
 ```
