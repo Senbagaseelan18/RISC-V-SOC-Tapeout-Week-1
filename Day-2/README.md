@@ -227,3 +227,44 @@ write_verilog -noattr multiple_modules-hier.v
   <em>CMOS Transistor-Level Representation</em>
 </p>
 
+## ⚡ C. Flat Synthesis
+
+In **flat synthesis**, the hierarchy of a design is **collapsed** into a single netlist.  
+All sub-modules are merged together, and the tool performs **global optimization** across the entire design.  
+
+🔻 **Drawback:** While this improves optimization, it removes modular boundaries, making debugging and reuse harder.  
+
+---
+
+### 🖥️ Yosys Flow for Flat Synthesis
+
+```bash
+# Start yosys
+yosys
+
+# Load Liberty file
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Read design
+read_verilog multiple_modules.v
+
+# Run synthesis on top module
+synth -top top_module
+
+# Flatten the hierarchy
+flatten
+
+# Optimize and map
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Visualize flat netlist
+show
+```
+
+## 📂 Writing Flat Netlist
+# Export synthesized netlist (flattened)
+write_verilog -noattr multiple_modules_flat.v
+
+# Open with gvim
+!gvim multiple_modules_flat.v
+
