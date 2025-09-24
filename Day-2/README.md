@@ -126,3 +126,140 @@ cell ("sky130_fd_sc_hd__and2_4") {
 - Same gate comes in **different drive strengths (flavors)** for trade-offs  
 - Example: `sky130_fd_sc_hd__tt_025C_1v80.lib` → typical corner for SKY130 flow  
 
+## 🏗️ 2. Hierarchical vs Flat Synthesis
+
+In digital design, **synthesis strategy** plays a crucial role in area, timing, and readability of the final gate-level netlist.  
+Two popular approaches are **Hierarchical** (modular) and **Flat** (flattened single netlist).  
+
+---
+
+<div align="center">
+
+| 🎯 Approach | 🧩 Concept | 📊 Pros | ⚠️ Cons |
+|-------------|------------|---------|---------|
+| **Hierarchical** | Break design into **modules** and connect in a top-level | ✔️ Easy debugging <br> ✔️ Reusable IPs <br> ✔️ Faster compile for large designs | ❌ Slightly larger area <br> ❌ Cross-module optimization limited |
+| **Flat** | Collapse all modules into a **single netlist** | ✔️ Global optimization <br> ✔️ Better area & timing in some cases | ❌ Harder to debug <br> ❌ No modular reuse |
+
+</div>
+
+---
+
+### 🔹 Hierarchical Example (Modular)
+
+Let’s start with two simple gates, **AND** and **OR**, kept as independent modules, and then instantiate them in a top-level module.
+
+```verilog
+// AND Gate
+module and_gate(input A, B, output Y);
+    assign Y = A & B;
+endmodule
+
+// OR Gate
+module or_gate(input A, B, output Y);
+    assign Y = A | B;
+endmodule
+
+// Top Module
+module top_hier(input X1, X2, X3, X4,
+                output Y_and, Y_or);
+    and_gate u1 (.A(X1), .B(X2), .Y(Y_and));
+    or_gate  u2 (.A(X3), .B(X4), .Y(Y_or));
+endmodule
+
+<p align="center"> <img src="path_to_your_image/hier_netlist.png" width="600" alt="Hierarchical Netlist"/> </p>
+
+📌 In this approach:  
+- Each gate remains **visible** in the final netlist.  
+- Debugging is easier as **boundaries** are maintained.  
+
+<p align="center">
+  <img src="path_to_your_image/hier_blocks.png" width="600" alt="Hierarchical Block Diagram"/>
+</p>
+
+---
+
+### 🔹 Yosys Flow for Hierarchical Netlist
+
+```bash
+# Start yosys
+yosys
+
+# Load Liberty
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Load Verilog files
+read_verilog top_hier.v
+
+# Run synthesis
+synth -top top_hier
+
+# Map cells using Liberty
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Show hierarchy preserved
+show top_hier
+
+# Write netlist with hierarchy
+write_verilog -noattr top_hier_netlist.v
+```
+<p align="center"> <img src="path_to_your_image/hier_netlist.png" width="600" alt="Hierarchical Netlist"/> </p>
+
+🔹 Yosys Flow for Hierarchical Netlist
+# Start yosys
+yosys
+
+# Load Liberty
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Load Verilog files
+read_verilog top_hier.v
+
+# Run synthesis
+synth -top top_hier
+
+# Map cells using Liberty
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Show hierarchy preserved
+show top_hier
+
+# Write netlist with hierarchy
+write_verilog -noattr top_hier_netlist.v
+
+<p align="center"> <img src="path_to_your_image/hier_netlist.png" width="600" alt="Hierarchical Netlist"/> </p>
+🔹 Flat Example (Collapsed)
+module top_flat(input X1, X2, X3, X4,
+                output Y_and, Y_or);
+    assign Y_and = X1 & X2;
+    assign Y_or  = X3 | X4;
+endmodule
+
+
+📌 In this approach:
+
+The design is optimized globally.
+
+But module boundaries disappear, making debug and reuse harder.
+
+<p align="center"> <img src="path_to_your_image/flat_blocks.png" width="600" alt="Flat Block Diagram"/> </p>
+🔍 Netlist Comparison
+<div align="center">
+Feature	Hierarchical Netlist	Flat Netlist
+Readability	Clear module boundaries	One large block
+Debugging	Easy to trace signals	Harder to isolate signals
+Reuse	IP blocks can be reused	No modular reuse
+Optimization	Limited to module scope	Global cross-optimization
+Compile Time	Faster for large designs	Slower for huge designs
+</div>
+🖼️ Visualization in CMOS
+<p align="center"> <img src="path_to_your_image/cmos_compare.png" width="600" alt="CMOS Visualization"/> </p>
+
+🔑 Note: Stacked PMOS devices are inefficient due to poor mobility, hence synthesis tools often restructure logic to optimize for this.
+
+🚀 Key Takeaways
+
+Hierarchical synthesis → modular, reusable, easier debug
+
+Flat synthesis → globally optimized, smaller area but harder debug
+
+Choice depends on design size, reuse needs, and optimization goals
