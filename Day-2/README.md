@@ -214,3 +214,16 @@ write_verilog -noattr multiple_modules-hier.v
   <em>Hierarchical Netlist (GVim output)</em>
 </p>
 
+### ⚙️ CMOS Visualization
+
+- **Stacked PMOS** → Not preferred, as PMOS has **poor carrier mobility**, making circuits slower.  
+- **Stacked NMOS** → Generally better since NMOS has **higher mobility**, but too many in series increases resistance.  
+
+---
+
+<p align="center">
+  <img src="Day2/Images/cmos.png" width="600" alt="CMOS Visualization"/>
+  <br>
+  <em>CMOS Transistor-Level Representation</em>
+</p>
+
