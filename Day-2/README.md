@@ -118,3 +118,11 @@ cell ("sky130_fd_sc_hd__and2_4") {
   pin(X)  { direction : output;
             function : "(A1 & A2)"; }
 }
+
+### ✅ Key Takeaways
+
+- `.lib` = the **blueprint of standard cells** used in synthesis  
+- Defines **delay, power, and functionality** at specific PVT corners  
+- Same gate comes in **different drive strengths (flavors)** for trade-offs  
+- Example: `sky130_fd_sc_hd__tt_025C_1v80.lib` → typical corner for SKY130 flow  
+
