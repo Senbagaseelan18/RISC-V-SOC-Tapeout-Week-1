@@ -102,3 +102,19 @@ cell ("sky130_fd_sc_hd__and2_0") {
   pin(X)  { direction : output;
             function : "(A1 & A2)"; }
 }
+
+cell ("sky130_fd_sc_hd__and2_2") {
+  area : 7.50;
+  pin(A1) { direction : input; }
+  pin(A2) { direction : input; }
+  pin(X)  { direction : output;
+            function : "(A1 & A2)"; }
+}
+
+cell ("sky130_fd_sc_hd__and2_4") {
+  area : 8.75;
+  pin(A1) { direction : input; }
+  pin(A2) { direction : input; }
+  pin(X)  { direction : output;
+            function : "(A1 & A2)"; }
+}
