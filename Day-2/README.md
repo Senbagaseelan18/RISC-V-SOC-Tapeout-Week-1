@@ -115,6 +115,7 @@ cell ("sky130_fd_sc_hd__and2_4") {
   pin(A2) { direction : input; }
   pin(X)  { direction : output; function : "(A1 & A2)"; }
 }
+```
 
 ## 🏗️ 2. Hierarchical vs Flat Synthesis
 
@@ -153,3 +154,50 @@ module top_hier(input X1, X2, X3, X4,
     and_gate u1 (.A(X1), .B(X2), .Y(Y_and));
     or_gate  u2 (.A(X3), .B(X4), .Y(Y_or));
 endmodule
+```
+
+📌 In this approach:  
+- Each gate remains **visible** in the final netlist.  
+- Debugging is easier as **boundaries** are maintained.  
+
+<p align="center">
+  <img src="path_to_your_image/hier_blocks.png" width="600" alt="Hierarchical Block Diagram"/>
+</p>
+
+---
+### 🔹 Yosys Flow for Hierarchical Netlist
+
+## ▶️ Start Yosys
+```bash
+yosys
+```
+## 📂 Load Liberty
+```bash
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+```
+## 📂 Load Verilog Files
+```bash
+read_verilog top_hier.v
+
+```
+## ⚙️ Run Synthesis
+```bash
+synth -top top_hier
+
+```
+## 🔗 Map Cells using Liberty
+```bash
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+```
+## 👁️ Show Hierarchy Preserved
+```bash
+show top_hier
+
+```
+## 📝 Write Netlist with Hierarchy
+```bash
+write_verilog -noattr top_hier_netlist.v
+
+```
