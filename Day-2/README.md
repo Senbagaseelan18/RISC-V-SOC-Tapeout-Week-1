@@ -5,15 +5,14 @@
 
 </div>
 
----
 ## 📖 Table of Contents
 
 | **Section** | **Subtopics** |
 |------------|----------------|
-| ⏱️ **Timing Libraries (.lib)** | [Library Structure](#library-structure) <br> [PVT Corners](#pvt-corners) <br> [SKY130 Example](#example-library-sky130) <br> [AND Gate Flavors](#and-gate-flavors) <br> [Liberty Snippet Comparison](#liberty-snippet-comparison) |
-| 🏗️ **Hierarchical vs Flat Synthesis** | [Key Concepts](#hierarchical-vs-flat-synthesis) <br> [Hierarchical Example](#hierarchical-example-modular) <br> [Flattened Synthesis](#flattened-synthesis) <br> [Submodule-Level Synthesis](#d-submodule-level-synthesis) |
-| 🔁 **Flip-Flop Coding & Optimizations** | [Why Flip-Flops?](#a-why-flip-flops-matter) <br> [Control Pins & Types](#b-control-pins-in-flops) <br> [Verilog Implementations](#c-verilog-implementation) <br> [Async vs Sync Behavior](#d-asynchronous-vs-synchronous-reset) <br> [Simulation & Waveforms](#simulation--synthesis-workflow) |
-| ⚙️ **Optimization in Synthesis** | [Optimization Concept](#optimization-concept) <br> [Mux Optimization Example](#example-mux-optimization) <br> [Yosys Synthesis Workflow](#yosys-synthesis-workflow) |
+| ⏱️ **Timing Libraries (.lib)** | [Library Structure](#library-structure) <br> [PVT Corners](#pvt-corners) <br> [Example Library: SKY130](#example-library-sky130) <br> [AND Gate Flavors](#and-gate-flavors) <br> [Liberty Snippet Comparison](#liberty-snippet-comparison) |
+| 🏗️ **Hierarchical vs Flat Synthesis** | [Key Concepts](#hierarchical-vs-flat-synthesis) <br> [Hierarchical Example Modular](#hierarchical-example-modular) <br> [Flattened Synthesis](#flattened-synthesis) <br> [Submodule Level Synthesis](#d-submodule-level-synthesis) |
+| 🔁 **Flip-Flop Coding & Optimizations** | [Why Flip-Flops Matter](#a-why-flip-flops-matter) <br> [Control Pins in Flops](#b-control-pins-in-flops) <br> [Verilog Implementation](#c-verilog-implementation) <br> [Asynchronous vs Synchronous Reset](#d-asynchronous-vs-synchronous-reset) <br> [Simulation & Synthesis Workflow](#simulation--synthesis-workflow) |
+| ⚙️ **Optimization in Synthesis** | [Optimization Concept](#optimization-concept) <br> [Example: Mux Optimization](#example-mux-optimization) <br> [Yosys Synthesis Workflow](#yosys-synthesis-workflow) |
 
 
 ---
