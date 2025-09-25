@@ -2,8 +2,19 @@
 
 # 🌟 Week 1 — Day 2  
 
-**⏱️ Timing Libraries** &nbsp;&nbsp; | &nbsp;&nbsp; **🏗️ Hierarchical vs Flat Synthesis**  
-**🔁 Flip-Flop Coding Styles** &nbsp;&nbsp; | &nbsp;&nbsp; **⚙️ Optimization in Synthesis**
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://img.shields.io/badge/⏱️-Timing_Libraries-blueviolet" /></td>
+      <td><img src="https://img.shields.io/badge/🏗️-Hier_vs_Flat_ Synthesis-orange" /></td>
+    </tr>
+    <tr>
+      <td><img src="https://img.shields.io/badge/🔁-Flip-Flop_Coding_Styles-blue" /></td>
+      <td><img src="https://img.shields.io/badge/⚙️-Optimization_in_Synthesis-red" /></td>
+    </tr>
+  </table>
+  <p>🎯 This session dives into <b>timing libraries</b>, compares <b>hierarchical vs flat synthesis</b>, explores <b>flip-flop coding styles</b>, and demonstrates <b>optimization techniques in synthesis</b>. ⚡</p>
+</div>
 
 </div>
 
