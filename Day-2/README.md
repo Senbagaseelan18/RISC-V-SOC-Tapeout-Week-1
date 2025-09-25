@@ -463,3 +463,62 @@ Understanding the difference is critical for reliable sequential circuit design.
 
 Combine **asynchronous reset** for **startup initialization** and **synchronous set/reset** for **stable runtime operation** in complex sequential circuits.  
 
+## 🧪 Lab 4 – DFF Design Modules
+
+Explore different **D Flip-Flop (DFF) modules** focusing on **asynchronous and synchronous controls**.  
+This lab demonstrates **behavior, Verilog coding, and waveform verification** for each module.
+
+---
+
+### 🔹 DFF Modules Overview
+
+| **Module Name**                 | **Functionality Description** |
+|---------------------------------|-------------------------------|
+| **dff_asyn_set.v**              | DFF with **asynchronous set**. Q immediately goes high when `Set` = 1, independent of the clock. |
+| **dff_asyn_reset.v**            | DFF with **asynchronous reset**. Q immediately goes low when `Reset` = 1, independent of the clock. |
+| **dff_asyn_syncres.v**          | DFF with **asynchronous set** + **synchronous reset**. Q sets immediately but resets on the clock edge. |
+
+---
+
+## 🔹 Module Focus: `dff_asyn_set.v`
+
+### 📝 Module Overview
+This module implements a **D Flip-Flop with asynchronous set**.
+
+- **Asynchronous Set:** Q → 1 immediately when `Set` = 1  
+- **Clock Behavior:** When `Set` = 0, D → Q transfer occurs on **rising edge of Clk**  
+- **Outputs:**  
+  - `Q` → Main output  
+  - `Q_bar` → Complement of Q
+
+---
+
+### ⚡ Behavioral Description
+- `Set = 1` → Q immediately **high**  
+- `Set = 0` → Q follows **D at rising clock edge**  
+- Q_bar always shows the **complement** of Q  
+
+---
+
+### 💻 Example Verilog Code
+
+```verilog
+module dff_asyn_set (
+    input wire D,
+    input wire Clk,
+    input wire Set,
+    output reg Q,
+    output wire Q_bar
+);
+
+assign Q_bar = ~Q;
+
+always @(posedge Clk or posedge Set) begin
+    if (Set)
+        Q <= 1'b1;   // Asynchronous set
+    else
+        Q <= D;      // Normal DFF operation
+end
+
+endmodule
+
