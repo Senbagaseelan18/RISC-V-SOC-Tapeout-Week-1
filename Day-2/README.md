@@ -227,44 +227,66 @@ write_verilog -noattr multiple_modules-hier.v
   <em>CMOS Transistor-Level Representation</em>
 </p>
 
-## ⚡ C. Flat Synthesis
+### 🏗️ C. Flattened Synthesis
 
-In **flat synthesis**, the hierarchy of a design is **collapsed** into a single netlist.  
-All sub-modules are merged together, and the tool performs **global optimization** across the entire design.  
-
-🔻 **Drawback:** While this improves optimization, it removes modular boundaries, making debugging and reuse harder.  
+In **flattened synthesis**, all modules in a design are merged into a **single flat netlist**, removing the original hierarchy.  
+This enables **global optimizations** across the design but makes debugging more challenging.
 
 ---
 
-### 🖥️ Yosys Flow for Flat Synthesis
+### 🔹 Key Points
+- Command `yosys > flatten` collapses the hierarchy.  
+- Sub-modules are no longer preserved after flattening.  
+- The design is represented as **one unified block**.  
+- Useful for **maximizing performance**, but hierarchy visibility is lost.  
 
+---
+
+### ✍️ Writing a Flat Netlist
+
+## 1. Flatten the hierarchy
 ```bash
-# Start yosys
-yosys
-
-# Load Liberty file
-read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-# Read design
-read_verilog multiple_modules.v
-
-# Run synthesis on top module
-synth -top top_module
-
-# Flatten the hierarchy
 flatten
-
-# Optimize and map
-abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
-# Visualize flat netlist
-show
+```
+## 2. Export netlist
+```bash
+write_verilog -noattr good_mux_netlist_flat.v
 ```
 
-## 📂 Writing Flat Netlist
-# Export synthesized netlist (flattened)
-write_verilog -noattr multiple_modules_flat.v
+## 3. Open with editor
+```bash
+!gvim good_mux_netlist_flat.v
+```
+<p align="center"> <img src="flat_file.png" alt="Flattened Netlist File" width="650"/> </p>
 
-# Open with gvim
-!gvim multiple_modules_flat.v
+### 📊 Visualizing the Flat Netlist
+
+To see the flat representation after synthesis:
+
+```bash
+yosys> flatten
+```
+```bash
+yosys> show
+```
+<p align="center"> <img src="flat_syn.png" alt="Flattened Schematic" width="750"/> </p>
+
+## 🔍 Hierarchical vs Flattened Synthesis
+
+| **Aspect**            | **Hierarchical 🧩**             | **Flattened 🏗️**                |
+|------------------------|---------------------------------|---------------------------------|
+| **Hierarchy**          | Preserved                      | Collapsed                       |
+| **Optimization Scope** | Module-level                   | Global                          |
+| **Runtime**            | ⚡ Faster (scales for SoCs)     | 🐢 Slower                       |
+| **Debugging**          | 🛠️ Easier                      | 🔍 Harder                       |
+| **Netlist Style**      | Modular blocks                 | Single block                    |
+| **Best For**           | ✅ Debug, modular development   | 🚀 Max performance optimization |
+
+---
+
+## 🌟 Key Takeaway
+
+- Use **hierarchical synthesis** when you want clarity and modularity.  
+- Use **flattened synthesis** when you need **maximum optimization** at the cost of runtime and debug simplicity.  
+
 
