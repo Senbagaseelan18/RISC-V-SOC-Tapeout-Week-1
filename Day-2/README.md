@@ -18,7 +18,7 @@
 | [Optimization in Synthesis](#optimization-in-synthesis) | • Optimization Concept<br>• Example: Mux Optimization<br>• Yosys Synthesis Workflow |
 </div>
 ---
-</div>
+
 <a id="timing-libraries"></a>
 ## ⏱️ 1.Timing Libraries (.lib)
 
