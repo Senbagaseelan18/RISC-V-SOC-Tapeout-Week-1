@@ -257,7 +257,7 @@ write_verilog -noattr good_mux_netlist_flat.v
 ```bash
 !gvim good_mux_netlist_flat.v
 ```
-<p align="center"> <img src="flat_file.png" alt="Flattened Netlist File" width="650"/> </p>
+<p align="center"> <img src="Images/flat_file.png" alt="Flattened Netlist File" width="650"/> </p>
 
 ### 📊 Visualizing the Flat Netlist
 
@@ -269,7 +269,7 @@ yosys> flatten
 ```bash
 yosys> show
 ```
-<p align="center"> <img src="flat_syn.png" alt="Flattened Schematic" width="750"/> </p>
+<p align="center"> <img src="Images/flat_syn.png" alt="Flattened Schematic" width="750"/> </p>
 
 ## 🔍 Hierarchical vs Flattened Synthesis
 
@@ -325,14 +325,14 @@ read_verilog multiple_modules.v
 
 # 4. Run synthesis only for selected submodule
 ```bash
-synth -top submodule1
+synth -top sub_module1
 ```
 
 # 5. Visualize synthesized submodule
 ```bash
 show
 ```
-<p align="center"> <img src="submodule_netlist.png" alt="Submodule Netlist Visualization" width="650"/> </p>
+<p align="center"> <img src="Images/submodule_netlist.png" alt="Submodule Netlist Visualization" width="650"/> </p>
 
 ### 🌟 Why Use Submodule Synthesis?
 
