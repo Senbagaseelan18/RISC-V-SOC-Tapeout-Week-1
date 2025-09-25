@@ -588,61 +588,73 @@ write_verilog -noattr mult_2_opt.v
 - Synthesis tools can **intelligently simplify** designs while maintaining **functional correctness**.  
 - Always **review synthesized netlists and reports** to understand the optimizations applied.  
 
-<div style="border: 2px solid #4CAF50; border-radius: 15px; padding: 20px; margin: 20px 0; background: #f9f9f9; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
+<!-- ======================= DAY 2 SUMMARY ======================= -->
+<div style="border: 2px solid #4CAF50; border-radius: 15px; padding: 20px; margin: 30px 0; background: linear-gradient(90deg, #f0fff0, #ffffff); box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
-  <h2 style="text-align:center; color:#4CAF50; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <!-- Title -->
+  <h2 style="text-align:center; color:#4CAF50; font-size:28px; margin-bottom:10px;">
     🌟 Week 1 — Day 2 Summary
   </h2>
-  
-  <p style="text-align:center; font-size:16px; color:#333;">A quick glance at the key takeaways from Timing Libraries, Synthesis, Flip-Flops, and Optimization.</p>
-  
-  <div style="display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:20px;">
-    
+  <p style="text-align:center; font-size:16px; color:#555; margin-bottom:25px;">
+    Key takeaways from Timing Libraries, Synthesis, Flip-Flops, and Optimization
+  </p>
+
+  <!-- Summary boxes -->
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+
     <!-- Timing Libraries -->
-    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#e8f5e9; border-left:5px solid #4CAF50; border-radius:10px;">
-      <h3 style="color:#2e7d32;">⏱️ Timing Libraries</h3>
-      <ul style="color:#333; line-height:1.6;">
-        <li>Defines **function, delay, power, area** of cells</li>
+    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#e8f5e9; border-left:6px solid #4CAF50; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
+      <h3 style="color:#2e7d32; margin-bottom:10px;">⏱️ Timing Libraries</h3>
+      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
+        <li>Defines **function, delay, power, area** of standard cells</li>
         <li>Supports **PVT corners**: SS, TT, FF</li>
-        <li>SKY130 library example: AND2 gates with different strengths</li>
-        <li>Guides synthesis for **speed, power, area optimization**</li>
+        <li>Example: **SKY130 AND2 gate flavors** for speed/power/area</li>
+        <li>Guides synthesis for **optimal design**</li>
       </ul>
     </div>
 
     <!-- Hierarchical vs Flat Synthesis -->
-    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#e3f2fd; border-left:5px solid #2196F3; border-radius:10px;">
-      <h3 style="color:#1565c0;">🏗️ Hierarchical vs Flat</h3>
-      <ul style="color:#333; line-height:1.6;">
-        <li>Hierarchical: **modules preserved**, easier debugging</li>
-        <li>Flat: **single netlist**, enables global optimization</li>
-        <li>Submodule synthesis: isolate for **testing and optimization**</li>
-        <li>Yosys commands for both **hierarchical and flat** netlists</li>
+    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#e3f2fd; border-left:6px solid #2196F3; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
+      <h3 style="color:#1565c0; margin-bottom:10px;">🏗️ Hierarchical vs Flat</h3>
+      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
+        <li>Hierarchical: **modules preserved**, easy debugging</li>
+        <li>Flat: **single netlist**, global optimization</li>
+        <li>Submodule synthesis isolates **testing & optimization**</li>
+        <li>Yosys workflow supports both **hierarchical & flat**</li>
       </ul>
     </div>
 
-    <!-- Flip-Flop Coding -->
-    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#fff3e0; border-left:5px solid #FF9800; border-radius:10px;">
-      <h3 style="color:#ef6c00;">🔁 Flip-Flops</h3>
-      <ul style="color:#333; line-height:1.6;">
+    <!-- Flip-Flops -->
+    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#fff3e0; border-left:6px solid #FF9800; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
+      <h3 style="color:#ef6c00; margin-bottom:10px;">🔁 Flip-Flops</h3>
+      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
         <li>Sequential logic **storage & timing checkpoints**</li>
-        <li>Control pins: **Reset & Set** (synchronous/asynchronous)</li>
-        <li>DFF implementations in Verilog with **sync & async reset**</li>
-        <li>Simulation workflow: **Icarus Verilog + GTKWave**</li>
+        <li>Control pins: **Reset & Set** (sync/async)</li>
+        <li>Verilog DFFs: **sync & async reset examples**</li>
+        <li>Simulation: **Icarus Verilog + GTKWave**</li>
       </ul>
     </div>
 
     <!-- Optimization in Synthesis -->
-    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#f3e5f5; border-left:5px solid #9C27B0; border-radius:10px;">
-      <h3 style="color:#6a1b9a;">⚙️ Optimization</h3>
-      <ul style="color:#333; line-height:1.6;">
-        <li>Reduces **area, delay, power**</li>
+    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#f3e5f5; border-left:6px solid #9C27B0; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
+      <h3 style="color:#6a1b9a; margin-bottom:10px;">⚙️ Optimization</h3>
+      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
+        <li>Reduces **area, delay, and power**</li>
         <li>Techniques: **logic simplification, resource sharing, timing optimization**</li>
-        <li>Yosys synthesis workflow to **visualize and export optimized netlists**</li>
-        <li>Key for **FPGA & ASIC efficient design**</li>
+        <li>Yosys workflow: **visualize & export optimized netlists**</li>
+        <li>Crucial for **FPGA & ASIC design efficiency**</li>
       </ul>
     </div>
 
   </div>
+
+  <!-- Bottom Tip -->
+  <div style="text-align:center; margin-top:30px; font-size:15px; color:#555;">
+    <strong>💡 Tip:</strong> Always simulate across **PVT corners**, verify **DFF behavior**, and choose the **best synthesis strategy** for your design goals.
+  </div>
+
+</div>
+
 
   <div style="text-align:center; margin-top:30px; font-size:16px; color:#555;">
     <strong>💡 Tip:</strong> Always simulate across **PVT corners**, verify DFF behavior, and choose synthesis strategy based on your design goals.
