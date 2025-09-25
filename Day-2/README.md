@@ -490,3 +490,35 @@ iverilog -o dff_asyncres_tb dff_asyncres.v tb_dff_asyncres.v
 gtkwave tb_dff_asyncres.vcd
 ```
 <p align="center"> <img src="Images/async_res.png" alt="GTKWave Simulation" width="1000"/> </p>
+
+### ⚡ Asynchronous Set Simulation
+
+- When `asyn_set = 1`, the output `Q` is immediately **set to 1**.  
+- This behavior is **independent of the clock**, meaning `Q` changes **instantly** without waiting for `clk`.  
+- Useful for **instant initialization**, **forcing signals high**, or **control purposes** in sequential circuits.  
+
+<p align="center">
+  <img src="asyn_set.png" alt="Asynchronous Set Simulation" width="100%"/>
+</p>
+
+---
+
+### ⏱️ Synchronous Reset Simulation
+
+- When `syn_res = 1`, the output `Q` is cleared to 0 **only on the active clock edge** (`clk = 1`).  
+- The flip-flop **waits for the clock**, ensuring predictable timing behavior.  
+- Ideal for **pipeline registers** or circuits where **timing consistency** is critical.  
+
+<p align="center">
+  <img src="Images/syn_res.png" alt="Synchronous Reset Simulation" width="100%"/>
+</p>
+
+---
+
+### 🌟 Key Takeaways
+
+- **Asynchronous Set:** Immediate response, **clock-independent**, fast and effective for setting signals quickly.  
+- **Synchronous Reset:** Clock-aligned, **predictable timing**, safer for complex sequential designs.  
+- Always **simulate both behaviors** to verify correct operation of your DFF modules.
+
+
