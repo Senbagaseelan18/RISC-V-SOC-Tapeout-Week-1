@@ -1,5 +1,12 @@
-<div align="center"> # 🌟 Week 1 — Day 2 ## ⏱️ Timing Libraries · 🏗️ Hierarchical vs Flat Synthesis · 🔁 Flop Coding Styles
+<div align="center">
+
+# 🌟 Week 1 — Day 2  
+
+**⏱️ Timing Libraries** &nbsp;&nbsp; | &nbsp;&nbsp; **🏗️ Hierarchical vs Flat Synthesis**  
+**🔁 Flip-Flop Coding Styles** &nbsp;&nbsp; | &nbsp;&nbsp; **⚙️ Optimization in Synthesis**
+
 </div>
+
 ## Table of Contents
 
 | **Section** | **Subtopics** |
