@@ -7,7 +7,7 @@
 + 🔁 Flip-Flop Coding Styles   ⚙️ Optimization in Synthesis
 </div> ```
 
-
+</div>
 ## Table of Contents
 
 | **Section** | **Subtopics** |
