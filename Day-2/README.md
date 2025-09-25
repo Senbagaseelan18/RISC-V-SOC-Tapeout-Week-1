@@ -6,33 +6,15 @@
 </div>
 
 ---
-
 ## 📖 Table of Contents
 
-1. [⏱️ Timing Libraries (.lib)](#⏱️-timing-libraries-lib)  
-   - 🔍 Library Structure  
-   - 🌡️ PVT Corners  
-   - 📂 Example: SKY130 Library  
-   - 🏗️ AND Gate Flavors  
-   - 📜 Liberty Snippet Comparison  
+| **Section** | **Subtopics** | **Icons** |
+|------------|----------------|-----------|
+| ⏱️ **Timing Libraries (.lib)** | - Library Structure <br> - PVT Corners <br> - SKY130 Example <br> - AND Gate Flavors <br> - Liberty Snippet Comparison | 🔍 🌡️ 📂 🏗️ 📜 |
+| 🏗️ **Hierarchical vs Flat Synthesis** | - Key Concepts <br> - Hierarchical Example <br> - Flattened Synthesis <br> - Submodule-Level Synthesis | 📌 🔹 🔹 🔹 |
+| 🔁 **Flip-Flop Coding & Optimizations** | - Why Flip-Flops? <br> - Control Pins & Types <br> - Verilog Implementations <br> - Async vs Sync Behavior <br> - Simulation & Waveforms | 💡 🎛️ 💻 ⏱️ 🖥️ |
+| ⚙️ **Optimization in Synthesis** | - Optimization Concepts <br> - Mux Optimization Example <br> - Yosys Synthesis Workflow | 🔹 🔹 🛠️ |
 
-2. [🏗️ Hierarchical vs Flat Synthesis](#🏗️-hierarchical-vs-flat-synthesis)  
-   - 📌 Key Concepts  
-   - 🔹 Hierarchical Example  
-   - 🔹 Flattened Synthesis  
-   - 🔹 Submodule-Level Synthesis  
-
-3. [🔁 Flip-Flop Coding Styles & Optimizations](#🔁-flip-flop-coding-styles--optimizations)  
-   - 💡 Why Flip-Flops?  
-   - 🎛️ Control Pins & Types  
-   - 💻 Verilog Implementations  
-   - ⏱️ Asynchronous vs Synchronous Behavior  
-   - 🖥️ Simulation & Waveforms  
-
-4. [⚙️ Optimization in Synthesis](#⚙️-optimization-in-synthesis)  
-   - 🔹 Optimization Concepts  
-   - 🔹 Mux Optimization Example  
-   - 🛠️ Yosys Synthesis Workflow  
 
 ---
 
