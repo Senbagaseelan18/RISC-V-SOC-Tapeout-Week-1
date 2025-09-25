@@ -18,8 +18,8 @@
 
 
 ---
-
-## ⏱️ Timing Libraries (.lib)
+<a id="timing-libraries"></a>
+## ⏱️ 1.Timing Libraries (.lib)
 
 Timing libraries (`.lib`) are the **backbone of synthesis**, acting as a *dictionary* for standard cells. They define how each logic gate behaves in terms of **function**, **delay**, **power**, and **area**.
 
@@ -111,7 +111,7 @@ cell ("sky130_fd_sc_hd__and2_4") {
   pin(X)  { direction : output; function : "(A1 & A2)"; }
 }
 ```
-
+<a id="hierarchical-vs-flat-synthesis"></a>
 ## 🏗️ 2. Hierarchical vs Flat Synthesis
 
 In digital design, **synthesis strategy** plays a crucial role in area, timing, and readability of the final gate-level netlist.  
@@ -336,7 +336,7 @@ show
 - ✅ Allows **targeted optimization** of complex blocks.  
 - ✅ Supports **incremental verification** at block level.  
 
-
+<a id="flip-flop-coding-optimizations"></a>
 ## 🔁 3. Flip-Flop Coding Styles & Optimizations
 
 ### 🧩 A. Why Flip-Flops Matter
@@ -516,7 +516,8 @@ gtkwave tb_dff_asyncres.vcd
 - **Synchronous Reset:** Clock-aligned, **predictable timing**, safer for complex sequential designs.  
 - Always **simulate both behaviors** to verify correct operation of your DFF modules.
 
-## ⚙️ 5. Optimization in Synthesis
+<a id="optimization-in-synthesis"></a>
+## ⚙️ 4. Optimization in Synthesis
 
 During synthesis, digital designs are **automatically optimized** by the synthesis tool to improve **area, speed, and power efficiency** while ensuring the circuit functions correctly.  
 Optimizations can include **removing redundant logic, simplifying expressions, and reusing resources**.
