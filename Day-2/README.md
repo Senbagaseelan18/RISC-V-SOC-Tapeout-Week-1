@@ -16,7 +16,7 @@
 | [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis) | • Hierarchical Example Modular<br>• Flattened Synthesis<br>• Submodule Level Synthesis |
 | [Flip-Flop Coding & Optimizations](#flip-flop-coding-optimizations) | • Why Flip-Flops Matter<br>• Control Pins in Flops<br>• Verilog Implementation<br>• Asynchronous vs Synchronous Reset<br>• Simulation & Synthesis Workflow |
 | [Optimization in Synthesis](#optimization-in-synthesis) | • Optimization Concept<br>• Example: Mux Optimization<br>• Yosys Synthesis Workflow |
-
+</div>
 ---
 <a id="timing-libraries"></a>
 ## ⏱️ 1.Timing Libraries (.lib)
