@@ -167,27 +167,27 @@ endmodule
 ---
 ### 🔹 Yosys Flow for Hierarchical Netlist
 
-## ▶️ Start Yosys
+▶️ Start Yosys
 ```bash
 yosys
 ```
-## 📂 Load Liberty
+📂 Load Liberty
 ```bash
 read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
-## 📂 Load Verilog Files
+📂 Load Verilog Files
 ```bash
 read_verilog multiple_modules.v
 ```
-## ⚙️ Run Synthesis
+⚙️ Run Synthesis
 ```bash
 read_verilog multiple_modules.v
 ```
-## 🔗 Map Cells using Liberty
+🔗 Map Cells using Liberty
 ```bash
 abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
-## 👁️ Show Hierarchy Preserved
+👁️ Show Hierarchy Preserved
 ```bash
 show top_module
 ```
@@ -203,7 +203,7 @@ show top_module
 ```bash
 write_verilog -noattr multiple_modules-hier.v
 ```
-## 👓 Open Netlist in GVim
+👓 Open Netlist in GVim
 ```bash
 !gvim multiple_modules-hier.v
 ```
@@ -244,16 +244,16 @@ This enables **global optimizations** across the design but makes debugging more
 
 ### ✍️ Writing a Flat Netlist
 
-## 1. Flatten the hierarchy
+1. Flatten the hierarchy
 ```bash
 flatten
 ```
-## 2. Export netlist
+2. Export netlist
 ```bash
 write_verilog -noattr good_mux_netlist_flat.v
 ```
 
-## 3. Open with editor
+3. Open with editor
 ```bash
 !gvim good_mux_netlist_flat.v
 ```
@@ -308,27 +308,27 @@ This method is highly effective for **isolated testing, optimization, and debugg
 
 ### 🖥️ Yosys Workflow
 
-## 1. Launch Yosys
+1. Launch Yosys
 ```bash
 yosys
 ```
 
-# 2. Load standard cell library
+2. Load standard cell library
 ```bash
 read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-# 3. Load Verilog source files
+3. Load Verilog source files
 ```bash
 read_verilog multiple_modules.v
 ```
 
-# 4. Run synthesis only for selected submodule
+4. Run synthesis only for selected submodule
 ```bash
 synth -top sub_module1
 ```
 
-# 5. Visualize synthesized submodule
+5. Visualize synthesized submodule
 ```bash
 show
 ```
