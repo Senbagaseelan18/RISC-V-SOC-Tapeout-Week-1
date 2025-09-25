@@ -463,83 +463,30 @@ Understanding the difference is critical for reliable sequential circuit design.
 
 Combine **asynchronous reset** for **startup initialization** and **synchronous set/reset** for **stable runtime operation** in complex sequential circuits.  
 
-## 🔁 Flip-Flop Coding Styles & Reset/Set Variants
 
-Flip-flops (DFFs) are the **building blocks of sequential circuits**, used to store and synchronize binary data.  
-Below are **efficient coding styles** for different reset and set behaviors.
+## 🖥️ Simulation & Synthesis Workflow
+
+This section demonstrates **how to simulate a DFF module** using **Icarus Verilog** and visualize waveforms with **GTKWave**.
 
 ---
 
-### ⚡ 1. Asynchronous Reset D Flip-Flop
+1️⃣ Compile the Design
 
-```verilog
-module dff_async_reset (
-    input  wire clk,
-    input  wire async_reset,
-    input  wire d,
-    output reg  q
-);
-always @(posedge clk or posedge async_reset) begin
-    if (async_reset)
-        q <= 1'b0;  // Reset immediately, independent of clock
-    else
-        q <= d;     // Normal D → Q transfer on rising edge
-end
-endmodule
+```bash
+# Compile DFF module and testbench
+iverilog -o dff_asyncres_tb dff_asyncres.v tb_dff_asyncres.v
 ```
 
-**Key Points:**
+2️⃣ Run the Simulation
+```bash
+# Execute the compiled simulation
+./dff_asyncres_tb
 
-- 🚀 **Immediate reset** regardless of the clock.
-- ⏱️ **Edge-triggered**: Captures `d` on rising clock edge when reset is low.
-- 🔧 Useful for **startup initialization** or **critical reset paths**.
-
-### ⚡ 2. Asynchronous Set D Flip-Flop
-
-```verilog
-module dff_async_set (
-    input  wire clk,
-    input  wire async_set,
-    input  wire d,
-    output reg  q
-);
-always @(posedge clk or posedge async_set) begin
-    if (async_set)
-        q <= 1'b1;  // Set immediately, independent of clock
-    else
-        q <= d;     // Normal D → Q transfer
-end
-endmodule
-```
-**Highlights:**
-
-✨ **Immediate set**: Overrides clock, Q goes high instantly.
-
-✅ Ideal for **instant initialization** or **control signals**.
-
-### ⚡ 3. Synchronous Reset D Flip-Flop
-
-```verilog
-module dff_sync_reset (
-    input  wire clk,
-    input  wire sync_reset,
-    input  wire d,
-    output reg  q
-);
-always @(posedge clk) begin
-    if (sync_reset)
-        q <= 1'b0;  // Reset occurs on rising clock edge
-    else
-        q <= d;     // Normal D → Q transfer
-end
-endmodule
 ```
 
-**Key Points:**
-
-⏱️ **Reset synchronized** with clock.
-
-✅ Ensures **predictable timing** and avoids asynchronous glitches.
-
-Ideal for **pipeline registers** and **timing-critical designs.**
-
+3️⃣ View the Waveform
+```bash
+# Launch GTKWave to inspect the signal behavior
+gtkwave tb_dff_asyncres.vcd
+```
+<p align="center"> <img src=Images/async_res" alt="GTKWave Simulation" width="1000"/> </p>
