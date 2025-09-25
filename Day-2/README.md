@@ -7,13 +7,14 @@
 
 ## 📖 Table of Contents
 
+## Table of Contents
+
 | **Section** | **Subtopics** |
 |------------|----------------|
-| ⏱️ **Timing Libraries (.lib)** | [Library Structure](#library-structure) <br> [PVT Corners](#pvt-corners) <br> [Example Library: SKY130](#example-library-sky130) <br> [AND Gate Flavors](#and-gate-flavors) <br> [Liberty Snippet Comparison](#liberty-snippet-comparison) |
-| 🏗️ **Hierarchical vs Flat Synthesis** | [Key Concepts](#hierarchical-vs-flat-synthesis) <br> [Hierarchical Example Modular](#hierarchical-example-modular) <br> [Flattened Synthesis](#flattened-synthesis) <br> [Submodule Level Synthesis](#d-submodule-level-synthesis) |
-| 🔁 **Flip-Flop Coding & Optimizations** | [Why Flip-Flops Matter](#a-why-flip-flops-matter) <br> [Control Pins in Flops](#b-control-pins-in-flops) <br> [Verilog Implementation](#c-verilog-implementation) <br> [Asynchronous vs Synchronous Reset](#d-asynchronous-vs-synchronous-reset) <br> [Simulation & Synthesis Workflow](#simulation--synthesis-workflow) |
-| ⚙️ **Optimization in Synthesis** | [Optimization Concept](#optimization-concept) <br> [Example: Mux Optimization](#example-mux-optimization) <br> [Yosys Synthesis Workflow](#yosys-synthesis-workflow) |
-
+| [Timing Libraries (.lib)](#timing-libraries-lib) | Library Structure, PVT Corners, Example Library: SKY130, AND Gate Flavors, Liberty Snippet Comparison |
+| [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis) | Hierarchical Example Modular, Flattened Synthesis, Submodule Level Synthesis |
+| [Flip-Flop Coding & Optimizations](#flip-flop-coding--optimizations) | Why Flip-Flops Matter, Control Pins in Flops, Verilog Implementation, Asynchronous vs Synchronous Reset, Simulation & Synthesis Workflow |
+| [Optimization in Synthesis](#optimization-in-synthesis) | Optimization Concept, Example: Mux Optimization, Yosys Synthesis Workflow |
 
 ---
 
