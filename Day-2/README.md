@@ -587,7 +587,7 @@ write_verilog -noattr mult_2_opt.v
 ```
 
 <p align="center">
-  <img src="Images/mult2_code.png" alt="Synthesis Optimization Netlist" width="1000"/>
+  <img src="Images/mult_2_opt.png" alt="Synthesis Optimization Netlist" width="1000"/>
 </p>
 
 ---
