@@ -1,6 +1,13 @@
-  <div align="center">
+ <div align="center" style="margin-bottom:20px;">
+  <h1 style="font-size:32px; color:#4B0082; font-weight:bold; text-shadow: 2px 2px 4px #aaa;">
+    🌟 Week 1 — Day 2
+  </h1>
+  <hr style="width:200px; border:2px solid #FF69B4; margin-top:-10px;">
+  <p style="font-size:16px; color:#555;">
+    Dive into <b>timing libraries</b>, <b>synthesis strategies</b>, and <b>flip-flop coding optimizations</b> for RTL design.
+  </p>
+</div>
 
-# 🌟 Week 1 — Day 2  
 
 <div align="center">
   <table cellpadding="10">
