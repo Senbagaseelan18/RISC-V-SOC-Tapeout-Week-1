@@ -3,20 +3,19 @@
 # 🌟 Week 1 — Day 2  
 
 <div align="center">
-  <table>
+  <table cellpadding="10">
     <tr>
-      <td><img src="https://img.shields.io/badge/⏱️-Timing_Libraries-blueviolet" /></td>
-      <td><img src="https://img.shields.io/badge/🏗️-Hier_vs_Flat_ Synthesis-orange" /></td>
-    </tr>
-    <tr>
-      <td><img src="https://img.shields.io/badge/🔁-Flip-Flop_Coding_Styles-blue" /></td>
-      <td><img src="https://img.shields.io/badge/⚙️-Optimization_in_Synthesis-red" /></td>
+      <td><img src="https://img.shields.io/badge/⏱️-Timing_Libraries-blueviolet?style=for-the-badge&logo=clock" /></td>
+      <td><img src="https://img.shields.io/badge/🏗️-Hier_vs_Flat_ Synthesis-orange?style=for-the-badge&logo=architecture" /></td>
+      <td><img src="https://img.shields.io/badge/🔁-Flip-Flop_Coding_Styles-blue?style=for-the-badge&logo=code" /></td>
+      <td><img src="https://img.shields.io/badge/⚙️-Optimization_in_Synthesis-red?style=for-the-badge&logo=optimization" /></td>
     </tr>
   </table>
-  <p>🎯 This session dives into <b>timing libraries</b>, compares <b>hierarchical vs flat synthesis</b>, explores <b>flip-flop coding styles</b>, and demonstrates <b>optimization techniques in synthesis</b>. ⚡</p>
+  <p style="margin-top:15px; font-size:16px;">
+    🎯 <b>Focus Areas:</b> Explore <b>timing libraries</b>, understand <b>hierarchical vs flat synthesis</b>, experiment with <b>flip-flop coding styles</b>, and apply <b>optimization techniques</b> in synthesis for efficient RTL design. ⚡
+  </p>
 </div>
 
-</div>
 
  ## Table of Contents
 <div align="center">
