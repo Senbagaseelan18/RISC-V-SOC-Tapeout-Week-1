@@ -426,3 +426,40 @@ endmodule
 - Use **asynchronous reset** when immediate initialization is required.  
 - Use **synchronous reset** for **predictable timing** in pipelines and state machines.  
 - Flip-flops are not just storage — they are **critical for timing closure, glitch removal, and stable digital design**.  
+
+## 🔹 DFF Control Types
+
+Flip-Flops (DFFs) can be controlled via **Reset** or **Set** signals, which come in two main types: **Asynchronous** and **Synchronous**.  
+Understanding the difference is critical for reliable sequential circuit design.
+
+---
+
+### 🛠️ Control Type Comparison
+
+| **Control Type**   | **Behavior** |
+|--------------------|--------------|
+| **Asynchronous**   | 🔄 Acts **independently of the clock**. Output responds **immediately** when the control signal is active. Ideal for **instant initialization or emergency resets**. |
+| **Synchronous**    | ⏱️ Acts **in sync with the clock**. Output changes **only on the active clock edge** when the control signal is active. Ideal for **predictable timing in pipelines and registers**. |
+
+---
+
+### 🖼️ Visualization
+
+<p align="center">
+  <img src="Images/flop" alt="DFF Control Types" width="650"/>
+</p>
+
+---
+
+### 🌟 Key Points
+
+- Asynchronous control provides **immediate response**, but can cause **timing issues** if not carefully managed.  
+- Synchronous control ensures **timing predictability** and avoids race conditions in complex designs.  
+- Proper selection depends on **design requirements**, e.g., startup, pipeline stability, or critical reset paths.  
+
+---
+
+### 💡 Pro Tip
+
+Combine **asynchronous reset** for **startup initialization** and **synchronous set/reset** for **stable runtime operation** in complex sequential circuits.  
+
