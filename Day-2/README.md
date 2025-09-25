@@ -489,4 +489,4 @@ iverilog -o dff_asyncres_tb dff_asyncres.v tb_dff_asyncres.v
 # Launch GTKWave to inspect the signal behavior
 gtkwave tb_dff_asyncres.vcd
 ```
-<p align="center"> <img src=Images/async_res" alt="GTKWave Simulation" width="1000"/> </p>
+<p align="center"> <img src=Images/async_res.png" alt="GTKWave Simulation" width="1000"/> </p>
