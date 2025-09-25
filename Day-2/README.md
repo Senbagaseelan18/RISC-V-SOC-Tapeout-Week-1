@@ -517,4 +517,29 @@ endmodule
 
 ✅ Ideal for **instant initialization** or **control signals**.
 
+### ⚡ 3. Synchronous Reset D Flip-Flop
+
+```verilog
+module dff_sync_reset (
+    input  wire clk,
+    input  wire sync_reset,
+    input  wire d,
+    output reg  q
+);
+always @(posedge clk) begin
+    if (sync_reset)
+        q <= 1'b0;  // Reset occurs on rising clock edge
+    else
+        q <= d;     // Normal D → Q transfer
+end
+endmodule
+```
+
+**Key Points:**
+
+⏱️ **Reset synchronized** with clock.
+
+✅ Ensures **predictable timing** and avoids asynchronous glitches.
+
+Ideal for **pipeline registers** and **timing-critical designs.**
 
