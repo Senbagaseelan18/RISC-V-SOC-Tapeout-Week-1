@@ -8,12 +8,12 @@
 ---
 ## 📖 Table of Contents
 
-| **Section** | **Subtopics** | **Icons** |
-|------------|----------------|-----------|
-| ⏱️ **Timing Libraries (.lib)** | - Library Structure <br> - PVT Corners <br> - SKY130 Example <br> - AND Gate Flavors <br> - Liberty Snippet Comparison | 🔍 🌡️ 📂 🏗️ 📜 |
-| 🏗️ **Hierarchical vs Flat Synthesis** | - Key Concepts <br> - Hierarchical Example <br> - Flattened Synthesis <br> - Submodule-Level Synthesis | 📌 🔹 🔹 🔹 |
-| 🔁 **Flip-Flop Coding & Optimizations** | - Why Flip-Flops? <br> - Control Pins & Types <br> - Verilog Implementations <br> - Async vs Sync Behavior <br> - Simulation & Waveforms | 💡 🎛️ 💻 ⏱️ 🖥️ |
-| ⚙️ **Optimization in Synthesis** | - Optimization Concepts <br> - Mux Optimization Example <br> - Yosys Synthesis Workflow | 🔹 🔹 🛠️ |
+| **Section** | **Subtopics** |
+|------------|----------------|
+| ⏱️ **Timing Libraries (.lib)** | [Library Structure](#library-structure) <br> [PVT Corners](#pvt-corners) <br> [SKY130 Example](#example-library-sky130) <br> [AND Gate Flavors](#and-gate-flavors) <br> [Liberty Snippet Comparison](#liberty-snippet-comparison) |
+| 🏗️ **Hierarchical vs Flat Synthesis** | [Key Concepts](#hierarchical-vs-flat-synthesis) <br> [Hierarchical Example](#hierarchical-example-modular) <br> [Flattened Synthesis](#flattened-synthesis) <br> [Submodule-Level Synthesis](#d-submodule-level-synthesis) |
+| 🔁 **Flip-Flop Coding & Optimizations** | [Why Flip-Flops?](#a-why-flip-flops-matter) <br> [Control Pins & Types](#b-control-pins-in-flops) <br> [Verilog Implementations](#c-verilog-implementation) <br> [Async vs Sync Behavior](#d-asynchronous-vs-synchronous-reset) <br> [Simulation & Waveforms](#simulation--synthesis-workflow) |
+| ⚙️ **Optimization in Synthesis** | [Optimization Concept](#optimization-concept) <br> [Mux Optimization Example](#example-mux-optimization) <br> [Yosys Synthesis Workflow](#yosys-synthesis-workflow) |
 
 
 ---
