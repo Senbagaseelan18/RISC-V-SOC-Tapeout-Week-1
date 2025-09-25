@@ -1,4 +1,4 @@
-<div align="center">
+  <div align="center">
 
 # 🌟 Week 1 — Day 2  
 
@@ -7,6 +7,7 @@
 
 </div>
 
+<div align="center">
 ## Table of Contents
 
 | **Section** | **Subtopics** |
