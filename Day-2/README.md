@@ -588,76 +588,55 @@ write_verilog -noattr mult_2_opt.v
 - Synthesis tools can **intelligently simplify** designs while maintaining **functional correctness**.  
 - Always **review synthesized netlists and reports** to understand the optimizations applied.  
 
-<!-- ======================= DAY 2 SUMMARY ======================= -->
-<div style="border: 2px solid #4CAF50; border-radius: 15px; padding: 20px; margin: 30px 0; background: linear-gradient(90deg, #f0fff0, #ffffff); box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+# 🌟 Week 1 — Day 2 Summary
 
-  <!-- Title -->
-  <h2 style="text-align:center; color:#4CAF50; font-size:28px; margin-bottom:10px;">
-    🌟 Week 1 — Day 2 Summary
-  </h2>
-  <p style="text-align:center; font-size:16px; color:#555; margin-bottom:25px;">
-    Key takeaways from Timing Libraries, Synthesis, Flip-Flops, and Optimization
-  </p>
+Key takeaways from **Timing Libraries, Synthesis, Flip-Flops, and Optimization**
 
-  <!-- Summary boxes -->
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+---
 
-    <!-- Timing Libraries -->
-    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#e8f5e9; border-left:6px solid #4CAF50; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
-      <h3 style="color:#2e7d32; margin-bottom:10px;">⏱️ Timing Libraries</h3>
-      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
-        <li>Defines **function, delay, power, area** of standard cells</li>
-        <li>Supports **PVT corners**: SS, TT, FF</li>
-        <li>Example: **SKY130 AND2 gate flavors** for speed/power/area</li>
-        <li>Guides synthesis for **optimal design**</li>
-      </ul>
-    </div>
+## ⏱️ Timing Libraries
+- Defines **function, delay, power, area** of standard cells  
+- Supports **PVT corners**: SS, TT, FF  
+- Example: **SKY130 AND2 gate flavors** for speed/power/area  
+- Guides synthesis for **optimal design**
 
-    <!-- Hierarchical vs Flat Synthesis -->
-    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#e3f2fd; border-left:6px solid #2196F3; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
-      <h3 style="color:#1565c0; margin-bottom:10px;">🏗️ Hierarchical vs Flat</h3>
-      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
-        <li>Hierarchical: **modules preserved**, easy debugging</li>
-        <li>Flat: **single netlist**, global optimization</li>
-        <li>Submodule synthesis isolates **testing & optimization**</li>
-        <li>Yosys workflow supports both **hierarchical & flat**</li>
-      </ul>
-    </div>
+---
 
-    <!-- Flip-Flops -->
-    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#fff3e0; border-left:6px solid #FF9800; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
-      <h3 style="color:#ef6c00; margin-bottom:10px;">🔁 Flip-Flops</h3>
-      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
-        <li>Sequential logic **storage & timing checkpoints**</li>
-        <li>Control pins: **Reset & Set** (sync/async)</li>
-        <li>Verilog DFFs: **sync & async reset examples**</li>
-        <li>Simulation: **Icarus Verilog + GTKWave**</li>
-      </ul>
-    </div>
+## 🏗️ Hierarchical vs Flat Synthesis
+- **Hierarchical:** modules preserved, easy debugging  
+- **Flat:** single netlist, global optimization  
+- **Submodule synthesis:** isolates testing & optimization  
+- Yosys workflow supports both hierarchical & flat approaches  
 
-    <!-- Optimization in Synthesis -->
-    <div style="flex:1 1 300px; min-width:280px; padding:15px; background:#f3e5f5; border-left:6px solid #9C27B0; border-radius:10px; box-shadow: 1px 2px 8px rgba(0,0,0,0.08);">
-      <h3 style="color:#6a1b9a; margin-bottom:10px;">⚙️ Optimization</h3>
-      <ul style="margin:0; padding-left:18px; color:#333; line-height:1.6; font-size:14px;">
-        <li>Reduces **area, delay, and power**</li>
-        <li>Techniques: **logic simplification, resource sharing, timing optimization**</li>
-        <li>Yosys workflow: **visualize & export optimized netlists**</li>
-        <li>Crucial for **FPGA & ASIC design efficiency**</li>
-      </ul>
-    </div>
+---
 
-  </div>
+## 🔁 Flip-Flops
+- Sequential logic **storage & timing checkpoints**  
+- Control pins: **Reset & Set** (sync/async)  
+- Verilog DFFs: **sync & async reset examples**  
+- Simulation: **Icarus Verilog + GTKWave**  
 
-  <!-- Bottom Tip -->
-  <div style="text-align:center; margin-top:30px; font-size:15px; color:#555;">
-    <strong>💡 Tip:</strong> Always simulate across **PVT corners**, verify **DFF behavior**, and choose the **best synthesis strategy** for your design goals.
-  </div>
+---
 
-</div>
+## ⚙️ Optimization in Synthesis
+- Reduces **area, delay, and power**  
+- Techniques: **logic simplification, resource sharing, timing optimization**  
+- Yosys workflow: **visualize & export optimized netlists**  
+- Crucial for **FPGA & ASIC design efficiency**  
 
+---
 
-  <div style="text-align:center; margin-top:30px; font-size:16px; color:#555;">
-    <strong>💡 Tip:</strong> Always simulate across **PVT corners**, verify DFF behavior, and choose synthesis strategy based on your design goals.
-  </div>
+## 💡 Pro Tip
+> Always simulate across **PVT corners**, verify **DFF behavior**, and choose the **best synthesis strategy** for your design goals.
 
-</div>
+---
+
+## 📊 Quick Summary Table
+
+| Section | Key Points |
+|---------|------------|
+| ⏱️ Timing Libraries | Function, Delay, Power, Area, PVT Corners, SKY130 Examples |
+| 🏗️ Synthesis | Hierarchical vs Flat, Submodule-Level, Yosys Flow |
+| 🔁 Flip-Flops | Storage, Control Pins, Sync/Async Reset, Simulation |
+| ⚙️ Optimization | Area, Delay, Power, Logic Simplification, Resource Sharing |
+
