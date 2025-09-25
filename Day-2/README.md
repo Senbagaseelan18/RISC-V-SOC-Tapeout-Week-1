@@ -446,7 +446,7 @@ Understanding the difference is critical for reliable sequential circuit design.
 ### 🖼️ Visualization
 
 <p align="center">
-  <img src="Images/flop" alt="DFF Control Types" width="650"/>
+  <img src="Images/flop.png" alt="DFF Control Types" width="650"/>
 </p>
 
 ---
