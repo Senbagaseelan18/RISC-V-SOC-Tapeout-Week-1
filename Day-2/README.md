@@ -289,4 +289,58 @@ yosys> show
 - Use **hierarchical synthesis** when you want clarity and modularity.  
 - Use **flattened synthesis** when you need **maximum optimization** at the cost of runtime and debug simplicity.  
 
+### 🧩 D. Submodule-Level Synthesis
+
+In **submodule-level synthesis**, a single submodule of the design is synthesized independently, while the rest of the hierarchy remains untouched.  
+This method is highly effective for **isolated testing, optimization, and debugging** before integrating into the top-level design.
+
+---
+
+### 🔹 Key Highlights
+- 🎯 Focuses on **one submodule** at a time.  
+- 🧩 Preserves hierarchy of other modules.  
+- 📦 Ideal when **multiple instances** of the same module exist.  
+- ⚡ Enables a **divide-and-conquer** approach for large designs.  
+- ✅ Each submodule can be **optimized, verified, and reused** efficiently.  
+- 🚫 Netlist generation at submodule stage is optional (not typically needed for final hardware).  
+
+---
+
+### 🖥️ Yosys Workflow
+
+## 1. Launch Yosys
+```bash
+yosys
+```
+
+# 2. Load standard cell library
+```bash
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+# 3. Load Verilog source files
+```bash
+read_verilog multiple_modules.v
+```
+
+# 4. Run synthesis only for selected submodule
+```bash
+synth -top submodule1
+```
+
+# 5. Visualize synthesized submodule
+```bash
+show
+```
+<p align="center"> <img src="submodule_netlist.png" alt="Submodule Netlist Visualization" width="650"/> </p>
+
+📊 Logic Breakdown
+<p align="center"> <img src="https://img.shields.io/badge/DFF-FlipFlops-red" alt="Flip-Flops"/> <img src="https://img.shields.io/badge/Sequential-Logic-yellow" alt="Sequential Logic"/> <img src="https://img.shields.io/badge/Combinational-Logic-blue" alt="Combinational Logic"/> </p>
+
+### 🌟 Why Use Submodule Synthesis?
+
+- ✅ Speeds up **debugging** by isolating issues.  
+- ✅ Saves time when working on **large SoCs**.  
+- ✅ Allows **targeted optimization** of complex blocks.  
+- ✅ Supports **incremental verification** at block level.  
 
