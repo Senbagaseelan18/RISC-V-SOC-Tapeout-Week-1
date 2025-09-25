@@ -341,3 +341,88 @@ show
 - ✅ Allows **targeted optimization** of complex blocks.  
 - ✅ Supports **incremental verification** at block level.  
 
+
+## 🔁 3. Flip-Flop Coding Styles & Optimizations
+
+### 🧩 A. Why Flip-Flops Matter
+Flip-Flops (DFFs) are the backbone of **sequential logic circuits**.  
+They serve as **data storage elements** and timing checkpoints in digital designs.
+
+- ⏱️ **Synchronize data** across different stages of the circuit.  
+- 🚫 **Prevent glitches** from propagating in combinational logic.  
+- 🛑 **Isolate timing paths** to ensure stable operation.  
+- 📦 Act as **building blocks** for registers, counters, and state machines.  
+
+<p align="center">
+  <img src="Glitch_filter.png" alt="Glitch Filtering with Flip-Flops" width="600"/>
+</p>
+
+---
+
+### 🎛️ B. Control Pins in Flops
+Control pins enhance the reliability of flip-flops:
+
+- 🔄 **Reset (Rst):** Forces output to a known state (0 or 1).  
+- ⚡ **Set (Set):** Forces output to the opposite known state.  
+- ⏱️ **Synchronous Control:** Triggered with the clock edge.  
+- ⏱️ **Asynchronous Control:** Independent of the clock.  
+
+➡️ Correct use of control pins ensures **predictable startup and recovery behavior**.
+
+---
+
+### 💻 C. Verilog Implementation
+
+#### Example 1: Positive-Edge Triggered DFF with **Asynchronous Reset**
+```verilog
+module dff_async_reset (
+    input  wire clk,        // Clock input
+    input  wire rst_n,      // Active-low asynchronous reset
+    input  wire d,          // Data input
+    output reg  q           // Data output
+);
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        q <= 1'b0;          // Reset output to 0
+    else
+        q <= d;             // Capture input on clock edge
+end
+
+endmodule
+```
+### Example 2: Positive-Edge Triggered DFF with Synchronous Reset
+```verilog
+module dff_sync_reset (
+    input  wire clk,        // Clock input
+    input  wire rst,        // Synchronous reset
+    input  wire d,          // Data input
+    output reg  q           // Data output
+);
+
+always @(posedge clk) begin
+    if (rst)
+        q <= 1'b0;          // Reset on clock edge
+    else
+        q <= d;             // Normal operation
+end
+
+endmodule
+```
+
+### ⚖️ D. Asynchronous vs Synchronous Reset
+
+| **Aspect**            | **Asynchronous Reset** ⏱️        | **Synchronous Reset** ⚡        |
+|------------------------|----------------------------------|---------------------------------|
+| **Trigger**            | Independent of clock             | Only with clock edge            |
+| **Response**           | Immediate                        | One cycle delay                 |
+| **Usage**              | Startup circuits, critical recovery | Controlled reset inside pipelines |
+| **Complexity**         | Higher (reset tree needed)       | Simpler implementation          |
+
+---
+
+### 🌟 Takeaway
+
+- Use **asynchronous reset** when immediate initialization is required.  
+- Use **synchronous reset** for **predictable timing** in pipelines and state machines.  
+- Flip-flops are not just storage — they are **critical for timing closure, glitch removal, and stable digital design**.  
