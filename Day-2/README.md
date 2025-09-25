@@ -7,9 +7,9 @@
 
 </div>
 
+ ## Table of Contents
 <div align="center">
-## Table of Contents
-
+  
 | **Section** | **Subtopics** |
 |------------|----------------|
 | [Timing Libraries .lib](#timing-libraries) | • Library Structure<br>• PVT Corners<br>• Example Library: SKY130<br>• AND Gate Flavors<br>• Liberty Snippet Comparison |
