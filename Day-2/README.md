@@ -235,7 +235,7 @@ write_verilog -noattr multiple_modules-hier.v
 ---
 
 <p align="center">
-  <img src="Day2/Images/cmos.png" width="600" alt="CMOS Visualization"/>
+  <img src="Images/cmos.png" width="1000" alt="CMOS Visualization"/>
   <br>
   <em>CMOS Transistor-Level Representation</em>
 </p>
