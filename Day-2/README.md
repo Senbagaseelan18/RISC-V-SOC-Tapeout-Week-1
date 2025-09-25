@@ -334,9 +334,6 @@ show
 ```
 <p align="center"> <img src="submodule_netlist.png" alt="Submodule Netlist Visualization" width="650"/> </p>
 
-📊 Logic Breakdown
-<p align="center"> <img src="https://img.shields.io/badge/DFF-FlipFlops-red" alt="Flip-Flops"/> <img src="https://img.shields.io/badge/Sequential-Logic-yellow" alt="Sequential Logic"/> <img src="https://img.shields.io/badge/Combinational-Logic-blue" alt="Combinational Logic"/> </p>
-
 ### 🌟 Why Use Submodule Synthesis?
 
 - ✅ Speeds up **debugging** by isolating issues.  
