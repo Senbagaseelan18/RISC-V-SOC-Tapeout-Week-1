@@ -157,7 +157,7 @@ endmodule
 </p>
 
 ---
-### B. Yosys Flow for Hierarchical Netlist
+### Yosys Flow for Hierarchical Netlist
 
 ▶️ Start Yosys
 ```bash
@@ -191,7 +191,7 @@ show top_module
 </p>
 
 
-## 📝C. Write Netlist with Hierarchy
+## 📝 Write Netlist with Hierarchy
 ```bash
 write_verilog -noattr multiple_modules-hier.v
 ```
@@ -206,7 +206,7 @@ write_verilog -noattr multiple_modules-hier.v
   <em>Hierarchical Netlist (GVim output)</em>
 </p>
 
-### ⚙️D. CMOS Visualization
+### ⚙️CMOS Visualization
 
 - **Stacked PMOS** → Not preferred, as PMOS has **poor carrier mobility**, making circuits slower.  
 - **Stacked NMOS** → Generally better since NMOS has **higher mobility**, but too many in series increases resistance.  
@@ -219,14 +219,14 @@ write_verilog -noattr multiple_modules-hier.v
   <em>CMOS Transistor-Level Representation</em>
 </p>
 
-### 🏗️ C. Flattened Synthesis
+### 🏗️B. Flattened Synthesis
 
 In **flattened synthesis**, all modules in a design are merged into a **single flat netlist**, removing the original hierarchy.  
 This enables **global optimizations** across the design but makes debugging more challenging.
 
 ---
 
-### 🔹 Key Points
+### Key Points
 - Command `yosys > flatten` collapses the hierarchy.  
 - Sub-modules are no longer preserved after flattening.  
 - The design is represented as **one unified block**.  
@@ -281,7 +281,7 @@ yosys> show
 - Use **hierarchical synthesis** when you want clarity and modularity.  
 - Use **flattened synthesis** when you need **maximum optimization** at the cost of runtime and debug simplicity.  
 
-### 🧩 D. Submodule-Level Synthesis
+### 🧩 C. Submodule-Level Synthesis
 
 In **submodule-level synthesis**, a single submodule of the design is synthesized independently, while the rest of the hierarchy remains untouched.  
 This method is highly effective for **isolated testing, optimization, and debugging** before integrating into the top-level design.
@@ -333,6 +333,7 @@ show
 - ✅ Allows **targeted optimization** of complex blocks.  
 - ✅ Supports **incremental verification** at block level.  
 
+---
 <a id="flip-flop-coding-optimizations"></a>
 ## 🔁 3. Flip-Flop Coding Styles & Optimizations
 
@@ -450,13 +451,7 @@ Understanding the difference is critical for reliable sequential circuit design.
 - Proper selection depends on **design requirements**, e.g., startup, pipeline stability, or critical reset paths.  
 
 ---
-
-### 💡 Pro Tip
-
-Combine **asynchronous reset** for **startup initialization** and **synchronous set/reset** for **stable runtime operation** in complex sequential circuits.  
-
-
-## 🖥️ Simulation & Synthesis Workflow
+## 🖥️ E. Simulation & Synthesis Workflow
 
 This section demonstrates **how to simulate a DFF module** using **Icarus Verilog** and visualize waveforms with **GTKWave**.
 
@@ -513,6 +508,8 @@ gtkwave tb_dff_asyncres.vcd
 - **Synchronous Reset:** Clock-aligned, **predictable timing**, safer for complex sequential designs.  
 - Always **simulate both behaviors** to verify correct operation of your DFF modules.
 
+---
+
 <a id="optimization-in-synthesis"></a>
 ## ⚙️ 4. Optimization in Synthesis
 
@@ -521,7 +518,7 @@ Optimizations can include **removing redundant logic, simplifying expressions, a
 
 ---
 
-### 🔹 Optimization Concept
+### A. Optimization Concept
 
 - **Goal:** Reduce **hardware complexity** and **power consumption** without altering functionality.  
 - **Scope:** Can be applied at the **gate level, module level, or entire design hierarchy**.  
@@ -532,14 +529,14 @@ Optimizations can include **removing redundant logic, simplifying expressions, a
 
 ---
 
-### 🔹 Example: Mux Optimization
+### B. Example: Mux Optimization
 
 - Original design: `Mux-2: A[2:0] → Mux[3:0] B`  
 - Observation: Some logic operations are **redundant or overlapping**.  
 - **Result:** Synthesizer automatically removes unnecessary gates and simplifies the circuit.  
 - Benefit: **Smaller area, lower delay, and reduced power consumption**.
 
-## 🛠️ Yosys Synthesis Workflow 
+## 🛠️C. Yosys Synthesis Workflow 
 
 Follow these steps to **synthesize and visualize** a Verilog design using **Yosys**.
 ---
@@ -591,3 +588,64 @@ write_verilog -noattr mult_2_opt.v
 - Synthesis tools can **intelligently simplify** designs while maintaining **functional correctness**.  
 - Always **review synthesized netlists and reports** to understand the optimizations applied.  
 
+<div style="border: 2px solid #4CAF50; border-radius: 15px; padding: 20px; margin: 20px 0; background: #f9f9f9; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
+
+  <h2 style="text-align:center; color:#4CAF50; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    🌟 Week 1 — Day 2 Summary
+  </h2>
+  
+  <p style="text-align:center; font-size:16px; color:#333;">A quick glance at the key takeaways from Timing Libraries, Synthesis, Flip-Flops, and Optimization.</p>
+  
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:20px;">
+    
+    <!-- Timing Libraries -->
+    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#e8f5e9; border-left:5px solid #4CAF50; border-radius:10px;">
+      <h3 style="color:#2e7d32;">⏱️ Timing Libraries</h3>
+      <ul style="color:#333; line-height:1.6;">
+        <li>Defines **function, delay, power, area** of cells</li>
+        <li>Supports **PVT corners**: SS, TT, FF</li>
+        <li>SKY130 library example: AND2 gates with different strengths</li>
+        <li>Guides synthesis for **speed, power, area optimization**</li>
+      </ul>
+    </div>
+
+    <!-- Hierarchical vs Flat Synthesis -->
+    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#e3f2fd; border-left:5px solid #2196F3; border-radius:10px;">
+      <h3 style="color:#1565c0;">🏗️ Hierarchical vs Flat</h3>
+      <ul style="color:#333; line-height:1.6;">
+        <li>Hierarchical: **modules preserved**, easier debugging</li>
+        <li>Flat: **single netlist**, enables global optimization</li>
+        <li>Submodule synthesis: isolate for **testing and optimization**</li>
+        <li>Yosys commands for both **hierarchical and flat** netlists</li>
+      </ul>
+    </div>
+
+    <!-- Flip-Flop Coding -->
+    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#fff3e0; border-left:5px solid #FF9800; border-radius:10px;">
+      <h3 style="color:#ef6c00;">🔁 Flip-Flops</h3>
+      <ul style="color:#333; line-height:1.6;">
+        <li>Sequential logic **storage & timing checkpoints**</li>
+        <li>Control pins: **Reset & Set** (synchronous/asynchronous)</li>
+        <li>DFF implementations in Verilog with **sync & async reset**</li>
+        <li>Simulation workflow: **Icarus Verilog + GTKWave**</li>
+      </ul>
+    </div>
+
+    <!-- Optimization in Synthesis -->
+    <div style="flex:1 1 300px; margin:10px; padding:15px; background:#f3e5f5; border-left:5px solid #9C27B0; border-radius:10px;">
+      <h3 style="color:#6a1b9a;">⚙️ Optimization</h3>
+      <ul style="color:#333; line-height:1.6;">
+        <li>Reduces **area, delay, power**</li>
+        <li>Techniques: **logic simplification, resource sharing, timing optimization**</li>
+        <li>Yosys synthesis workflow to **visualize and export optimized netlists**</li>
+        <li>Key for **FPGA & ASIC efficient design**</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:30px; font-size:16px; color:#555;">
+    <strong>💡 Tip:</strong> Always simulate across **PVT corners**, verify DFF behavior, and choose synthesis strategy based on your design goals.
+  </div>
+
+</div>
