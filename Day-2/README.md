@@ -521,4 +521,80 @@ gtkwave tb_dff_asyncres.vcd
 - **Synchronous Reset:** Clock-aligned, **predictable timing**, safer for complex sequential designs.  
 - Always **simulate both behaviors** to verify correct operation of your DFF modules.
 
+## ⚙️ 5. Optimization in Synthesis
+
+During synthesis, digital designs are **automatically optimized** by the synthesis tool to improve **area, speed, and power efficiency** while ensuring the circuit functions correctly.  
+Optimizations can include **removing redundant logic, simplifying expressions, and reusing resources**.
+
+---
+
+### 🔹 Optimization Concept
+
+- **Goal:** Reduce **hardware complexity** and **power consumption** without altering functionality.  
+- **Scope:** Can be applied at the **gate level, module level, or entire design hierarchy**.  
+- **Common Techniques:**  
+  - **Logic simplification:** Eliminates unnecessary gates.  
+  - **Resource sharing:** Combines identical operations to save area.  
+  - **Timing optimization:** Reorders logic to minimize delay.  
+
+---
+
+### 🔹 Example: Mux Optimization
+
+- Original design: `Mux-2: A[2:0] → Mux[3:0] B`  
+- Observation: Some logic operations are **redundant or overlapping**.  
+- **Result:** Synthesizer automatically removes unnecessary gates and simplifies the circuit.  
+- Benefit: **Smaller area, lower delay, and reduced power consumption**.
+
+## 🛠️ Yosys Synthesis Workflow 
+
+Follow these steps to **synthesize and visualize** a Verilog design using **Yosys**.
+---
+
+1️⃣ Start Yosys
+```bash
+yosys
+```
+2️⃣ Load Liberty Timing File
+```bash
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+3️⃣ Read Verilog Design Files
+```bash
+read_verilog mult_2.v
+```
+4️⃣ Synthesize the Design
+```bash
+synth -top mult_2
+```
+5️⃣ Visualize the Synthesized Design
+```bash
+show
+
+```
+<p align="center">
+  <img src="Images/mult2.png" alt="Synthesis Optimization Design" width="1000"/>
+</p>
+
+6️⃣ Generate Optimized Netlist
+```bash
+write_verilog -noattr mult_2_opt.v
+```
+
+7️⃣ Open Netlist in gVim (Optional)
+```bash
+!gvim mult_2_opt.v
+```
+
+<p align="center">
+  <img src="Images/mult2_code.png" alt="Synthesis Optimization Netlist" width="1000"/>
+</p>
+
+---
+
+### 🌟 Key Takeaways
+
+- Optimization is **crucial for efficient hardware design**, especially for **FPGAs and ASICs**.  
+- Synthesis tools can **intelligently simplify** designs while maintaining **functional correctness**.  
+- Always **review synthesized netlists and reports** to understand the optimizations applied.  
 
