@@ -24,7 +24,7 @@ Timing libraries (`.lib`) are the **backbone of synthesis**, acting as a *dictio
 
 ---
 
-### 🔍 Library Structure
+### 🔍 A. Library Structure
 Each **cell** in a `.lib` file includes:
 - **Logic Equation**: Defines the Boolean function (e.g., `A1 & A2` for AND gate).  
 - **Pin Directions**: Specifies inputs and outputs.  
@@ -34,7 +34,7 @@ Each **cell** in a `.lib` file includes:
 
 ---
 
-### 🌡️ PVT Corners
+### 🌡️B. PVT Corners
 Silicon performance varies with **Process, Voltage, Temperature (PVT)** conditions. Key corners include:
 
 | Corner | Voltage | Temp   | Process     | Behavior                |
@@ -47,7 +47,7 @@ Silicon performance varies with **Process, Voltage, Temperature (PVT)** conditio
 
 ---
 
-### 📂 Example Library: SKY130
+### 📂 C. Example Library: SKY130
 **Filename Breakdown**:  
 `sky130_fd_sc_hd__tt_025C_1v80.lib`
 
@@ -60,7 +60,7 @@ Silicon performance varies with **Process, Voltage, Temperature (PVT)** conditio
 
 ---
 
-### 🏗️ AND Gate Flavors
+### 🏗️ D. AND Gate Flavors
 The **2-input AND gate** comes in multiple *drive strengths* to balance **speed**, **power**, and **area**:
 
 | Cell Flavor | Area (µm²) | Speed       | Power Consumption | Delay      |
@@ -73,7 +73,7 @@ The **2-input AND gate** comes in multiple *drive strengths* to balance **speed*
 
 ---
 
-### 📜 Liberty Snippet Comparison
+### 📜 E. Liberty Snippet Comparison
 Below is a comparison of `.lib` snippets for different **AND2 gate flavors** in the **SKY130** library:
 
 | Parameter   | AND2_0 🐢         | AND2_2 ⚖️         | AND2_4 🚀         |
@@ -127,7 +127,7 @@ Two popular approaches are **Hierarchical** (modular) and **Flat** (flattened si
 
 ---
 
-### 🔹 Hierarchical Example (Modular)
+### A. Hierarchical Example (Modular)
 
 ```verilog
 // AND Gate
@@ -157,7 +157,7 @@ endmodule
 </p>
 
 ---
-### 🔹 Yosys Flow for Hierarchical Netlist
+### B. Yosys Flow for Hierarchical Netlist
 
 ▶️ Start Yosys
 ```bash
@@ -191,7 +191,7 @@ show top_module
 </p>
 
 
-## 📝 Write Netlist with Hierarchy
+## 📝C. Write Netlist with Hierarchy
 ```bash
 write_verilog -noattr multiple_modules-hier.v
 ```
@@ -206,7 +206,7 @@ write_verilog -noattr multiple_modules-hier.v
   <em>Hierarchical Netlist (GVim output)</em>
 </p>
 
-### ⚙️ CMOS Visualization
+### ⚙️D. CMOS Visualization
 
 - **Stacked PMOS** → Not preferred, as PMOS has **poor carrier mobility**, making circuits slower.  
 - **Stacked NMOS** → Generally better since NMOS has **higher mobility**, but too many in series increases resistance.  
