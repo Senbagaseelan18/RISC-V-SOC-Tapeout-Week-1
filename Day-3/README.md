@@ -49,28 +49,22 @@ If an input is fixed to **0 or 1**, unnecessary gates can be eliminated. This re
 
 ![Constant Propagation Example](images/constant_propagation.png)  
 
+
 Equation:  
 
-\[
-y = \overline{(a \cdot b) + c}
-\]  
-
----
-
+```bash
+y = ¯((a · b) + c)
+```
 ### 🔽 Reduction Steps  
 
-Case: \(a = 0\) (constant input).  
-
-\[
-\begin{aligned}
-y &= \overline{(a \cdot b) + c} \\
-  &= \overline{(0 \cdot b) + c} \\
-  &= \overline{0 + c} \\
-  &= \overline{c} \\
-  &= c'
-\end{aligned}
-\]  
-
+Case: a = 0 (constant input) 
+```bash 
+y = ¯((a · b) + c)
+  = ¯((0 · b) + c)
+  = ¯(0 + c)
+  = ¯c
+  = c'
+```
 So, the **AND + NOR implementation** can be reduced to a **single inverter**.  
 
 ---
