@@ -459,7 +459,11 @@ gtkwave tb_blocking_caveat.vcd
 ```
 
 ## 🖼️ GLS Output in GTKWave
-<p align="center"> <img src="Images/gbc.png?raw=true" alt="GLS Simulation Output in GTKWave" width="800"/> </p>
+<p align="center">
+  <img src="https://github.com/Senbagaseelan18/RISC-V-SOC-Tapeout-Week-1/raw/main/Day-4/Images/gbc.png" 
+       alt="ternary_operator_mux Verilog code" width="600"/>
+</p>
+
 
 ## Explanation of GLS Output:
 
