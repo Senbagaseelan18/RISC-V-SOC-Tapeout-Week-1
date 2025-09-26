@@ -420,6 +420,48 @@ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
+### ⚡ A. dff_const1 – Sequential Constant Propagation
+
+In this example, the **D flip-flop is forced to a constant value** after reset, so the output `q` always evaluates to a fixed logic.  
+This allows Yosys to optimize away unnecessary sequential logic.
+
+---
+
+#### Example Verilog Code
+
+```verilog
+module dff_const1(input clk, input reset, output reg q);
+  always @(posedge clk or posedge reset) begin
+    if (reset)
+      q <= 1'b0;
+    else
+      q <= 1'b1;
+  end
+endmodule
+```
+#### Code Visualization (GVim)
+
+<p align="center">
+  <img src="Images/cdc1.png" width="600"/>
+</p>
+
+---
+
+#### Simulation Waveform Visualization
+
+<p align="center">
+  <img src="Images/dc1.png" alt="Simulation waveform of dff_const1" width="1000"/>
+</p>
+
+---
+
+#### Design Visualization (Yosys Netlist)
+
+<p align="center">
+  <img src="Images/sdc1.png" width="1000"/>
+</p>
+
+
 ### ⚡ A. dff_const2 – Sequential Constant Propagation
 
 #### Code Visualization (GVim)
@@ -433,7 +475,7 @@ show
 #### Simulation Waveform Visualization
 
 <p align="center">
-  <img src="Images/dc2.png" alt="Simulation waveform of dff_const1" width="600"/>
+  <img src="Images/dc2.png" alt="Simulation waveform of dff_const1" width="1000"/>
 </p>
 
 ---
@@ -441,9 +483,9 @@ show
 #### Design Visualization (Yosys Netlist)
 
 <p align="center">
-  <img src="Images/sdc2.png" width="600"/>
+  <img src="Images/sdc2.png" width="1000"/>
 </p>
----
+
 
 ### ⚡ A. dff_const3 – Sequential Constant Propagation
 
@@ -459,7 +501,7 @@ show
 #### Simulation Waveform Visualization
 
 <p align="center">
-  <img src="Images/dc3.png" alt="Simulation waveform of dff_const1" width="600"/>
+  <img src="Images/dc3.png" alt="Simulation waveform of dff_const1" width="1000"/>
 </p>
 
 ---
@@ -467,9 +509,9 @@ show
 #### Design Visualization (Yosys Netlist)
 
 <p align="center">
-  <img src="Images/sdc3.png" width="600"/>
+  <img src="Images/sdc3.png" width="1000"/>
 </p>
----
+
 
 ### ⚡ A. dff_const4 – Sequential Constant Propagation
 
@@ -485,7 +527,7 @@ show
 #### Simulation Waveform Visualization
 
 <p align="center">
-  <img src="Images/dc4.png" alt="Simulation waveform of dff_const1" width="600"/>
+  <img src="Images/dc4.png" alt="Simulation waveform of dff_const1" width="1000"/>
 </p>
 
 ---
@@ -493,11 +535,11 @@ show
 #### Design Visualization (Yosys Netlist)
 
 <p align="center">
-  <img src="Images/sdc4.png" width="600"/>
+  <img src="Images/sdc4.png" width="1000"/>
 </p>
----
-### ⚡ A. dff_const5 – Sequential Constant Propagation
 
+
+### ⚡ A. dff_const5 – Sequential Constant Propagation
 
 #### Code Visualization (GVim)
 
@@ -510,7 +552,7 @@ show
 #### Simulation Waveform Visualization
 
 <p align="center">
-  <img src="Images/dc5.png" alt="Simulation waveform of dff_const1" width="600"/>
+  <img src="Images/dc5.png" alt="Simulation waveform of dff_const1" width="1000"/>
 </p>
 
 ---
@@ -518,7 +560,7 @@ show
 #### Design Visualization (Yosys Netlist)
 
 <p align="center">
-  <img src="Images/sdc5.png" width="600"/>
+  <img src="Images/sdc5.png" width="1000"/>
 </p>
 ---
 
