@@ -734,4 +734,29 @@ Since all bits of the counter are used, **Yosys cannot remove any flip-flops**.
        width="600"/> 
 </p>
 
+---
+
+## 📝 Day 3 — Summary
+
+On **Day 3**, we focused on **optimization techniques** for digital designs, covering both **combinational** and **sequential circuits**. The key takeaways include:
+
+- **Combinational Logic Optimization:**  
+  - Learned **constant propagation** to simplify logic using fixed input values.  
+  - Applied **Boolean logic simplification** to reduce gate count, transistor usage, and power consumption.
+
+- **Sequential Logic Optimization:**  
+  - Explored **sequential constant propagation**, understanding when flip-flop outputs can simplify downstream logic.  
+  - Studied **unused outputs optimization**, where synthesis tools remove redundant flip-flops to save area and power.  
+  - Reviewed **advanced techniques** including **state optimization**, **cloning**, and **retiming** for performance improvements.
+
+- **Hands-On Labs:**  
+  - Practiced optimizations using **opt_check** and **dff_const** Verilog modules.  
+  - Observed how synthesis tools like **Yosys** automatically optimize circuits while preserving functionality.  
+  - Explored counter designs showing **impact of using all outputs vs. unused outputs** on flip-flop retention.
+
+✅ **Outcome:**  
+By the end of Day 3, learners can **analyze, optimize, and synthesize both combinational and sequential designs**, reducing unnecessary logic, improving area, and enhancing performance for RTL designs.
+
+---
+
 
