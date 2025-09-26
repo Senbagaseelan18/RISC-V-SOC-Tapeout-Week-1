@@ -36,10 +36,12 @@ Optimization in digital design focuses on improving the circuit for **area, powe
 
 ---
 
+---
+
 ## 🔹 B. Constant Propagation  
 
 Constant Propagation is an optimization technique where **constant values are substituted** into a circuit to simplify logic.  
-If an input is fixed to **0 or 1**, entire gates may become redundant. This reduces **logic depth, transistor usage, and power consumption**.  
+If an input is fixed to **0 or 1**, unnecessary gates can be eliminated. This reduces **circuit size, transistor usage, and power consumption**.  
 
 ---
 
@@ -69,18 +71,16 @@ y &= \overline{(a \cdot b) + c} \\
 \end{aligned}
 \]  
 
-Thus the **AND + NOR combination** is replaced with a **single inverter**.  
+So, the **AND + NOR implementation** can be reduced to a **single inverter**.  
 
 ---
 
-### ⚡ Transistor Count (Static CMOS Assumption)  
+### ⚡ Transistor Count (Your Example)  
 
-- **AND gate (2-input)** → NAND (4 tr) + INV (2 tr) = **6 transistors**  
-- **NOR gate (2-input)** → **4 transistors**  
-- **Original circuit** (AND + NOR) → **10 transistors**  
-- **Optimized circuit** (only inverter for c') → **2 transistors**  
+- **Original circuit (AND + NOR)** → **6 transistors**  
+- **Optimized circuit (only inverter for c')** → **2 transistors**  
 
-✅ **Net Reduction = 8 transistors**  
+✅ **Net Reduction = 4 transistors**  
 
 ---
 
@@ -91,6 +91,5 @@ Thus the **AND + NOR combination** is replaced with a **single inverter**.
 - The diagram should show:  
   - **Left (Original):** Inputs a, b → AND gate → output + input c → NOR gate → y  
   - **Right (Optimized):** Input c → inverter → y  
-  - Annotate transistor counts (10 vs 2)  
-
+  - Annotated transistor counts: **6 → 2**  
 
