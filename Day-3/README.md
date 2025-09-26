@@ -175,7 +175,8 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
   - DFF with D input → grounded (`0`)  
   - Q output → NAND gate input  
   - Another NAND input → `A`  
-  - Clock drives the DFF  
+  - Clock drives the DFF 
+  
 ![Sequential Constant Propagation  Example](images/rstdff.png) 
 - **Behavior:**  
   - On **positive edge of the clock**, Q toggles according to D input  
@@ -203,7 +204,7 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
 ### 2️⃣ Cloning
 
 **Cloning** duplicates parts of combinational or sequential logic to **reduce critical path delay**.  
-
+![Clonig Example](images/clone.png) 
 - Improves **timing and throughput**  
 - Reduces **fanout load** on critical signals  
 - Useful in **high-speed designs**  
@@ -221,7 +222,8 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
 - Does not change **functional behavior**  
 
 **Example in your design:**
-
+![Retiming_1 Example](images/r1.png) 
+![Retiming_2 Example](images/r2.png) 
 - Original design operated at **200 MHz**  
 - After **retiming and optimizing logic delays**, the circuit now operates at **250 MHz**  
 
