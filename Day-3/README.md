@@ -70,6 +70,7 @@ So, the **AND + NOR implementation** can be reduced to a **single inverter**.
 ---
 
 ### ⚡ Transistor Count (Your Example)  
+![Reduced Transistor Count](images/constant_propagation_reduced.png)
 
 - **Original circuit (AND + NOR)** → **6 transistors**  
 - **Optimized circuit (only inverter for c')** → **2 transistors**  
@@ -78,12 +79,63 @@ So, the **AND + NOR implementation** can be reduced to a **single inverter**.
 
 ---
 
-### 📊 Notes  
+---
 
-- Place your circuit diagram at:  
-  `images/constant_propagation.png`  
-- The diagram should show:  
-  - **Left (Original):** Inputs a, b → AND gate → output + input c → NOR gate → y  
-  - **Right (Optimized):** Input c → inverter → y  
-  - Annotated transistor counts: **6 → 2**  
+## 🔹 B. Boolean Logic Optimization
+
+**Boolean Logic Optimization** is a technique to **simplify complex Boolean expressions** and logic circuits, which reduces:
+
+- **Gate count**
+- **Transistor usage**
+- **Power consumption**
+- **Delay**
+
+The goal is to represent the same logic function in a **simpler form** using Boolean algebra or Karnaugh maps.
+
+---
+
+### 🧮 Example Circuit
+
+Original equation:
+
+```verilog
+assign y = a ? (b ? c : (c ? a : 0)) : (!c);
+```
+We want to simplify this into a **reduced equation**.
+
+---
+
+### 🔽 Reduction Steps
+
+**Step 1:** Analyze the nested ternary operator
+
+```verilog
+y = a ? (b ? c : (c ? a : 0)) : !c
+```
+
+**Step 2:** Consider cases
+
+- If `a = 0` → `y = !c`  
+- If `a = 1` → `y = (b ? c : (c ? 1 : 0))`  
+
+**Step 3:** Simplify the inner expression `(b ? c : (c ? a : 0))`
+
+- When `a = 1` → `(b ? c : (c ? 1 : 0))` → `(b AND c) OR (!b AND c)` → `c`  
+
+**Step 4:** Combine with outer `a`
+
+```verilog
+y = a ? c : !c
+```
+
+**Step 5:** Recognize **XNOR pattern**
+
+```verilog
+y = a XNOR c
+
+✅ **Final Reduced Equation:**
+
+
+y = a xnor c
+
 
