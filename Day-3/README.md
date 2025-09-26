@@ -228,3 +228,72 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
 - After **retiming and optimizing logic delays**, the circuit now operates at **250 MHz**  
 
 ---
+
+---
+
+## 🧪 Lab – Combinational Logic Optimization  
+
+Before trying different optimization cases, let us first explore the **base Verilog design file (`opt_check.v`)**.  
+This will help us understand the unoptimized logic and later compare it with optimized netlists.
+
+---
+
+### 🖥️ Yosys Commands
+
+```bash
+# 1. Start Yosys
+yosys
+```
+```bash
+# 2. Read Liberty timing file
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+```bash
+# 3. Read Verilog design files
+read_verilog opt_check.v
+```
+
+```bash
+# 4. Synthesize the design
+synth -top opt_check
+```
+
+```bash
+# 5. Cleaning the Optimized Design
+opt_clean -purge
+```
+```bash
+# 6. Generate gate-level netlist
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+```bash
+# 7. Visualize the synthesized design
+show
+```
+
+### ⚡ A. opt_check1 – Constant Propagation
+In this example, logic with constant inputs is simplified by the synthesis tool.
+
+#### Example Verilog Code
+verilog
+module opt_check1 (input a, output y);
+  assign y = a?b:0;
+endmodule
+
+---
+#### Gvim Design Code Visualization
+
+  <p align="center">
+    <img src="check_code.png" alt="Design code" width="1000"/>
+  </p>
+
+---
+#### Design Visualization
+
+  <p align="center">
+    <img src="check.png" alt="Schematic.png" width="600"/>
+  </p>
+
+---
