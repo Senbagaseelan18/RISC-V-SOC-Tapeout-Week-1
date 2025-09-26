@@ -7,7 +7,7 @@
 
 ---
 
-## 📝 Introduction to Optimization  
+## 📝1. Introduction to Optimization  
 Optimization in digital design focuses on improving the circuit for **area, power, and performance efficiency**. It can be classified into **Combinational Logic Optimization** and **Sequential Optimization**.  
 
 ---
@@ -31,14 +31,14 @@ Optimization in digital design focuses on improving the circuit for **area, powe
 ---
 
 ## 📊 Classification Diagram  
-![Optimization Classification](path/to/your/image.png)  
+![Optimization Classification](Images/class.png)  
 *(Add your generated diagram in the repo and link here)*  
 
 ---
 
 ---
 
-## 🔹 B. Constant Propagation  
+## 🔹 A. Constant Propagation  
 
 Constant Propagation is an optimization technique where **constant values are substituted** into a circuit to simplify logic.  
 If an input is fixed to **0 or 1**, unnecessary gates can be eliminated. This reduces **circuit size, transistor usage, and power consumption**.  
@@ -187,7 +187,7 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
 
 ---
 
-## 🔹 E. Advanced Sequential Optimization Techniques
+## 🔹 D. Advanced Sequential Optimization Techniques
 
 ### 1️⃣ State Optimization
 
@@ -231,7 +231,7 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
 
 ---
 
-## 🧪 Lab – Combinational Logic Optimization  
+## 🧪2. Lab – Combinational Logic Optimization  
 
 Before trying different optimization cases, let us first explore the **base Verilog design file (`opt_check.v`)**.  
 This will help us understand the unoptimized logic and later compare it with optimized netlists.
@@ -297,7 +297,7 @@ endmodule
   </p>
 
 ---
-### ⚡ A. opt_check2 – Constant Propagation
+### ⚡ B. opt_check2 – Constant Propagation
 ---
 #### Gvim Design Code Visualization
 
@@ -314,7 +314,7 @@ endmodule
 
 ---
 
-### ⚡ A. opt_check3 – Constant Propagation
+### ⚡ C. opt_check3 – Constant Propagation
 ---
 #### Gvim Design Code Visualization
 
@@ -331,7 +331,7 @@ endmodule
 
 ---
 
-### ⚡ A. opt_check4 – Constant Propagation
+### ⚡ D. opt_check4 – Constant Propagation
 
 ---
 #### Gvim Design Code Visualization
@@ -349,7 +349,7 @@ endmodule
 
 ---
 
-### ⚡ A. multiple_module_opt– Constant Propagation
+### ⚡ E. multiple_module_opt– Constant Propagation
 ---
 #### Gvim Design Code Visualization
 
@@ -373,7 +373,7 @@ endmodule
 
 ---
 
-## 🧪 Lab – Sequential Logic Optimization  
+## 🧪3. Lab – Sequential Logic Optimization  
 
 Sequential logic optimization focuses on improving circuits that include **flip-flops and memory elements**.  
 Unlike combinational circuits, sequential circuits depend on both **current inputs** and **previous states**.  
@@ -462,7 +462,7 @@ endmodule
 </p>
 
 
-### ⚡ A. dff_const2 – Sequential Constant Propagation
+### ⚡ B. dff_const2 – Sequential Constant Propagation
 
 #### Code Visualization (GVim)
 
@@ -487,7 +487,7 @@ endmodule
 </p>
 
 
-### ⚡ A. dff_const3 – Sequential Constant Propagation
+### ⚡ C. dff_const3 – Sequential Constant Propagation
 
 
 #### Code Visualization (GVim)
@@ -513,7 +513,7 @@ endmodule
 </p>
 
 
-### ⚡ A. dff_const4 – Sequential Constant Propagation
+### ⚡ D. dff_const4 – Sequential Constant Propagation
 
 
 #### Code Visualization (GVim)
@@ -539,7 +539,7 @@ endmodule
 </p>
 
 
-### ⚡ A. dff_const5 – Sequential Constant Propagation
+### ⚡ E. dff_const5 – Sequential Constant Propagation
 
 #### Code Visualization (GVim)
 
@@ -564,7 +564,7 @@ endmodule
 </p>
 ---
 
-## 🔹 Sequential Optimization – Unused Outputs
+## 4. Sequential Optimization – Unused Outputs
 
 Sequential optimization also involves **removing unused or redundant sequential outputs** from a design.  
 If only certain bits of a register are required, the synthesis tool automatically **optimizes away the unused flip-flops and logic**, reducing area and power.  
