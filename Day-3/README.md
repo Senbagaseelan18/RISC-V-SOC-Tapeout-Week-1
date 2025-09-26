@@ -96,6 +96,7 @@ The goal is to represent the same logic function in a **simpler form** using Boo
 
 ### 🧮 Example Circuit
 
+![Boolean Logic Optimization Example](Images/bool.png)  
 Original equation:
 
 ```verilog
