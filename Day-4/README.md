@@ -1,21 +1,37 @@
-<div align="center" style="margin-bottom:20px;">
-  <h1 style="font-size:32px; color:#4B0082; font-weight:bold; text-shadow: 2px 2px 4px #aaa;">
-    🌟 Day 4 — GLS, Blocking vs Non-Blocking & Simulation Mismatch
-  </h1>
-  <hr style="width:200px; border:2px solid #FF69B4; margin-top:-10px;">
-  <p style="font-size:16px; color:#555;">
-    Dive into <b>Gate-Level Simulation (GLS)</b>, understand <b>blocking vs non-blocking assignments</b>, and explore <b>synthesis-simulation mismatches</b> with practical examples in Verilog. ⚡
-  </p>
+# 📑 Day 4 — GLS, Blocking vs Non-Blocking, and Synth-Sim Mismatch
+
+<div align="center">
+  <table cellpadding="10">
+    <tr>
+      <td><img src="https://img.shields.io/badge/1-GLS_Concept-blueviolet?style=for-the-badge&logo=verilog" /></td>
+      <td><img src="https://img.shields.io/badge/2-Synth-Sim_Mismatch-orange?style=for-the-badge&logo=code" /></td>
+      <td><img src="https://img.shields.io/badge/3-Labs_GLS_mux-blue?style=for-the-badge&logo=verilog" /></td>
+      <td><img src="https://img.shields.io/badge/4-Labs_Blocking_Statement-red?style=for-the-badge&logo=code" /></td>
+    </tr>
+  </table>
 </div>
 
 ---
 
-## 📑 Table of Contents
+## 🔹 Table of Contents
 
-| No. | Main Topic | Subtopics |
-|-----|------------|-----------|
-| 1 | [GLS Concept and Flow using Icarus Verilog](#1-gls-concept-and-flow-using-icarus-verilog) | Why GLS, GLS with Verilog, simulation flow |
-| 2 | [Synthesis-Simulation Mismatch](#2-synthesis-simulation-mismatch) | Missing sensitivity list, Blocking vs Non-Blocking, Non-standard Verilog coding |
+1. [GLS Concept and Flow Using Icarus Verilog](#gls-concept-and-flow-using-icarus-verilog)  
+   - Why GLS?  
+   - GLS with Verilog  
+
+2. [Synthesis vs Simulation Mismatch](#synthesis-vs-simulation-mismatch)  
+   - Missing Sensitivity List  
+   - Blocking vs Non-Blocking Assignments  
+   - Non-Standard Verilog Coding  
+
+3. [Labs on GLS and Synthesis Simulation Mismatch](#labs-on-gls-and-synthesis-simulation-mismatch)  
+   - `ternary_operator_mux.v`  
+   - `bad_mux.v`  
+
+4. [Labs on Synth-Sim Mismatch for Blocking Statement](#labs-on-synth-sim-mismatch-for-blocking-statement)  
+   - `blocking_caveat.v`  
+   - Corrected Non-Blocking Example  
+
 
 ---
 
