@@ -141,3 +141,105 @@ endmodule
 
 ✔️ Using non-blocking (<=) ensures hardware behavior matches simulation.
 
+
+# 3. 🧪 Labs on GLS and Synthesis Simulation Mismatch
+
+In this lab, we explore **Gate-Level Simulation (GLS)** and the issues of **synthesis vs simulation mismatch** using a simple **2:1 MUX** design written with a ternary operator.
+
+---
+
+## 📌 Example: `ternary_operator_mux.v`
+
+```verilog
+// 2:1 MUX using ternary operator
+module ternary_operator_mux (
+  input a, b, sel,
+  output y
+);
+  assign y = sel ? b : a;
+endmodule
+```
+
+### 🖼️ Code Visualization:
+
+<p align="center"> <img src="Images/ctom.png?raw=true" alt="ternary_operator_mux Verilog code" width="600"/> </p>
+
+### ▶️ RTL Simulation with Icarus Verilog + GTKWave
+
+```bash 
+# Compile design and testbench
+iverilog ternary_operator_mux.v tb_ternary_operator_mux.v
+
+# Run simulation
+./a.out
+
+# View waveforms
+gtkwave tb_ternary_operator_mux.vcd
+```
+### 🖼️ RTL Simulation Output:
+
+<p align="center"> <img src="wtom.png?raw=true" alt="RTL Simulation output in GTKWave" width="600"/> </p>
+
+
+### 🖥️ Synthesis and Netlist Generation with Yosys
+
+```bash
+# 1. Start Yosys
+yosys
+```
+```bash
+# 2. Read Liberty timing file
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+```bash
+# 3. Read Verilog design files
+read_verilog ternary_operator_mux.v
+```
+```bash
+# 4. Synthesize the design 
+synth -top ternary_operator_mux
+```
+```bash
+# 5. Technology mapping
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+```bash
+# 6. Write the synthesized netlist
+write_verilog -noattr ternary_operator_mux_net.v
+```
+```bash
+# 7. Visualize the netlist
+show
+```
+### 🖼️ Synthesized Netlist Visualization (Yosys):
+
+<p align="center"> <img src="Images/ntom.png?raw=true" alt="Yosys netlist of ternary_operator_mux" width="600"/> </p>
+
+### ⚡ Gate-Level Simulation (GLS)
+
+Now, simulate the **gate-level** netlist to verify functionality matches RTL.
+
+```bash 
+# Compile GLS with standard cell models + netlist + testbench
+iverilog ../my_lib/verilog_model/primitives.v \
+         ../my_lib/verilog_model/sky130_fd_sc_hd.v \
+         ternary_operator_mux_net.v tb_ternary_operator_mux.v
+```
+```bash
+# Run simulation
+./a.out
+```
+```bash
+
+# View waveforms
+gtkwave tb_ternary_operator_mux.vcd
+```
+
+## 🖼️ GLS Output in GTKWave
+
+<p align="center">
+  <img src="Images/gtom.png?raw=true" 
+       alt="GLS Simulation Output in GTKWave" 
+       width="800"/>
+</p>
+
