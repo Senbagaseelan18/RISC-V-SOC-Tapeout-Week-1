@@ -152,7 +152,7 @@ This technique propagates **constant values through sequential elements** (like 
 ---
 
 ### 🧮 Example Circuit
-
+![Sequential Constant Propagation  Example](images/rstdff.png)  
 - **Setup:**  
   - DFF with **reset active** (Q is 0 after reset)  
   - Q output of DFF → NAND gate input  
