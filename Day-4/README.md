@@ -3,12 +3,35 @@
 <div align="center">
   <table cellpadding="10">
     <tr>
-      <td><img src="https://img.shields.io/badge/1-GLS_Concept-blueviolet?style=for-the-badge&logo=verilog" /></td>
-      <td><img src="https://img.shields.io/badge/2-Synth-Sim_Mismatch-orange?style=for-the-badge&logo=code" /></td>
-      <td><img src="https://img.shields.io/badge/3-Labs_GLS_mux-blue?style=for-the-badge&logo=verilog" /></td>
-      <td><img src="https://img.shields.io/badge/4-Labs_Blocking_Statement-red?style=for-the-badge&logo=code" /></td>
+      <td align="center">
+        <a href="#gls-concept-and-flow-using-icarus-verilog">
+          <img src="https://img.shields.io/badge/1-GLS_Concept-blueviolet?style=for-the-badge&logo=verilog" />
+        </a>
+        <br>GLS Concept
+      </td>
+      <td align="center">
+        <a href="#synthesis-vs-simulation-mismatch">
+          <img src="https://img.shields.io/badge/2-Synth-Sim_Mismatch-orange?style=for-the-badge&logo=code" />
+        </a>
+        <br>Synth-Sim Mismatch
+      </td>
+      <td align="center">
+        <a href="#labs-on-gls-and-synthesis-simulation-mismatch">
+          <img src="https://img.shields.io/badge/3-Labs_GLS_mux-blue?style=for-the-badge&logo=verilog" />
+        </a>
+        <br>GLS & Netlist Labs
+      </td>
+      <td align="center">
+        <a href="#labs-on-synth-sim-mismatch-for-blocking-statement">
+          <img src="https://img.shields.io/badge/4-Labs_Blocking_Statement-red?style=for-the-badge&logo=code" />
+        </a>
+        <br>Blocking Statement Labs
+      </td>
     </tr>
   </table>
+  <p style="margin-top:15px; font-size:16px;">
+    🎯 <b>Focus Areas:</b> Explore <b>Gate-Level Simulation</b>, understand <b>synth-sim mismatches</b>, experiment with <b>GLS labs</b>, and learn <b>blocking vs non-blocking pitfalls</b> in Verilog.
+  </p>
 </div>
 
 ---
