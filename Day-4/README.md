@@ -379,7 +379,7 @@ module blocking_caveat (
 endmodule
 ```
 ## 🖼️ Code Visualization:
-<p align="center"> <img src="Images/cbc.png?raw=true" alt="blocking_caveat Verilog code" width="600"/> </p>
+<p align="center"> <img src="cbc.png?raw=true" alt="blocking_caveat Verilog code" width="600"/> </p>
 
 ## ▶️ RTL Simulation with Icarus Verilog + GTKWave
 
@@ -395,7 +395,7 @@ gtkwave tb_blocking_caveat.vcd
 ```
 
 ## 🖼️ RTL Simulation Output:
-<p align="center"> <img src="Images/wbc.png?raw=true" alt="RTL Simulation Output in GTKWave" width="600"/> </p>
+<p align="center"> <img src="wbc.png?raw=true" alt="RTL Simulation Output in GTKWave" width="600"/> </p>
 
 ## Explanation of RTL Simulation Output:
 
@@ -436,7 +436,7 @@ show
 ```
 
 ## 🖼️ Synthesized Netlist Visualization (Yosys):
-<p align="center"> <img src="Images/sbc.png?raw=true" alt="Yosys netlist of blocking_caveat" width="600"/> </p>
+<p align="center"> <img src="sbc.png?raw=true" alt="Yosys netlist of blocking_caveat" width="600"/> </p>
 
 
 ## ⚡ Gate-Level Simulation (GLS)
@@ -459,10 +459,7 @@ gtkwave tb_blocking_caveat.vcd
 ```
 
 ## 🖼️ GLS Output in GTKWave
-<p align="center">
-  <img src="https://github.com/Senbagaseelan18/RISC-V-SOC-Tapeout-Week-1/raw/main/Day-4/Images/gbc.png" 
-       alt="ternary_operator_mux Verilog code" width="600"/>
-</p>
+<p align="center"> <img src="gbc.png?raw=true" alt="Yosys netlist of blocking_caveat" width="600"/> </p>
 
 
 ## Explanation of GLS Output:
