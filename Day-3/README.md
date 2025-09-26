@@ -564,3 +564,89 @@ endmodule
 </p>
 ---
 
+## 🔹 Sequential Optimization – Unused Outputs
+
+Sequential optimization also involves **removing unused or redundant sequential outputs** from a design.  
+If only certain bits of a register are required, the synthesis tool automatically **optimizes away the unused flip-flops and logic**, reducing area and power.  
+
+---
+
+### ⚡ Example: Counter with Unused Outputs
+
+In the following code, a **3-bit counter** is implemented.  
+However, only the **least significant bit (`count[0]`)** is used as the output `q`.  
+The higher-order bits (`count[1]` and `count[2]`) are **never used**, so Yosys will optimize them out.
+
+#### Example Verilog Code
+
+```verilog
+module counter_opt (input clk, input reset, output q);
+  reg [2:0] count;
+  assign q = count[0];
+
+  always @(posedge clk or posedge reset) begin
+    if (reset)
+      count <= 3'b000;
+    else
+      count <= count + 1;
+  end
+endmodule
+```
+### 📝 Explanation of Output
+
+- `q` is directly connected to `count[0]`, the LSB of the counter.  
+- On every positive clock edge, the counter increments, but **only the LSB is visible at the output**.  
+- Since `count[1]` and `count[2]` are unused, Yosys removes the unnecessary flip-flops during optimization.  
+- ✅ Result: The **optimized circuit contains only 1 flip-flop** (for `count[0]`) instead of 3.  
+
+---
+
+### 🖥️ Yosys Commands
+
+```bash
+# 1. Start Yosys
+yosys
+```
+```bash
+# 2. Read Liberty timing file
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+```bash
+# 3. Read Verilog design files
+read_verilog counter_opt.v
+```
+
+```bash
+# 4. Synthesize the design
+synth -top counter_opt
+```
+
+```bash
+# dff calling 
+dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+```bash
+# 6. Generate gate-level netlist
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+```bash
+# 7. Visualize the synthesized design
+show
+```
+#### Code Visualization (GVim)
+
+<p align="center">
+  <img src="https://github.com/your-repo-name/path-to-images/gvim_counter_opt.png?raw=true" alt="GVim view of counter_opt.v" width="600"/>
+</p>
+
+---
+
+#### Design Visualization (Yosys Netlist)
+
+<p align="center">
+  <img src="https://github.com/your-repo-name/path-to-images/counter_opt_netlist.png?raw=true" alt="Yosys netlist of counter_opt" width="600"/>
+</p>
+
+
