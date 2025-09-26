@@ -11,13 +11,13 @@
       </td>
       <td align="center">
         <a href="#synthesis-vs-simulation-mismatch">
-          <img src="https://img.shields.io/badge/2-Synth-Sim%20Mismatch-orange?style=for-the-badge&logo=code" />
+          <img src="https://img.shields.io/badge/2-Synth%20Sim%20Mismatch-orange?style=for-the-badge&logo=code" />
         </a>
         <br>Synth-Sim Mismatch
       </td>
       <td align="center">
         <a href="#labs-on-gls-and-synthesis-simulation-mismatch">
-          <img src="https://img.shields.io/badge/3-Labs%20GLS_mux-blue?style=for-the-badge&logo=verilog" />
+          <img src="https://img.shields.io/badge/3-Labs%20GLS%20Mux-blue?style=for-the-badge&logo=verilog" />
         </a>
         <br>GLS & Netlist Labs
       </td>
