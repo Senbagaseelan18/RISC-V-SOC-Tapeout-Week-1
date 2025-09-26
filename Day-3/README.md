@@ -365,3 +365,10 @@ endmodule
   </p>
 
 ---
+#### Flatten Design Visualization
+
+  <p align="center">
+    <img src="Images/flatten_multmodule.png" alt="Flatten Schematic.png" width="600"/>
+  </p>
+
+---
