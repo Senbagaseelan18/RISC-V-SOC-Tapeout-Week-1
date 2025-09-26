@@ -139,4 +139,32 @@ y = a XNOR c
 
 y = a xnor c
 
+---
+
+## 🔹 C. Sequential Logic Optimization
+
+**Sequential Logic Optimization** aims to simplify circuits that include **memory elements** (like flip-flops) while preserving functionality.  
+
+### 🔹 Sequential Constant Propagation  
+
+This technique propagates **constant values through sequential elements** (like D flip-flops) to simplify logic. If a flip-flop output is constant, connected logic can often be reduced.
+
+---
+
+### 🧮 Example Circuit
+
+- **Setup:**  
+  - DFF with **reset active** (Q is 0 after reset)  
+  - Q output of DFF → NAND gate input  
+  - Another NAND input → `A`  
+  - D input of DFF → grounded (`0`)  
+
+- **Behavior:**  
+  - After reset, Q = 0  
+  - NAND gate output: `Y = !(Q & A) = !(0 & A) = 1` → **constant 1**  
+
+✅ This shows that **sequential constant propagation** can reduce downstream logic because the output is always constant.
+
+---
+
 
