@@ -273,6 +273,55 @@ abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
+### ⚡ A. opt_check – Constant Propagation
+In this example, logic with constant inputs is simplified by the synthesis tool.
+
+#### Example Verilog Code
+verilog 
+module opt_check1 (input a, output y);
+  assign y = a?b:0;
+endmodule
+
+---
+#### Gvim Design Code Visualization
+
+  <p align="center">
+    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+  </p>
+
+---
+#### Design Visualization
+
+  <p align="center">
+    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+  </p>
+
+---
+### ⚡ A. opt_check2 – Constant Propagation
+In this example, logic with constant inputs is simplified by the synthesis tool.
+
+#### Example Verilog Code
+verilog
+module opt_check1 (input a, output y);
+  assign y = a?b:0;
+endmodule
+
+---
+#### Gvim Design Code Visualization
+
+  <p align="center">
+    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+  </p>
+
+---
+#### Design Visualization
+
+  <p align="center">
+    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+  </p>
+
+---
+
 ### ⚡ A. opt_check1 – Constant Propagation
 In this example, logic with constant inputs is simplified by the synthesis tool.
 
@@ -286,14 +335,64 @@ endmodule
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="check_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check_code.png" alt="Design code" width="1000"/>
   </p>
 
 ---
 #### Design Visualization
 
   <p align="center">
-    <img src="check.png" alt="Schematic.png" width="600"/>
+    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+  </p>
+
+---
+
+### ⚡ A. opt_check1 – Constant Propagation
+In this example, logic with constant inputs is simplified by the synthesis tool.
+
+#### Example Verilog Code
+verilog
+module opt_check1 (input a, output y);
+  assign y = a?b:0;
+endmodule
+
+---
+#### Gvim Design Code Visualization
+
+  <p align="center">
+    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+  </p>
+
+---
+#### Design Visualization
+
+  <p align="center">
+    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+  </p>
+
+---
+
+### ⚡ A. opt_check1 – Constant Propagation
+In this example, logic with constant inputs is simplified by the synthesis tool.
+
+#### Example Verilog Code
+verilog
+module opt_check1 (input a, output y);
+  assign y = a?b:0;
+endmodule
+
+---
+#### Gvim Design Code Visualization
+
+  <p align="center">
+    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+  </p>
+
+---
+#### Design Visualization
+
+  <p align="center">
+    <img src="Images/check.png" alt="Schematic.png" width="600"/>
   </p>
 
 ---
