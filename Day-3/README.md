@@ -372,3 +372,92 @@ endmodule
   </p>
 
 ---
+
+## 🧪 Lab – Sequential Logic Optimization  
+
+Sequential logic optimization focuses on improving circuits that include **flip-flops and memory elements**.  
+Unlike combinational circuits, sequential circuits depend on both **current inputs** and **previous states**.  
+Optimization here can involve **constant propagation through flip-flops**, **retiming**, or **state reduction**.  
+
+---
+
+### 🧩 Example: Sequential Constant Propagation  
+
+🖥️ **Yosys Commands**
+
+```bash
+# 1. Start Yosys
+yosys
+```
+
+```bash
+# 2. Read Liberty timing file
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+```bash
+# 3. Read Verilog design files
+read_verilog dff_const1.v
+```
+
+```bash
+# 4. Synthesize the design
+synth -top dff_const1
+```
+
+```bash
+# 5. Library Mapping for Sequential Circuits
+dfflibmap -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+```bash
+# 6. Generate gate-level netlist
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+```bash
+# 7. Visualize the synthesized design
+show
+```
+
+### ⚡ A. dff_const1 – Sequential Constant Propagation
+
+In this example, the **D flip-flop is forced to a constant value** after reset, so the output `q` always evaluates to a fixed logic.  
+This allows Yosys to optimize away unnecessary sequential logic.
+
+---
+
+#### Example Verilog Code
+
+```verilog
+module dff_const1(input clk, input reset, output reg q);
+  always @(posedge clk or posedge reset) begin
+    if (reset)
+      q <= 1'b0;
+    else
+      q <= 1'b1;
+  end
+endmodule
+```
+#### Code Visualization (GVim)
+
+<p align="center">
+  <img src="Images/cdc1" width="600"/>
+</p>
+
+---
+
+#### Simulation Waveform Visualization
+
+<p align="center">
+  <img src="Images/dc1" alt="Simulation waveform of dff_const1" width="600"/>
+</p>
+
+---
+
+#### Design Visualization (Yosys Netlist)
+
+<p align="center">
+  <img src="Images/sdc1" width="600"/>
+</p>
+
