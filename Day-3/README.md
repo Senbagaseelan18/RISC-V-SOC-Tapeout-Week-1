@@ -11,7 +11,7 @@
 
 ---
 
-## 📝1. Introduction to Optimization  
+## Introduction to Optimization 
 Optimization in digital design focuses on improving the circuit for **area, power, and performance efficiency**. It can be classified into **Combinational Logic Optimization** and **Sequential Optimization**.  
 
 ---
@@ -235,7 +235,8 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
 
 ---
 
-## 🧪2. Lab – Combinational Logic Optimization  
+## Lab – Combinational Logic Optimization
+ 
 
 Before trying different optimization cases, let us first explore the **base Verilog design file (`opt_check.v`)**.  
 This will help us understand the unoptimized logic and later compare it with optimized netlists.
@@ -377,7 +378,7 @@ endmodule
 
 ---
 
-## 🧪3. Lab – Sequential Logic Optimization  
+## Lab – Sequential Logic Optimization
 
 Sequential logic optimization focuses on improving circuits that include **flip-flops and memory elements**.  
 Unlike combinational circuits, sequential circuits depend on both **current inputs** and **previous states**.  
@@ -568,7 +569,8 @@ endmodule
 </p>
 ---
 
-## 4. Sequential Optimization – Unused Outputs
+## Sequential Optimization – Unused Outputs
+
 
 Sequential optimization also involves **removing unused or redundant sequential outputs** from a design.  
 If only certain bits of a register are required, the synthesis tool automatically **optimizes away the unused flip-flops and logic**, reducing area and power.  
