@@ -185,3 +185,44 @@ Sometimes, **sequential constant propagation cannot be applied** because the fli
 ✅ This shows that if a flip-flop output is **time-dependent**, downstream logic **cannot be reduced** using sequential constant propagation.
 
 ---
+
+## 🔹 E. Advanced Sequential Optimization Techniques
+
+### 1️⃣ State Optimization
+
+**State Optimization** reduces the number of states in a finite state machine (FSM) without changing its functional behavior.  
+
+- Minimizes the **number of flip-flops** required  
+- Reduces **area, power, and complexity**  
+- Often uses **state encoding techniques**  
+
+**Example:** Reducing an FSM from 8 states to 5 states while maintaining the same outputs for all input sequences.
+
+---
+
+### 2️⃣ Cloning
+
+**Cloning** duplicates parts of combinational or sequential logic to **reduce critical path delay**.  
+
+- Improves **timing and throughput**  
+- Reduces **fanout load** on critical signals  
+- Useful in **high-speed designs**  
+
+**Example:** Duplicating a complex combinational block feeding multiple flip-flops to avoid timing violations.
+
+---
+
+### 3️⃣ Retiming
+
+**Retiming** repositions flip-flops in a sequential circuit to **improve clock frequency or reduce timing violations**.  
+
+- Moves registers across combinational logic  
+- Optimizes **critical path delays**  
+- Does not change **functional behavior**  
+
+**Example in your design:**
+
+- Original design operated at **200 MHz**  
+- After **retiming and optimizing logic delays**, the circuit now operates at **250 MHz**  
+
+---
