@@ -638,7 +638,7 @@ show
 #### Code Visualization (GVim)
 
 <p align="center">
-  <img src="https://github.com/your-repo-name/path-to-images/gvim_counter_opt.png?raw=true" alt="GVim view of counter_opt.v" width="600"/>
+  <img src="Images/cco.png?raw=true" alt="GVim view of counter_opt.v" width="600"/>
 </p>
 
 ---
@@ -646,7 +646,63 @@ show
 #### Design Visualization (Yosys Netlist)
 
 <p align="center">
-  <img src="https://github.com/your-repo-name/path-to-images/counter_opt_netlist.png?raw=true" alt="Yosys netlist of counter_opt" width="600"/>
+  <img src="Images/sco.png?raw=true" alt="Yosys netlist of counter_opt" width="600"/>
+</p>
+
+
+### ⚡ Example: Counter with All Outputs Used (counter_opt2.v)
+
+In this updated example, the same **3-bit counter** is implemented, but now **all the flip-flops are functionally required**.  
+This prevents Yosys from optimizing out unused logic.
+
+#### Example Verilog Code
+
+```verilog
+module counter_opt2 (input clk, input reset, output [2:0] q);
+  reg [2:0] count;
+  assign q = count;
+
+  always @(posedge clk or posedge reset) begin
+    if (reset)
+      count <= 3'b000;
+    else
+      count <= count + 1;
+  end
+endmodule
+```
+
+## 📝 Explanation of Output
+
+Unlike the previous version, here the entire 3-bit vector `count` is mapped to the output `q`.
+
+This means:
+
+- **q[0]** → toggles at every clock edge (fastest).  
+- **q[1]** → toggles every 2 cycles.  
+- **q[2]** → toggles every 4 cycles.  
+
+Since all bits of the counter are used, **Yosys cannot remove any flip-flops**.
+
+✅ **Result**: The final synthesized design keeps all 3 flip-flops.
+
+---
+
+### Code Visualization (GVim)
+
+<p align="center"> 
+  <img src="Images/cco2.png?raw=true" 
+       alt="GVim view of counter_opt2.v" 
+       width="600"/> 
+</p>
+
+---
+
+### Design Visualization (Yosys Netlist)
+
+<p align="center"> 
+  <img src="Images/sco2.png?raw=true" 
+       alt="Yosys netlist of counter_opt2" 
+       width="600"/> 
 </p>
 
 
