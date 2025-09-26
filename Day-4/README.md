@@ -243,3 +243,113 @@ gtkwave tb_ternary_operator_mux.vcd
        width="800"/>
 </p>
 
+
+## 📌 Example: `bad_mux.v`
+
+```verilog
+// 2:1 MUX with incomplete sensitivity list
+module bad_mux (
+  input a, b, sel,
+  output reg y
+);
+  always @(sel) begin
+    if (sel)
+      y = b;
+    else
+      y = a;
+  end
+endmodule
+```
+
+## 🖼️ Code Visualization:
+<p align="center"> <img src="Images/cbm.png?raw=true" alt="bad_mux Verilog code" width="600"/> </p>
+
+### ▶️ RTL Simulation with Icarus Verilog + GTKWave
+
+```bash 
+# Compile design and testbench
+iverilog bad_mux.v tb_bad_mux.v
+
+# Run simulation
+./a.out
+
+# View waveforms
+gtkwave tb_bad_mux.vcd
+```
+## 🖼️ RTL Simulation Output:
+<p align="center"> <img src="Images/wbm.png?raw=true" alt="RTL Simulation Output in GTKWave" width="600"/> </p>
+
+## Explanation:
+
+-Here, the always @(sel) sensitivity list only triggers when sel changes.
+
+-If a or b changes while sel remains the same, y does **not update correctly.**
+
+-✅ This demonstrates a **simulation mismatch** due to an incomplete sensitivity list.
+
+
+### 🖥️ Synthesis and Netlist Generation with Yosys
+
+```bash
+# 1. Start Yosys
+yosys
+```
+```bash
+# 2. Read Liberty timing file
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+```bash
+# 3. Read Verilog design files
+read_verilog bad_mux.v
+```
+```bash
+# 4. Synthesize the design
+synth -top bad_mux
+```
+```bash
+# 5. Technology mapping
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+```bash
+# 6. Write the synthesized netlist
+write_verilog -noattr bad_mux_net.v
+```
+```bash
+# 7. Visualize the netlist
+show
+```
+### 🖼️ Synthesized Netlist Visualization (Yosys):
+<p align="center"> <img src="Images/sbm.png?raw=true" alt="Yosys netlist of bad_mux" width="600"/> </p>
+
+## ⚡ Gate-Level Simulation (GLS)
+
+Now, simulate the **gate-level** netlist to verify functionality.
+
+### ⚡ Gate-Level Simulation (GLS)
+
+Now, simulate the **gate-level** netlist to verify functionality matches RTL.
+
+```bash 
+# Compile GLS with standard cell models + netlist + testbench
+iverilog ../my_lib/verilog_model/primitives.v \
+         ../my_lib/verilog_model/sky130_fd_sc_hd.v \
+         bad_mux_net.v tb_bad_mux.v
+```
+```bash
+# Run simulation
+./a.out
+```
+
+```bash
+# View waveforms
+gtkwave tb_bad_mux.vcd
+```
+
+## 🖼️ GLS Output in GTKWave (Initial)
+<p align="center"> <img src="Images/gbm.png?raw=true" alt="GLS Simulation Output - Initial" width="800"/> </p>
+
+## Explanation:
+
+-The output y does **not reflect changes** in a or b when sel remains constant.
+
+-✅ This mismatch occurs because the sensitivity list only includes sel, missing the **combinational dependencies.**
