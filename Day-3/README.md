@@ -286,7 +286,7 @@ endmodule
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check_code.png" alt="Design code" width="600"/>
   </p>
 
 ---
@@ -302,7 +302,7 @@ endmodule
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check2_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check2_code.png" alt="Design code" width="600"/>
   </p>
 
 ---
@@ -319,7 +319,7 @@ endmodule
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check3_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check3_code.png" alt="Design code" width="600"/>
   </p>
 
 ---
@@ -337,7 +337,7 @@ endmodule
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check4_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check4_code.png" alt="Design code" width="600"/>
   </p>
 
 ---
@@ -354,7 +354,7 @@ endmodule
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/multi_module_code.png" alt="Design code" width="1000"/>
+    <img src="Images/multi_module_code.png" alt="Design code" width="600"/>
   </p>
 
 ---
