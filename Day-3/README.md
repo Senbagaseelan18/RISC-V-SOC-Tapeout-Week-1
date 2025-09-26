@@ -442,7 +442,7 @@ endmodule
 #### Code Visualization (GVim)
 
 <p align="center">
-  <img src="Images/cdc1" width="600"/>
+  <img src="Images/cdc1.png" width="600"/>
 </p>
 
 ---
@@ -450,7 +450,7 @@ endmodule
 #### Simulation Waveform Visualization
 
 <p align="center">
-  <img src="Images/dc1" alt="Simulation waveform of dff_const1" width="600"/>
+  <img src="Images/dc1.png" alt="Simulation waveform of dff_const1" width="600"/>
 </p>
 
 ---
@@ -458,6 +458,6 @@ endmodule
 #### Design Visualization (Yosys Netlist)
 
 <p align="center">
-  <img src="Images/sdc1" width="600"/>
+  <img src="Images/sdc1.png" width="600"/>
 </p>
 
