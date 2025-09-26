@@ -353,3 +353,118 @@ gtkwave tb_bad_mux.vcd
 -The output y does **not reflect changes** in a or b when sel remains constant.
 
 -✅ This mismatch occurs because the sensitivity list only includes sel, missing the **combinational dependencies.**
+
+
+# 4. Labs on Synth-Sim Mismatch for Blocking Statement
+
+In this lab, we explore **blocking assignments (`=`) in sequential logic** and how they can lead to **simulation vs synthesis mismatches**.  
+We will see an example where **`d = x & c; x = a | b;`** causes incorrect simulation behavior.
+
+---
+
+## 📌 Example: `blocking_caveat.v`
+
+```verilog
+// Example demonstrating blocking statement caveat
+module blocking_caveat (
+  input clk,
+  input a, b, c,
+  output reg d
+);
+  reg x;
+  always @(posedge clk) begin
+    d = x & c;   // uses "old" value of x during simulation
+    x = a | b;   // updates x afterwards
+  end
+endmodule
+```
+## 🖼️ Code Visualization:
+<p align="center"> <img src="Images/cbc.png?raw=true" alt="blocking_caveat Verilog code" width="600"/> </p>
+
+## ▶️ RTL Simulation with Icarus Verilog + GTKWave
+
+```bash
+# Compile design and testbench
+iverilog blocking_caveat.v tb_blocking_caveat.v
+
+# Run simulation
+./a.out
+
+# View waveforms
+gtkwave tb_blocking_caveat.vcd
+```
+
+## 🖼️ RTL Simulation Output:
+<p align="center"> <img src="Images/wbc.png?raw=true" alt="RTL Simulation Output in GTKWave" width="600"/> </p>
+
+## Explanation of RTL Simulation Output:
+
+-The output d uses the **old value of x**, because blocking assignments execute sequentially in the always block.
+
+-✅ This demonstrates a **simulation-synthesis mismatch**, as in hardware, d and x would update **in parallel**, not sequentially.
+
+
+### 🖥️ Synthesis and Netlist Generation with Yosys
+
+```bash
+# 1. Start Yosys
+yosys
+```
+```bash
+# 2. Read Liberty timing file
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+```bash
+# 3. Read Verilog design files
+read_verilog blocking_caveat.v
+```
+```bash
+# 4. Synthesize the design 
+synth -top blocking_caveat
+```
+```bash
+# 5. Technology mapping
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+```bash
+# 6. Write the synthesized netlist
+write_verilog -noattr blocking_caveat_net.v
+```
+```bash
+# 7. Visualize the netlist
+show
+```
+
+## 🖼️ Synthesized Netlist Visualization (Yosys):
+<p align="center"> <img src="Images/sbc.png?raw=true" alt="Yosys netlist of blocking_caveat" width="600"/> </p>
+
+
+## ⚡ Gate-Level Simulation (GLS)
+
+Simulate the **gate-level** netlist to verify the design.
+```bash 
+ # Compile GLS with standard cell models + netlist + testbench
+iverilog ../my_lib/verilog_model/primitives.v \
+         ../my_lib/verilog_model/sky130_fd_sc_hd.v \
+         blocking_caveat_net.v tb_blocking_caveat.v
+```
+```bash
+# Run simulation
+./a.out
+```
+
+```bash
+# View waveforms
+gtkwave tb_blocking_caveat.vcd
+```
+
+## 🖼️ GLS Output in GTKWave
+<p align="center"> <img src="Images/gbc.png?raw=true" alt="GLS Simulation Output in GTKWave" width="800"/> </p>
+
+## Explanation of GLS Output:
+
+-After gate-level synthesis, the hardware behavior is **correct**, as the netlist evaluates d and x in parallel.
+
+-✅ The output now matches **expected hardware behavior**, resolving the mismatch seen in RTL simulation.
+
+-  This demonstrates the importance of using **non-blocking assignments (<=) in sequential logic** to match synthesis behavior.
