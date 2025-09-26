@@ -178,7 +178,7 @@ gtkwave tb_ternary_operator_mux.vcd
 ```
 ### 🖼️ RTL Simulation Output:
 
-<p align="center"> <img src="wtom.png?raw=true" alt="RTL Simulation output in GTKWave" width="600"/> </p>
+<p align="center"> <img src="Images/wtom.png?raw=true" alt="RTL Simulation output in GTKWave" width="600"/> </p>
 
 
 ### 🖥️ Synthesis and Netlist Generation with Yosys
@@ -213,7 +213,7 @@ show
 ```
 ### 🖼️ Synthesized Netlist Visualization (Yosys):
 
-<p align="center"> <img src="Images/ntom.png?raw=true" alt="Yosys netlist of ternary_operator_mux" width="600"/> </p>
+<p align="center"> <img src="Images/stom.png?raw=true" alt="Yosys netlist of ternary_operator_mux" width="600"/> </p>
 
 ### ⚡ Gate-Level Simulation (GLS)
 
