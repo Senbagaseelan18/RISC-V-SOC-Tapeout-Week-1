@@ -298,101 +298,70 @@ endmodule
 
 ---
 ### ⚡ A. opt_check2 – Constant Propagation
-In this example, logic with constant inputs is simplified by the synthesis tool.
-
-#### Example Verilog Code
-verilog
-module opt_check1 (input a, output y);
-  assign y = a?b:0;
-endmodule
-
 ---
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check2_code.png" alt="Design code" width="1000"/>
   </p>
 
 ---
 #### Design Visualization
 
   <p align="center">
-    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+    <img src="Images/check2.png" alt="Schematic.png" width="600"/>
   </p>
 
 ---
 
-### ⚡ A. opt_check1 – Constant Propagation
-In this example, logic with constant inputs is simplified by the synthesis tool.
-
-#### Example Verilog Code
-verilog
-module opt_check1 (input a, output y);
-  assign y = a?b:0;
-endmodule
-
+### ⚡ A. opt_check3 – Constant Propagation
 ---
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check3_code.png" alt="Design code" width="1000"/>
   </p>
 
 ---
 #### Design Visualization
 
   <p align="center">
-    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+    <img src="Images/check3.png" alt="Schematic.png" width="600"/>
   </p>
 
 ---
 
-### ⚡ A. opt_check1 – Constant Propagation
-In this example, logic with constant inputs is simplified by the synthesis tool.
-
-#### Example Verilog Code
-verilog
-module opt_check1 (input a, output y);
-  assign y = a?b:0;
-endmodule
+### ⚡ A. opt_check4 – Constant Propagation
 
 ---
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+    <img src="Images/check4_code.png" alt="Design code" width="1000"/>
   </p>
 
 ---
 #### Design Visualization
 
   <p align="center">
-    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+    <img src="Images/check4.png" alt="Schematic.png" width="600"/>
   </p>
 
 ---
 
-### ⚡ A. opt_check1 – Constant Propagation
-In this example, logic with constant inputs is simplified by the synthesis tool.
-
-#### Example Verilog Code
-verilog
-module opt_check1 (input a, output y);
-  assign y = a?b:0;
-endmodule
-
+### ⚡ A. multiple_module_opt– Constant Propagation
 ---
 #### Gvim Design Code Visualization
 
   <p align="center">
-    <img src="Images/check_code.png" alt="Design code" width="1000"/>
+    <img src="Images/multi_module_code.png" alt="Design code" width="1000"/>
   </p>
 
 ---
 #### Design Visualization
 
   <p align="center">
-    <img src="Images/check.png" alt="Schematic.png" width="600"/>
+    <img src="Images/multi_module.png" alt="Schematic.png" width="600"/>
   </p>
 
 ---
