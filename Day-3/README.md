@@ -167,4 +167,21 @@ This technique propagates **constant values through sequential elements** (like 
 
 ---
 
+Sometimes, **sequential constant propagation cannot be applied** because the flip-flop output changes over time with the clock.  
 
+### 🧮 Example Circuit
+
+- **Setup:**  
+  - DFF with D input → grounded (`0`)  
+  - Q output → NAND gate input  
+  - Another NAND input → `A`  
+  - Clock drives the DFF  
+
+- **Behavior:**  
+  - On **positive edge of the clock**, Q toggles according to D input  
+  - NAND gate output: `Y = !(Q & A)` → **changes between 1 and 0** over time  
+  - Output is **not constant**, so **sequential constant propagation cannot be applied**  
+
+✅ This shows that if a flip-flop output is **time-dependent**, downstream logic **cannot be reduced** using sequential constant propagation.
+
+---
