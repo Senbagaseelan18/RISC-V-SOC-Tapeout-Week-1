@@ -4,28 +4,11 @@
 
 | No. | Main Topic | Subtopics |
 |-----|------------|-----------|
-| 1 | [Introduction to Optimization](#introduction-to-optimization) | 
-  - [Combinational Logic Optimization](#combinational-logic-optimization)  
-    - [Constant Propagation](#constant-propagation)  
-    - [Boolean Logic Optimization](#boolean-logic-optimization)  
-  - [Sequential Optimization](#sequential-optimization)  
-    - [Sequential Constant Propagation](#sequential-constant-propagation)  
-    - [Advanced Techniques](#advanced-sequential-optimization-techniques) |
-| 2 | [Lab – Combinational Logic Optimization](#lab--combinational-logic-optimization) | 
-  - [opt_check.v](#opt_checkv)  
-  - [opt_check2.v](#opt_check2v)  
-  - [opt_check3.v](#opt_check3v)  
-  - [opt_check4.v](#opt_check4v)  
-  - [multiple_module_opt.v](#multiple_module_optv) |
-| 3 | [Lab – Sequential Logic Optimization](#lab--sequential-logic-optimization) | 
-  - [dff_const1.v](#dff_const1v)  
-  - [dff_const2.v](#dff_const2v)  
-  - [dff_const3.v](#dff_const3v)  
-  - [dff_const4.v](#dff_const4v)  
-  - [dff_const5.v](#dff_const5v) |
-| 4 | [Sequential Optimization – Unused Outputs](#sequential-optimization--unused-outputs) | 
-  - [counter_opt.v – Unused Outputs](#example-counter-with-unused-outputs)  
-  - [counter_opt2.v – All Outputs Used](#example-counter-with-all-outputs-used-counter_opt2v) |
+| 1 | [Introduction to Optimization](#introduction-to-optimization) | Combinational & sequential optimization overview |
+| 2 | [Lab – Combinational Logic Optimization](#lab--combinational-logic-optimization) | Constant propagation, Boolean logic simplification |
+| 3 | [Lab – Sequential Logic Optimization](#lab--sequential-logic-optimization) | Sequential constant propagation, flip-flop optimizations |
+| 4 | [Sequential Optimization – Unused Outputs](#sequential-optimization--unused-outputs) | Removing unused flip-flops, counter examples |
+
 ---
 
 ## 📝1. Introduction to Optimization  
