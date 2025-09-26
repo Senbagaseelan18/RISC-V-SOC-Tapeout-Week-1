@@ -133,9 +133,9 @@ y = a ? c : !c
 
 ```verilog
 y = a XNOR c
+```
 
 ✅ **Final Reduced Equation:**
-
 
 y = a xnor c
 
