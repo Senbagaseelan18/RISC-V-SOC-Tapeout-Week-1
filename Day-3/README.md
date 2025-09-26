@@ -170,13 +170,13 @@ This technique propagates **constant values through sequential elements** (like 
 Sometimes, **sequential constant propagation cannot be applied** because the flip-flop output changes over time with the clock.  
 
 ### 🧮 Example Circuit
-
+![Sequential Constant Propagation cannot be applied Example](images/error.png) 
 - **Setup:**  
   - DFF with D input → grounded (`0`)  
   - Q output → NAND gate input  
   - Another NAND input → `A`  
   - Clock drives the DFF  
-
+![Sequential Constant Propagation  Example](images/rstdff.png) 
 - **Behavior:**  
   - On **positive edge of the clock**, Q toggles according to D input  
   - NAND gate output: `Y = !(Q & A)` → **changes between 1 and 0** over time  
