@@ -272,6 +272,158 @@ show
 
   ⚡ Observation: Even with multiple conditions (if-else if), the absence of a final else causes synthesis to infer a latch, highlighting a common pitfall in combinational logic design.
 
+
+## 4) 🧪 Labs on Incomplete & Overlapping Case Statements  
+
+In this lab, we explore how **incomplete, overlapping, or partially assigned case statements** can affect **hardware synthesis** in Verilog.  
+We'll simulate the designs using **Icarus Verilog + GTKWave** and synthesize using **Yosys** to observe inferred latches and hardware mapping.
+
+---
+
+### 🔹 A — `incomp_case` [Incomplete Case]
+
+#### Design Code
+```bash
+module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
+always @ (*)
+begin
+	case(sel)
+		2'b00 : y = i0;
+		2'b01 : y = i1;
+	endcase
+end
+endmodule
+```
+
+## RTL Simulation with Icarus Verilog
+```bash
+# Compile RTL + testbench
+iverilog incomp_case.v tb_incomp_case.v
+./a.out
+gtkwave tb_incom_case.vcd
+```
+<p align="center"> <img src="Images/gtk_incomp_case.png?raw=true" alt="gtk_incomp_case" width="700"/> </p>
+
+## Yosys Synthesis
+```yosys
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog incomp_case.v
+synth -top incomp_case
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show 
+```
+<p align="center"> <img src="Images/incomp_case_netlist.png?raw=true" alt="incomp_case_netlist" width="700"/> </p>
+
+⚠️ Observation: **Incomplete case statements** can lead to **inferred latches**, as unhandled selector values are stored in memory.
+
+## 🔹 B — comp_case [Complete Case]
+
+## Design Code
+  ```verilog
+  module comp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
+always @ (*)
+begin
+	case(sel)
+		2'b00 : y = i0;
+		2'b01 : y = i1;
+		default : y = i2;
+	endcase
+end
+endmodule
+```
+## RTL Simulation with Icarus Verilog
+```bash
+iverilog comp_case.v tb_comp_case.v
+./a.out
+gtkwave tb_comp_case.vcd
+```
+<p align="center"> <img src="Images/gtk_comp_case.png?raw=true" alt="gtk_comp_case" width="700"/> </p>
+
+## Yosys Synthesis
+```yosys
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog comp_case.v
+synth -top comp_case
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show 
+```
+<p align="center"> <img src="Images/comp_case_netlist.png?raw=true" alt="comp_case_netlist" width="700"/> </p>
+
+✅ Observation: Adding a default branch handles all remaining selector values and prevents latch inference.
+
+## 🔹 C — bad_case [Ambiguous / Overlapping Case]
+## Design Code
+```verilog
+module bad_case (input i0 , input i1, input i2, input i3 , input [1:0] sel, output reg y);
+always @(*)
+begin
+	case(sel)
+		2'b00: y = i0;
+		2'b01: y = i1;
+		2'b10: y = i2;
+		2'b1?: y = i3;
+	endcase
+end
+
+endmodule
+```
+## RTL Simulation with Icarus Verilog
+```bash
+iverilog bad_case.v tb_bad_case.v
+./a.out
+gtkwave tb_bad_case.vcd
+```
+<p align="center"> <img src="Images/gtk_bad_case.png?raw=true" alt="gtk_bad_case" width="700"/> </p>
+
+## Yosys Synthesis
+```yosys
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog bad_case.v
+synth -top bad_case
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show 
+```
+<p align="center"> <img src="Images/bad_case_netlist.png?raw=true" alt="bad_case_netlist" width="700"/> </p>
+
+⚠️ Observation: Overlapping or wildcard cases can create ambiguous hardware logic, leading to unpredictable behavior.
+
+## 🔹 D — partial_case_assign [Partial Case Assignment]
+## Design Code
+```verilog
+module partial_case_assign (input i0 , input i1 , input i2 , input [1:0] sel, output reg y , output reg x);
+always @ (*)
+begin
+	case(sel)
+		2'b00 : begin
+			y = i0;
+			x = i2;
+			end
+		2'b01 : y = i1;
+		default : begin
+		           x = i1;
+			   y = i2;
+			  end
+	endcase
+end
+endmodule
+```
+
+## Yosys Synthesis
+```yosys
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog partial_case_assign.v
+synth -top partial_case_assign
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show 
+```
+<p align="center"> <img src="Images/partial_case_assign_netlist.png?raw=true" alt="partial_case_assign" width="700"/> </p>
+
+⚠️ Observation: Partial assignments can also infer latches. Always assign all outputs in every case branch to ensure deterministic behavior.
+
+
+
+
+
 ## 3️⃣ Looping Constructs in Verilog  
 
 ### 🔹 Procedural For Loop  
