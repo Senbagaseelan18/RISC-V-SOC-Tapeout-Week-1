@@ -71,6 +71,41 @@ begin
         // Default Action
 end
 ```
+<p align="center"> <img src="Images/priority.png?raw=true" alt="If_else_hardware" width="700"/> </p>
+
+## Execution Flow:
+
+- <cond_1> → highest priority.
+
+- If false, <cond_2> is checked, then <cond_3>, and finally the else block.
+
+## B) Incomplete if Statements – Danger in Combinational Logic
+
+-Missing a final else can cause **inferred latches.**
+
+-**Reason**: The synthesis tool must “hold” the previous value when no condition is true.
+
+-❌ Bad Practice: Using incomplete if in combinational blocks.
+
+<p align="center"> <img src="Images/danger_with_if.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="https://github.com/chezhiyan11/VSD-RISC-V---WEEK-1/blob/main/Day5/Images/Infered_latch.png?raw=true" alt="Inferred latch" width="700"/> </p>
+
+
+## C) Valid Usage in Sequential Logic
+
+In **sequential circuits**, incomplete if statements are **intentional**, e.g., counters
+```verilog
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        count <= 0;
+    else if (en)
+        count <= count + 1;
+    // No final else: holds previous value
+end
+```
+<p align="center"> <img src="Images/Valid_infered_latch.png?raw=true" alt="Valid inferred latch" width="700"/> </p>
+
+## 🔹 2) The case Statement in Verilog
+
 
 ## 2️⃣ Case Studies on Incomplete Constructs  
 
