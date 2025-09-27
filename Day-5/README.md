@@ -87,7 +87,7 @@ end
 
 -❌ Bad Practice: Using incomplete if in combinational blocks.
 
-<p align="center"> <img src="Images/danger_with_if.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="https://github.com/chezhiyan11/VSD-RISC-V---WEEK-1/blob/main/Day5/Images/Infered_latch.png?raw=true" alt="Inferred latch" width="700"/> </p>
+<p align="center"> <img src="Images/danger_with_if.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="Images/Infered_latch.png?raw=true" alt="Inferred latch" width="700"/> </p>
 
 
 ## C) Valid Usage in Sequential Logic
