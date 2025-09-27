@@ -1,27 +1,21 @@
- <div align="center" style="margin-bottom:20px;">
-  <h1 style="font-size:32px; color:#4B0082; font-weight:bold; text-shadow: 2px 2px 4px #aaa;">
-    🌟 Week 1 — Day 2
-  </h1>
-  <hr style="width:200px; border:2px solid #FF69B4; margin-top:-10px;">
-  <p style="font-size:16px; color:#555;">
-    Dive into <b>timing libraries</b>, <b>synthesis strategies</b>, and <b>flip-flop coding optimizations</b> for RTL design.
-  </p>
-</div>
-
-
 <div align="center">
-  <table cellpadding="10">
-    <tr>
-      <td><img src="https://img.shields.io/badge/⏱️-Timing_Lib-blueviolet?style=for-the-badge&logo=clock" /></td>
-      <td><img src="https://img.shields.io/badge/🏗️-Hier_vs_Flat-orange?style=for-the-badge&logo=architecture" /></td>
-      <td><img src="https://img.shields.io/badge/🔁-FlipFlop_Code-blue?style=for-the-badge&logo=code" /></td>
-      <td><img src="https://img.shields.io/badge/⚙️-Synthesis_Opt-red?style=for-the-badge&logo=optimization" /></td>
-    </tr>
-  </table>
-  <p style="margin-top:15px; font-size:16px;">
-    🎯 <b>Focus Areas:</b> Explore <b>timing libraries</b>, understand <b>hierarchical vs flat synthesis</b>, experiment with <b>flip-flop coding</b>, and apply <b>optimization techniques</b> for efficient RTL design. ⚡
+  <h1>⏱️ Day 2 — Timing Libraries, Synthesis, and Flip-Flop Coding</h1>
+  <p>
+    In <b>Day 2</b>, we explore the role of <b>timing libraries</b> in synthesis,  
+    compare <b>hierarchical vs flat synthesis strategies</b>, and study  
+    <b>flip-flop coding styles</b> that impact area, power, and performance.  
+    We also apply <b>synthesis optimizations</b> for efficient RTL design.
   </p>
+
+  <img src="https://img.shields.io/badge/Week1-Day2-darkgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Timing-Libraries-blueviolet?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Synthesis-Hier_vs_Flat-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/FlipFlop-Coding_Styles-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Optimization-Synthesis-red?style=for-the-badge" />
 </div>
+
+---
+
 
 
  ## Table of Contents
