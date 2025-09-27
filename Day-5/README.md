@@ -79,13 +79,13 @@ end
 
 - If false, <cond_2> is checked, then <cond_3>, and finally the else block.
 
-## B) Incomplete if Statements – Danger in Combinational Logic
+### B) Incomplete if Statements – Danger in Combinational Logic
 
--Missing a final else can cause **inferred latches.**
+-  Missing a final else can cause **inferred latches.**
 
--**Reason**: The synthesis tool must “hold” the previous value when no condition is true.
+-  **Reason**: The synthesis tool must “hold” the previous value when no condition is true.
 
--❌ Bad Practice: Using incomplete if in combinational blocks.
+-  ❌ Bad Practice: Using incomplete if in combinational blocks.
 
 <p align="center"> <img src="Images/danger_with_if.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="Images/Infered_latch.png?raw=true" alt="Inferred latch" width="700"/> </p>
 
@@ -105,6 +105,76 @@ end
 <p align="center"> <img src="Images/Valid_infered_latch.png?raw=true" alt="Valid inferred latch" width="700"/> </p>
 
 ## 🔹 2) The case Statement in Verilog
+
+The `case` statement provides a **structured way** to select between multiple options based on a **selector signal**.
+
+#### A) Basic Implementation
+- Synthesizes into a **multiplexer**, driven by the selector.  
+- Easier to read and maintain than multiple `if-else` statements.
+
+```verilog
+module mux4x1_case (
+    input  [1:0] sel,    // 2-bit selector
+    input  C1, C2, C3, C4, // 4 data inputs
+    output reg y         // output
+);
+
+always @(*) begin
+    case (sel)
+        2'b00: y = C1;
+        2'b01: y = C2;
+        2'b10: y = C3;
+        2'b11: y = C4;
+        default: y = 0;   // safe default to avoid latch inference
+    endcase
+end
+
+endmodule
+```
+<p align="center"> <img src="Images/mux_case.png?raw=true" alt="Mux_Case" width="700"/> </p>
+
+### B) Common Pitfalls & Solutions for `case`
+
+#### 1) Incomplete Case
+- ❌ Missing cases cause **latches to be inferred**.
+- ✅ Fix: Always include a `default` branch.
+
+```verilog
+case (sel)
+    2'b00: y = C1;
+    2'b01: y = C2;
+    default: y = 0;  // prevents latch inference
+endcase
+```
+<p align="center"> <img src="Images/latched_mux.png?raw=true" alt="latched_mux" width="700"/> </p> 
+
+### C) Overlapping Cases
+
+- Unlike `if-else`, `case` statements **do not have priority**.  
+- ❌ Overlapping selectors lead to ambiguity.
+
+```verilog
+always @(*) begin
+    case (sel)
+        2'b00: y = a;
+        2'b01: y = b;
+        2'b10: y = c;
+        2'b10: y = d;  // ❌ Overlapping selector
+        default: y = 0;
+    endcase
+end
+```
+
+**Summary:**
+
+- ✅ `if-else` → **priority logic**
+- ✅ `case` → **multiplexer selection**
+- ⚠️ Always handle **incomplete and overlapping cases** to prevent unintended hardware
+
+<p align="center">
+  <img src="Images/over.png" />
+</p>
+
 
 
 ## 2️⃣ Case Studies on Incomplete Constructs  
