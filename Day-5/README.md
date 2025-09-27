@@ -646,6 +646,87 @@ This RCA is implemented by **structurally instantiating multiple full-adder modu
 <p align="center"> <img src="Images/netlist_rca.png?raw=true" alt="rca_generate" width="700"/> </p>
 
 
+# 🌟 Day 5 — Summary: Conditional & Loop Constructs in Verilog
+
+Day 5 focused on **decision-making constructs** (`if`, `case`) and **iterative constructs** (`for` loops and `for-generate`) in Verilog. These constructs are essential for writing **predictable, synthesizable hardware designs**.  
+
+---
+
+## 1️⃣ Conditional Constructs
+
+### 🔹 `if-else` Statements
+- **Priority Logic:** `if-else if-else` chains are synthesized as **priority multiplexers**.
+- **Incomplete `if` in Combinational Logic:** May cause **inferred latches**, holding previous values unintentionally.
+- **Sequential Logic Exception:** Incomplete `if` statements in sequential logic are valid for holding state.
+
+### 🔹 `case` Statements
+- **Multiplexer Representation:** `case` statements synthesize as **selector-driven multiplexers**.
+- **Incomplete `case`:** May infer latches if not all selector values are covered.
+- **Partial Assignment & Overlapping Cases:** Ensure **all outputs are assigned in all branches**; avoid duplicate selectors.
+
+**Key Takeaways:**  
+- Always include `else` or `default` to prevent latch inference in combinational logic.  
+- Be cautious with overlapping `case` items—unlike `if-else`, `case` has no inherent priority.
+
+---
+
+## 2️⃣ Loop Constructs
+
+### 🔹 Procedural `for` Loop (inside `always`)
+- **Behavioral Logic Modeling:** Evaluates expressions and drives outputs iteratively.  
+- **Use Cases:** MUX/DEMUX selection, iterative assignments.  
+
+### 🔹 `for-generate` Loop (outside `always`)
+- **Structural Hardware Modeling:** Instantiates multiple hardware blocks systematically.  
+- **Use Cases:** Arrays of gates, replicated modules, scalable arithmetic units like RCA.
+
+**Key Takeaways:**  
+- Procedural `for` loops **do not instantiate hardware**, they control **behavioral evaluation**.  
+- `for-generate` loops **physically replicate hardware**, ideal for scalable design patterns.
+
+---
+
+## 3️⃣ Labs & Experiments
+
+| Lab | Focus | Observations |
+|-----|-------|-------------|
+| `incomp_if` / `incomp_if2` | Incomplete `if` → inferred latches | Latches inferred in combinational logic; sequential logic safe |
+| `incomp_case` / `comp_case` / `bad_case` | Case statements | Missing default or overlapping items cause latch or ambiguous behavior |
+| `partial_case_assign` | Partial assignments in `case` | Always assign all outputs in all branches to avoid latches |
+| `mux_generate` | Procedural `for` | Behavioral modeling of MUX using iterative assignments |
+| `demux_case` / `demux_generate` | DEMUX implementations | Case-based vs iterative procedural modeling demonstrated |
+| `rca` | Ripple Carry Adder using `for-generate` | Structural replication of full-adders; scalable arithmetic design |
+
+---
+
+## ✅ Summary of Best Practices
+
+1. **Combinational Logic**
+   - Always include `else` (if) or `default` (case) to prevent inferred latches.  
+   - Assign all outputs in all branches.
+
+2. **Sequential Logic**
+   - Incomplete `if` statements are valid to hold state.
+
+3. **Loops**
+   - Use **procedural `for`** for iterative behavioral evaluation.  
+   - Use **`for-generate`** for structural replication and scalable hardware instantiation.
+
+4. **Synthesis Awareness**
+   - Know how constructs map to hardware: `if-else` → priority MUX, `case` → selector-driven MUX.  
+   - Always simulate RTL and verify in GTKWave before synthesis.
+
+---
+
+**Day 5 Outcome:**  
+- Mastery of conditional and loop constructs in Verilog.  
+- Awareness of **latch inference issues**, and methods to **avoid unintended hardware behavior**.  
+- Hands-on practice with **MUX/DEMUX design, partial assignments, and RCA implementation**.  
+- Prepared to use loops and conditional statements in **both behavioral and structural Verilog** effectively.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Day5%20|%20Mastered%20Conditional%20%26%20Loop%20Constructs-blue?style=for-the-badge" />
+</p>
 
 
 
