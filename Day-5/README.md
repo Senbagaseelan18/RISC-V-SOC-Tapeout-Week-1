@@ -17,11 +17,24 @@
 
 ## 📑 Table of Contents  
 
-- [1️⃣ Conditional Constructs in Verilog](#1️⃣-conditional-constructs-in-verilog)  
-- [2️⃣ Case Studies on Incomplete Constructs](#2️⃣-case-studies-on-incomplete-constructs)  
-- [3️⃣ Looping Constructs in Verilog](#3️⃣-looping-constructs-in-verilog)  
-- [4️⃣ Practical Experiments](#4️⃣-practical-experiments)  
-- [5️⃣ Key Takeaways](#5️⃣-key-takeaways)  
+-# 📘 Table of Contents — Day 5
+
+| 🔢 # | 📂 Topic | 🔗 Link |
+|------|----------|---------|
+| 1 | **Decision-Making Constructs** | [Go to Section](#1-decision-making-constructs) |
+| 1.1 | ➡️ `if-else` Statements | [Go to Section](#11-if-else-statements) |
+| 1.2 | ➡️ `case` Statements | [Go to Section](#12-case-statements) |
+| 1.3 | ⚠️ Incomplete Constructs → Latch Inference | [Go to Section](#13-incomplete-constructs--latch-inference) |
+| 2 | **Looping Constructs** | [Go to Section](#2-looping-constructs) |
+| 2.1 | ➡️ `for` Loops (Behavioral Iteration) | [Go to Section](#21-for-loops-behavioral-iteration) |
+| 2.2 | ➡️ `generate` Loops (Structural Replication) | [Go to Section](#22-generate-loops-structural-replication) |
+| 3 | **Synthesis Considerations** | [Go to Section](#3-synthesis-considerations) |
+| 3.1 | ✅ Loop Unrolling in Hardware | [Go to Section](#31-loop-unrolling-in-hardware) |
+| 3.2 | ⚡ Optimization & RTL Scalability | [Go to Section](#32-optimization--rtl-scalability) |
+| 4 | **Labs & Hands-On** | [Go to Section](#4-labs--hands-on) |
+| 4.1 | 🧪 Lab: `if-else` & `case` Decision Testing | [Go to Section](#41-lab-if-else--case-decision-testing) |
+| 4.2 | 🧪 Lab: Loop-Based Counter Design | [Go to Section](#42-lab-loop-based-counter-design) |
+| 4.3 | 🧪 Lab: Generate-Based Multiplexer Array | [Go to Section](#43-lab-generate-based-multiplexer-array) |
 
 ---
 
