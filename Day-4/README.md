@@ -4,33 +4,43 @@
   <table cellpadding="10">
     <tr>
       <td align="center">
-        <a href="#gls-concept-and-flow-using-icarus-verilog">
+        <a href="#1️⃣-gls-concept-and-flow">
           <img src="https://img.shields.io/badge/1-GLS%20Concept-blueviolet?style=for-the-badge&logo=verilog" />
         </a>
-        <br>GLS Concept
+        <br>GLS Concept & Flow
       </td>
       <td align="center">
-        <a href="#synthesis-vs-simulation-mismatch">
-          <img src="https://img.shields.io/badge/2-Synth%20Sim%20Mismatch-orange?style=for-the-badge&logo=code" />
+        <a href="#2️⃣-synthesis-vs-simulation-mismatch">
+          <img src="https://img.shields.io/badge/2-Synth--Sim%20Mismatch-orange?style=for-the-badge&logo=code" />
         </a>
         <br>Synth-Sim Mismatch
       </td>
       <td align="center">
-        <a href="#labs-on-gls-and-synthesis-simulation-mismatch">
-          <img src="https://img.shields.io/badge/3-Labs%20GLS%20Mux-blue?style=for-the-badge&logo=verilog" />
+        <a href="#3️⃣-gls-and-netlist-labs">
+          <img src="https://img.shields.io/badge/3-GLS%20%26%20Labs-green?style=for-the-badge&logo=verilog" />
         </a>
         <br>GLS & Netlist Labs
       </td>
       <td align="center">
-        <a href="#labs-on-synth-sim-mismatch-for-blocking-statement">
-          <img src="https://img.shields.io/badge/4-Labs%20Blocking%20Statement-red?style=for-the-badge&logo=code" />
+        <a href="#4️⃣-blocking-vs-non-blocking-labs">
+          <img src="https://img.shields.io/badge/4-Blocking%20Statements-red?style=for-the-badge&logo=code" />
         </a>
-        <br>Blocking Statement Labs
+        <br>Blocking vs Non-Blocking
+      </td>
+      <td align="center">
+        <a href="#5️⃣-key-takeaways">
+          <img src="https://img.shields.io/badge/5-Summary%20Insights-yellow?style=for-the-badge&logo=markdown" />
+        </a>
+        <br>Key Takeaways
       </td>
     </tr>
   </table>
+
   <p style="margin-top:15px; font-size:16px;">
-    🎯 <b>Focus Areas:</b> Explore <b>Gate-Level Simulation</b>, understand <b>synth-sim mismatches</b>, experiment with <b>GLS labs</b>, and learn <b>blocking vs non-blocking pitfalls</b> in Verilog.
+    🎯 <b>Focus Areas:</b> Understand <b>Gate-Level Simulation</b>,  
+    explore <b>synthesis vs simulation mismatches</b>,  
+    run <b>GLS labs with netlists</b>, and learn the impact of  
+    <b>blocking vs non-blocking assignments</b> in Verilog.
   </p>
 </div>
 
