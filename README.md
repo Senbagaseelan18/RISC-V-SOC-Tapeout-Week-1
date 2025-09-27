@@ -20,11 +20,11 @@
 
 | Day | Topic | Subtopics | Description |
 |-----|-------|-----------|-------------|
-| [Day 1](Day-1.md) | Introduction to RTL & Digital Design | Combinational vs Sequential, RTL basics, Clocks & Resets, Verilog coding | Learned fundamental concepts of digital design, RTL coding styles, and simulation setup. |
-| [Day 2](Day-2.md) | Combinational Logic & Timing Analysis | Gates, Logic Levels, Propagation Delay, Timing Analysis, Lab: Basic Combinational Circuits | Explored gate-level logic, timing delays, and performing functional and timing simulations using Yosys & GTKWave. |
-| [Day 3](Day-3.md) | Introduction to Optimization | Constant Propagation, Boolean Simplification, Sequential Constant Propagation, Flip-Flop Optimization | Learned combinational and sequential optimization techniques, reducing gate/transistor count, and improving area & power. |
-| [Day 4](Day-4.md) | GLS, Blocking vs Non-Blocking, Synth-Sim Mismatch | Gate-Level Simulation (GLS), Blocking vs Non-blocking Assignments, Synth-Sim Differences, Lab: DFF & Counter Simulations | Understood timing behavior in synthesized circuits, differences between RTL and GLS, and how to write proper Verilog for synthesis. |
-| [Day 5](Day-5.md) | Advanced Optimization Techniques | State Optimization, Cloning, Retiming, Counter Optimizations, Lab: Sequential Design Optimization | Explored advanced sequential optimizations, improving critical paths, reducing flip-flops, and learning practical RTL design improvements. |
+| [Day 1](Day-1/README.md) | Introduction to RTL & Digital Design | Combinational vs Sequential, RTL basics, Clocks & Resets, Verilog coding | Learned fundamental concepts of digital design, RTL coding styles, and simulation setup. |
+| [Day 2](Day-2/README.md) | Combinational Logic & Timing Analysis | Gates, Logic Levels, Propagation Delay, Timing Analysis, Lab: Basic Combinational Circuits | Explored gate-level logic, timing delays, and performing functional and timing simulations using Yosys & GTKWave. |
+| [Day 3](Day-3/README.md) | Introduction to Optimization | Constant Propagation, Boolean Simplification, Sequential Constant Propagation, Flip-Flop Optimization | Learned combinational and sequential optimization techniques, reducing gate/transistor count, and improving area & power. |
+| [Day 4](Day-4/README.md) | GLS, Blocking vs Non-Blocking, Synth-Sim Mismatch | Gate-Level Simulation (GLS), Blocking vs non-blocking Assignments, Synth-Sim Differences, Lab: DFF & Counter Simulations | Understood timing behavior in synthesized circuits, differences between RTL and GLS, and how to write proper Verilog for synthesis. |
+| [Day 5](Day-5/README.md) | Advanced Optimization Techniques | State Optimization, Cloning, Retiming, Counter Optimizations, Lab: Sequential Design Optimization | Explored advanced sequential optimizations, improving critical paths, reducing flip-flops, and learning practical RTL design improvements. |
 
 ---
 
