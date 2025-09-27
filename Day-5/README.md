@@ -514,43 +514,140 @@ endmodule
 | **Use Case**               | Iterative assignments, MUX selection   | Arrays of gates, adders, repeated modules |
 
 
+## 6) 🧪 Labs on `for` Loop & `for-generate` Constructs  
 
-
-## 3️⃣ Looping Constructs in Verilog  
-
-### 🔹 Procedural For Loop  
-- Written **inside always block**.  
-- Used for **behavioral iteration**.  
-
-### 🔹 Generate For Loop  
-- Written **outside always block**.  
-- Used for **replicating hardware structures**.  
-
-| Feature | Procedural For | Generate For |
-|---------|----------------|--------------|
-| Location | Inside `always` | Outside `always` |
-| Usage | Behavioral logic | Structural replication |
-| Example | Testbench counters | Array of adders |
+In this lab, we explore **iterative Verilog constructs** that enable both **behavioral** and **structural hardware modeling**.  
+We will implement, simulate, and analyze different designs using **procedural `for` loops** (inside `always` blocks) and **`for-generate` loops** (for structural replication).
 
 ---
 
-## 4️⃣ Practical Experiments  
+## 1. MUX Using Procedural `for` Loop  
 
-✅ **MUX with procedural for**  
-✅ **MUX with generate for**  
-✅ **DEMUX: case vs generate**  
-✅ **Ripple Carry Adder using generate loop**  
+### A)  Design Code  
+```verilog
+module mux_generate (
+    input  i0, i1, i2, i3,
+    input  [1:0] sel,
+    output reg y
+);
+wire [3:0] inputs;
+assign inputs = {i3, i2, i1, i0};
+integer k;
 
----
+always @(*) begin
+    for (k = 0; k < 4; k = k + 1) begin
+        if (sel == k)
+            y = inputs[k];
+    end
+end
+endmodule
+```
 
-## 5️⃣ Key Takeaways  
+## Explanation:
+This 4×1 MUX uses a **procedural** for **loop** to iterate through all input lines and assign the selected input to the output. It demonstrates **behavioral modeling** of selection logic using iterative constructs.
 
-- `if-else` → **priority-driven logic**  
-- `case` → **parallel multiplexer logic**  
-- Missing `else/default` → **unintended latches**  
-- Procedural `for` → **behavioral modeling**  
-- Generate `for` → **hardware replication**  
-- Loops help in **scalable & reusable hardware design**  
+## B)  GTKwave Simulation Waveform
+<p align="center"> <img src="Images/gtk_mux_gen.png?raw=true" alt="mux_generate" width="700"/> </p> 
 
----
+## 2. DEMUX Using Case Statement
+## A)  Design Code
+```verilog
+module demux_case (
+    output o0, o1, o2, o3, o4, o5, o6, o7,
+    input [2:0] sel,
+    input i
+);
+reg [7:0] y_int;
+assign {o7,o6,o5,o4,o3,o2,o1,o0} = y_int;
+
+always @(*) begin
+    y_int = 8'b0;
+    case (sel)
+        3'b000: y_int[0] = i;
+        3'b001: y_int[1] = i;
+        3'b010: y_int[2] = i;
+        3'b011: y_int[3] = i;
+        3'b100: y_int[4] = i;
+        3'b101: y_int[5] = i;
+        3'b110: y_int[6] = i;
+        3'b111: y_int[7] = i;
+    endcase
+end
+endmodule
+```
+
+## Explanation:
+This DEMUX uses a **case statement** to assign a single input to one of eight outputs based on the select signal. It highlights **behavioral control flow** without structural replication.
+
+## B)  GTKwave Simulation Waveform
+<p align="center"> <img src="Images/netlist_demux_case.png?raw=true" alt="demux_case" width="700"/> </p>
+
+
+## 3. DEMUX Using for-generate
+## A)  Design Code
+```verilog
+module demux_generate (
+    output o0, o1, o2, o3, o4, o5, o6, o7,
+    input [2:0] sel,
+    input i
+);
+reg [7:0] y_int;
+assign {o7,o6,o5,o4,o3,o2,o1,o0} = y_int;
+integer k;
+
+always @(*) begin
+    y_int = 8'b0;
+    for (k = 0; k < 8; k = k + 1) begin
+        if (k == sel)
+            y_int[k] = i;
+    end
+end
+endmodule
+```
+## Explanation:
+Here, the DEMUX logic is implemented using a for **loop** for procedural iteration. This approach structurally resembles replication of logic per output line and is scalable for larger buses.
+
+## B)  GTKwave Simulation Waveform
+<p align="center"> <img src="Images/netlist_demux_generate.png?raw=true" alt="demux_generate" width="700"/> </p>
+
+## 4️. 8-bit Ripple Carry Adder (RCA) Using for-generate
+## A) 📜 Design Code
+```verilog
+module rca (
+    input  [7:0] num1,
+    input  [7:0] num2,
+    output [8:0] sum
+);
+wire [7:0] int_sum;
+wire [7:0] int_co;
+
+genvar i;
+
+// Instantiate 7 full adders using for-generate
+generate
+    for (i = 1; i < 8; i = i + 1) begin : RCA_LOOP
+        fa u_fa (.a(num1[i]), .b(num2[i]), .c(int_co[i-1]),
+                 .sum(int_sum[i]), .co(int_co[i]));
+    end
+endgenerate
+
+// First full adder
+fa u_fa0 (.a(num1[0]), .b(num2[0]), .c(1'b0), .sum(int_sum[0]), .co(int_co[0]));
+
+assign sum[7:0] = int_sum;
+assign sum[8] = int_co[7];
+endmodule
+```
+
+## Explanation:
+This RCA is implemented by **structurally instantiating multiple full-adder modules** using a for-generate loop. Each adder connects carry-out to the next stage’s carry-in, demonstrating **scalable structural design.**
+
+## B) GTKwave Simulation Waveform
+<p align="center"> <img src="Images/netlist_rca.png?raw=true" alt="rca_generate" width="700"/> </p>
+
+
+
+
+
+
 
