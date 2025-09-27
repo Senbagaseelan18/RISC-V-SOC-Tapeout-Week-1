@@ -175,6 +175,102 @@ end
   <img src="Images/over.png" />
 </p>
 
+## 3) 🧪 Labs on Incomplete If-Case  
+
+In this lab, we explore **how incomplete `if` statements** can lead to **inferred latches** in combinational logic.  
+We'll simulate the designs using **Icarus Verilog + GTKWave** and observe synthesized hardware using **Yosys**.
+
+---
+
+### ⛏️ Commands Overview  
+
+- **Simulate RTL:** `iverilog <module.v> <testbench.v>` → `./a.out`  
+- **View Waveform:** `gtkwave <wavefile.vcd>`  
+- **Synthesize & Analyze:** `yosys` commands (`read_verilog`, `synth`, `abc`, `show`)  
+
+---
+
+### 🔹 A — `incomp_if` (Incomplete `if` → inferred latch)
+
+#### Design Code
+```verilog
+module incomp_if (
+    input i0, input i1, input i2,
+    output reg y
+);
+always @(*) begin
+    if(i0)
+        y <= i1;
+end
+endmodule
+```
+## Simulation with Icarus Verilog
+
+```bash
+# Compile and run RTL + testbench
+iverilog incomp_if.v tb_incomp_if.v
+./a.out
+gtkwave tb_incomp_if.vcd
+```
+<p align="center"> <img src="Images/gtk_ncomp_if.png?raw=true" alt="GTKWave - incom_if" width="700"/> </p>
+
+### Observation:
+
+-  Since there is no final else, a latch is inferred to hold the previous value when i0 = 0.
+
+-  This is undesirable in combinational logic.
+
+## Synthesis with Yosys
+
+```yosys
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog incomp_if.v
+synth -top incomp_if
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+<p align="center"> <img src="Images/dlatch_infered.png?raw=true" alt="Dlatch inferred" width="700"/> </p> <p align="center"> <img src="Images/incomp_if_netlist.png?raw=true" alt="incomp_if netlist" width="700"/> </p>
+
+
+## 🔹 B — incomp_if2 (Incomplete if-else if → inferred latch)
+
+## Design Code
+```verilog
+module incomp_if2 (
+    input i0, i1, i2, i3,
+    output reg y
+);
+always @(*) begin
+    if(i0)
+        y <= i1;
+    else if (i2)
+        y <= i3;
+    // No final else → inferred latch
+end
+endmodule
+```
+
+## Simulation with Icarus Verilog
+```bash
+iverilog incomp_if2.v tb_incomp_if2.v
+./a.out
+gtkwave tb_incomp_if2.vcd
+```
+<p align="center"> <img src="Images/gtk_incomp_if2.png?raw=true" alt="GTKWave - incom_if2" width="700"/> </p>
+
+## Synthesis with Yosys
+```yosys
+read_liberty -lib ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog incomp_if2.v
+synth -top incomp_if2
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+<p align="center"> <img src="Images/incomp_if2_netlist.png?raw=true" alt="incomp_if2 netlist" width="700"/>
+⚡ Observation: Even with multiple conditions (if-else if), the absence of a final else causes synthesis to infer a latch, highlighting a common pitfall in combinational logic design.
+<p align="center"> <img src="Images/Overlappinge" /> </p> 
+
+
 ## 3️⃣ Looping Constructs in Verilog  
 
 ### 🔹 Procedural For Loop  
