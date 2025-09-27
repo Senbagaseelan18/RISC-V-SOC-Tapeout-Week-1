@@ -47,7 +47,7 @@
 
 📌 **Visualization:**  
 <p align="center"> 
-  <img src="https://github.com/your-repo-name/path-to-images/gls_verilog.png?raw=true" alt="GLS using Verilog" width="600"/> 
+  <img src="Images/glsflow.png?raw=true" alt="GLS using Verilog" width="600"/> 
 </p>
 
 ---
@@ -477,3 +477,45 @@ gtkwave tb_blocking_caveat.vcd
 -✅ The output now matches **expected hardware behavior**, resolving the mismatch seen in RTL simulation.
 
 -  This demonstrates the importance of using **non-blocking assignments (<=) in sequential logic** to match synthesis behavior.
+
+
+## 🌟 Summary — Day 4
+
+**Objective:**  
+Understand **Gate-Level Simulation (GLS)**, identify causes of **synthesis vs simulation mismatches**, and learn proper usage of **blocking vs non-blocking assignments** in Verilog.
+
+---
+
+### 1️⃣ Gate-Level Simulation (GLS)
+- Simulates the **post-synthesis netlist** to verify functional equivalence with RTL.  
+- Detects issues like **uninitialized signals**, **timing mismatches**, or **synthesis-specific behavior**.  
+- Tools: **Yosys** (synthesis), **Icarus Verilog** (simulation), **GTKWave** (waveform visualization).
+
+### 2️⃣ Synthesis vs Simulation Mismatch
+- Occurs when RTL simulation behavior **differs from synthesized hardware**.  
+- Common causes:
+  - **Incomplete sensitivity lists** in combinational logic.  
+  - **Misuse of blocking (`=`) vs non-blocking (`<=`) assignments** in sequential logic.  
+  - **Non-standard Verilog coding** unsupported by synthesis tools.
+
+### 3️⃣ Blocking vs Non-Blocking Assignments
+- **Blocking (`=`)**: Executes sequentially, suited for **combinational logic**.  
+- **Non-blocking (`<=`)**: Executes in parallel, suited for **sequential logic**.  
+- Misuse of blocking in sequential logic → **simulation vs hardware mismatch**.
+
+### 4️⃣ Labs
+- **2:1 MUX Labs**
+  - `ternary_operator_mux.v` → Correct functional RTL design.  
+  - `bad_mux.v` → Shows mismatch due to incomplete sensitivity list.  
+  - Verified with **GLS** that synthesized netlist matches expected RTL behavior.
+- **Blocking Assignment Lab**
+  - `blocking_caveat.v` → Sequential logic mismatch example using blocking assignments.  
+  - Corrected using **non-blocking assignments (`<=`)** to match hardware behavior.
+
+### 5️⃣ Key Takeaways
+- Always verify **functional equivalence** between RTL and synthesized netlist using GLS.  
+- Use **`always @(*)`** for combinational logic to avoid sensitivity list mismatches.  
+- Use **non-blocking assignments (`<=`) in sequential logic** to prevent simulation vs synthesis discrepancies.  
+- Correct Verilog coding practices ensure **hardware reliability** and **simulation accuracy**.
+
+---
