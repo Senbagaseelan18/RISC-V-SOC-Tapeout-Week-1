@@ -1,26 +1,22 @@
-<div align="center" style="margin-bottom:20px;">
-  <h1 style="font-size:32px; color:#4B0082; font-weight:bold; text-shadow: 2px 2px 4px #aaa;">
-    🌟 Day 3 — Introduction to Optimization
-  </h1>
-  <hr style="width:200px; border:2px solid #FF69B4; margin-top:-10px;">
-  <p style="font-size:16px; color:#555;">
-    Dive into <b>combinational & sequential optimization</b>, explore <b>constant propagation</b>, <b>Boolean logic simplification</b>, and <b>sequential flip-flop optimization</b> techniques for efficient RTL design.
+<div align="center">
+  <h1>🌟 Day 3 — Introduction to Optimization</h1>
+  <p>
+    In <b>Day 3</b>, we dive into <b>optimization techniques</b> for  
+    RTL design. Topics include <b>constant propagation</b>,  
+    <b>Boolean logic simplification</b>, and <b>sequential flip-flop  
+    optimizations</b> that improve efficiency in both  
+    <b>combinational</b> and <b>sequential circuits</b>.
   </p>
+
+  <img src="https://img.shields.io/badge/Week1-Day3-darkgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Combinational-Optimization-blueviolet?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Sequential-Optimization-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Boolean-Logic_Simplification-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Labs-FlipFlop_Counters-red?style=for-the-badge" />
 </div>
 
-<div align="center">
-  <table cellpadding="10">
-    <tr>
-      <td><img src="https://img.shields.io/badge/🧮-Combinational_Logic-blueviolet?style=for-the-badge&logo=logic" /></td>
-      <td><img src="https://img.shields.io/badge/🔁-Sequential_Logic-orange?style=for-the-badge&logo=flipflops" /></td>
-      <td><img src="https://img.shields.io/badge/⚡-Optimization_Strategies-blue?style=for-the-badge&logo=optimization" /></td>
-      <td><img src="https://img.shields.io/badge/🖥️-Labs-red?style=for-the-badge&logo=code" /></td>
-    </tr>
-  </table>
-  <p style="margin-top:15px; font-size:16px;">
-    🎯 <b>Focus Areas:</b> Understand <b>constant propagation</b>, simplify <b>Boolean logic</b>, optimize <b>sequential circuits</b>, and implement <b>flip-flop based counters</b> for better RTL efficiency. ⚡
-  </p>
-</div>
+---
+
 
 
 ## 📑 Table of Contents
