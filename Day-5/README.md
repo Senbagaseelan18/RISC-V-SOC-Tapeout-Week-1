@@ -38,17 +38,39 @@
 
 ---
 
-## 1️⃣ Conditional Constructs in Verilog  
+<div align="center">
+  <h1>🔀 Conditional Constructs in Verilog</h1>
+</div>
 
-### 🔹 If-Else (Priority Logic)  
-- Synthesized as **chained multiplexers**.  
-- Higher priority for the first true condition.  
+Conditional logic is at the heart of hardware design in Verilog. Designers use **`if` and `case` statements** to express **decision-making behavior**. These constructs are directly synthesized into hardware, so **how you write them impacts the resulting circuit**.  
 
-### 🔹 Case (Parallel Multiplexer)  
-- Synthesized as **clean multiplexer logic**.  
-- Easier to read than long if-else chains.  
+⚡ **Key Points:**
+- Conditional constructs are used in **combinational** and **sequential** logic.  
+- Incorrect or incomplete usage can lead to **inferred latches**, **unexpected hardware**, or **inefficient circuits**.  
+- Always understand **synthesis implications** when writing conditionals.
 
 ---
+
+## 🔹 1) The `if` Statement in Verilog
+
+The `if` statement is a primary construct for **decision-making** and **priority-based logic**.
+
+### A) Priority Logic Implementation
+- An `if-else if-else` chain synthesizes into **priority logic**.  
+- Hardware equivalent: **chain of multiplexers**, where the first true condition determines the output.
+
+```verilog
+begin
+    if (<cond_1>)
+        // Action 1
+    else if (<cond_2>)
+        // Action 2
+    else if (<cond_3>)
+        // Action 3
+    else
+        // Default Action
+end
+```
 
 ## 2️⃣ Case Studies on Incomplete Constructs  
 
