@@ -14,17 +14,15 @@
 </div>
 
 ---
-# 📑 Table of Contents — Day 5: Control Constructs & Looping in Verilog
+# 📑 Table of Contents — Day 5
 
-| Section | Description |
-|---------|-------------|
-| [1) 🔀 Conditional Constructs in Verilog](#1-🔀-conditional-constructs-in-verilog) | Learn `if-else` statements, priority logic, and latch inference. |
-| [2) 🔹 The case Statement in Verilog](#2-🔹-the-case-statement-in-verilog) | Understand multiplexer selection, incomplete/overlapping cases, and best practices. |
-| [3) 🧪 Labs on Incomplete If-Case](#3-🧪-labs-on-incomplete-if-case) | Explore inferred latches with incomplete `if` statements. |
-| [4) 🧪 Labs on Incomplete & Overlapping Case Statements](#4-🧪-labs-on-incomplete--overlapping-case-statements) | Analyze incomplete, overlapping, and partial case assignments. |
-| [5) 🔁 Loops in Verilog: Procedural & Generate](#5-🔁-loops-in-verilog-procedural--generate) | Learn procedural `for` vs `for-generate` for behavioral and structural modeling. |
-| [6) 🧪 Labs on `for` Loop & `for-generate` Constructs](#6-🧪-labs-on-for-loop--for-generate-constructs) | Practice MUX, DEMUX, and Ripple Carry Adder using loops. |
-| [🌟 Day 5 — Summary: Conditional & Loop Constructs in Verilog](#🌟-day-5-—-summary-conditional--loop-constructs-in-verilog) | Key takeaways, best practices, and observations. |
+- [1) Conditional Constructs in Verilog](#1-conditional-constructs-in-verilog)
+- [2) The case Statement in Verilog](#2-the-case-statement-in-verilog)
+- [3) Labs on Incomplete If-Case](#3-labs-on-incomplete-if-case)
+- [4) Labs on Incomplete & Overlapping Case Statements](#4-labs-on-incomplete--overlapping-case-statements)
+- [5) Loops in Verilog: Procedural & Generate](#5-loops-in-verilog-procedural--generate)
+- [6) Labs on for Loop & for-generate Constructs](#6-labs-on-for-loop--for-generate-constructs)
+- [Day 5 — Summary: Conditional & Loop Constructs in Verilog](#day-5-summary-conditional--loop-constructs-in-verilog)
 
   ### 1) 🔀 Conditional Constructs in Verilog</h1>
 
