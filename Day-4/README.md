@@ -1,47 +1,16 @@
-# 📑 Day 4 — GLS, Blocking vs Non-Blocking, and Synth-Sim Mismatch
-
 <div align="center">
-  <table cellpadding="10">
-    <tr>
-      <td align="center">
-        <a href="#1️⃣-gls-concept-and-flow">
-          <img src="https://img.shields.io/badge/1-GLS%20Concept-blueviolet?style=for-the-badge&logo=verilog" />
-        </a>
-        <br>GLS Concept & Flow
-      </td>
-      <td align="center">
-        <a href="#2️⃣-synthesis-vs-simulation-mismatch">
-          <img src="https://img.shields.io/badge/2-Synth--Sim%20Mismatch-orange?style=for-the-badge&logo=code" />
-        </a>
-        <br>Synth-Sim Mismatch
-      </td>
-      <td align="center">
-        <a href="#3️⃣-gls-and-netlist-labs">
-          <img src="https://img.shields.io/badge/3-GLS%20%26%20Labs-green?style=for-the-badge&logo=verilog" />
-        </a>
-        <br>GLS & Netlist Labs
-      </td>
-      <td align="center">
-        <a href="#4️⃣-blocking-vs-non-blocking-labs">
-          <img src="https://img.shields.io/badge/4-Blocking%20Statements-red?style=for-the-badge&logo=code" />
-        </a>
-        <br>Blocking vs Non-Blocking
-      </td>
-      <td align="center">
-        <a href="#5️⃣-key-takeaways">
-          <img src="https://img.shields.io/badge/5-Summary%20Insights-yellow?style=for-the-badge&logo=markdown" />
-        </a>
-        <br>Key Takeaways
-      </td>
-    </tr>
-  </table>
-
-  <p style="margin-top:15px; font-size:16px;">
-    🎯 <b>Focus Areas:</b> Understand <b>Gate-Level Simulation</b>,  
-    explore <b>synthesis vs simulation mismatches</b>,  
-    run <b>GLS labs with netlists</b>, and learn the impact of  
+  <h1>⚡ Day 4 — GLS, Blocking vs Non-Blocking, and Synth-Sim Mismatch</h1>
+  <p>
+    In <b>Day 4</b>, we explore <b>Gate-Level Simulation (GLS)</b>,  
+    understand the causes of <b>synthesis vs simulation mismatches</b>,  
+    perform <b>GLS labs with netlists</b>, and study the impact of  
     <b>blocking vs non-blocking assignments</b> in Verilog.
   </p>
+
+  <img src="https://img.shields.io/badge/Week1-Day4-darkgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/GLS-Concepts-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Mismatch-Simulation_vs_Synthesis-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Verilog-Blocking_vs_NonBlocking-red?style=for-the-badge" />
 </div>
 
 ---
