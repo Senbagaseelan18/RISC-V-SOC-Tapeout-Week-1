@@ -14,36 +14,16 @@
 </div>
 
 ---
-
 # 📑 Table of Contents — Day 5: Control Constructs & Looping in Verilog
 
-| Section | Subsection | Description |
-|---------|-----------|-------------|
-| [1️⃣ Conditional Constructs in Verilog](#1-conditional-constructs-in-verilog) | [The `if` Statement](#the-if-statement-in-verilog) | Priority-based logic using `if-else` |
-|  | [Priority Logic Implementation](#a-priority-logic-implementation) | Synthesizes to priority multiplexers |
-|  | [Incomplete if Statements – Danger in Combinational Logic](#b-incomplete-if-statements--danger-in-combinational-logic) | Can cause inferred latches |
-|  | [Valid Usage in Sequential Logic](#c-valid-usage-in-sequential-logic) | Holds state safely |
-|  | [The `case` Statement](#2-the-case-statement-in-verilog) | Structured multi-option selection |
-|  | [Basic Implementation](#a-basic-implementation) | Selector-driven multiplexer |
-|  | [Common Pitfalls & Solutions](#b-common-pitfalls--solutions-for-case) | Handling incomplete/overlapping cases |
-| [2️⃣ Labs on Incomplete If-Case](#3-🧪-labs-on-incomplete-if-case) | [Commands Overview](#⛏️-commands-overview) | RTL simulation & synthesis workflow |
-|  | [`incomp_if` — Incomplete If](#a-—-incomp_if-incomplete-if-) | Inferred latch demonstration |
-|  | [`incomp_if2` — Incomplete If-Else If](#b-incomp_if2-incomplete-if-else-if-) | Multiple conditions, missing final else |
-| [3️⃣ Labs on Incomplete & Overlapping Case Statements](#4-🧪-labs-on-incomplete--overlapping-case-statements) | [`incomp_case` — Incomplete Case](#a-—-incomp_case-incomplete-case) | Missing cases → latch inference |
-|  | [`comp_case` — Complete Case](#b-—-comp_case-complete-case) | Default handles all selectors |
-|  | [`bad_case` — Ambiguous / Overlapping Case](#c-—-bad_case-ambiguous--overlapping-case) | Overlapping selectors → unpredictable |
-|  | [`partial_case_assign` — Partial Assignment](#d-—-partial_case_assign-partial-case-assignment) | All outputs must be assigned |
-| [4️⃣ Loops in Verilog: Procedural & Generate](#5-🔁-loops-in-verilog-procedural--generate) | [Procedural `for` Loop](#1️⃣-procedural-for-loop-behavioral) | Iterative behavioral logic |
-|  | [Example: 32×1 MUX](#🔹-example-321-multiplexer-using-procedural-for) | Sequential evaluation of inputs |
-|  | [`for-generate` Loop](#2️⃣-generate-for-loop-structural--hardware-replication) | Structural replication of hardware |
-|  | [Example 1: Array of AND Gates](#🔹-example-1-array-of-and-gates) | Gate-level replication |
-|  | [Example 2: N-bit Ripple Carry Adder](#🔹-example-2-n-bit-ripple-carry-adder) | Full-adder chain using generate loop |
-|  | [Procedural vs Generate Comparison](#📊-procedural-for-vs-generate-for-loops-in-verilog) | Behavioral vs structural difference |
-| [5️⃣ Labs on `for` Loop & `for-generate`](#6-🧪-labs-on-for-loop--for-generate-constructs) | [MUX Using Procedural `for` Loop](#1-mux-using-procedural-for-loop) | Behavioral MUX |
-|  | [DEMUX Using Case Statement](#2-demux-using-case-statement) | Case-based DEMUX |
-|  | [DEMUX Using for-generate](#3-demux-using-for-generate) | Iterative DEMUX for larger buses |
-|  | [8-bit Ripple Carry Adder (RCA)](#4️-8-bit-ripple-carry-adder-rca-using-for-generate) | Structural scalable RCA |
-| [6️⃣ Day 5 Summary](#🌟-day-5-—-summary-conditional--loop-constructs-in-verilog) | - | Best practices & observations |
+| Section | Description |
+|---------|-------------|
+| [1️⃣ Conditional Constructs in Verilog](#1️⃣-conditional-constructs-in-verilog) | Learn `if-else` and `case` statements, priority logic, and latch inference. |
+| [2️⃣ Labs on Incomplete If-Case](#2️⃣-labs-on-incomplete-if-case) | Explore inferred latches with incomplete `if` statements. |
+| [3️⃣ Labs on Incomplete & Overlapping Case Statements](#3️⃣-labs-on-incomplete--overlapping-case-statements) | Study incomplete, overlapping, and partial case assignments. |
+| [4️⃣ Loops in Verilog: Procedural & Generate](#4️⃣-loops-in-verilog-procedural--generate) | Understand procedural `for` vs `for-generate` loops for behavioral and structural design. |
+| [5️⃣ Labs on `for` Loop & `for-generate`](#5️⃣-labs-on-for-loop--for-generate) | Practice MUX, DEMUX, and Ripple Carry Adder using loops. |
+| [6️⃣ Day 5 Summary](#6️⃣-day-5-summary) | Key takeaways, best practices, and observations. |
 
 
   ### 1) 🔀 Conditional Constructs in Verilog</h1>
