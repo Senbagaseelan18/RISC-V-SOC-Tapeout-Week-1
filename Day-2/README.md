@@ -500,7 +500,7 @@ gtkwave tb_dff_asyncres.vcd
 - Useful for **instant initialization**, **forcing signals high**, or **control purposes** in sequential circuits.  
 
 <p align="center">
-  <img src="async_set.png" alt="Asynchronous Set Simulation" width="100%"/>
+  <img src="asyn_set.png" alt="Asynchronous Set Simulation" width="100%"/>
 </p>
 
 ---
