@@ -59,7 +59,7 @@ begin
         // Default Action
 end
 ```
-<p align="center"> <img src="Images/priority.png?raw=true" alt="If_else_hardware" width="700"/> </p>
+<p align="center"> <img src="Images/1.png?raw=true" alt="If_else_hardware" width="700"/> </p>
 
 ## Execution Flow:
 
@@ -75,7 +75,7 @@ end
 
 -  ❌ Bad Practice: Using incomplete if in combinational blocks.
 
-<p align="center"> <img src="Images/danger_with_if.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="Images/Infered_latch.png?raw=true" alt="Inferred latch" width="700"/> </p>
+<p align="center"> <img src="Images/d2.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="Images/3.png?raw=true" alt="Inferred latch" width="700"/> </p>
 
 
 ## C) Valid Usage in Sequential Logic
@@ -90,7 +90,7 @@ always @(posedge clk or posedge rst) begin
     // No final else: holds previous value
 end
 ```
-<p align="center"> <img src="Images/Valid_infered_latch.png?raw=true" alt="Valid inferred latch" width="700"/> </p>
+<p align="center"> <img src="Images/4.png?raw=true" alt="Valid inferred latch" width="700"/> </p>
 
 ### 2 The case Statement in Verilog
 
@@ -119,7 +119,7 @@ end
 
 endmodule
 ```
-<p align="center"> <img src="Images/mux_case.png?raw=true" alt="Mux_Case" width="700"/> </p>
+<p align="center"> <img src="Images/5.png?raw=true" alt="Mux_Case" width="700"/> </p>
 
 ### B) Common Pitfalls & Solutions for `case`
 
@@ -134,7 +134,7 @@ case (sel)
     default: y = 0;  // prevents latch inference
 endcase
 ```
-<p align="center"> <img src="Images/latched_mux.png?raw=true" alt="latched_mux" width="700"/> </p> 
+<p align="center"> <img src="Images/6.png?raw=true" alt="latched_mux" width="700"/> </p> 
 
 ### C) Overlapping Cases
 
@@ -160,7 +160,7 @@ end
 - ⚠️ Always handle **incomplete and overlapping cases** to prevent unintended hardware
 
 <p align="center">
-  <img src="Images/over.png" />
+  <img src="Images/7.png" />
 </p>
 
 ### 3 Labs on Incomplete If-Case 
