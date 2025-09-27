@@ -362,7 +362,7 @@ They serve as **data storage elements** and timing checkpoints in digital design
 - 📦 Act as **building blocks** for registers, counters, and state machines.  
 
 <p align="center">
-  <img src="Glitch_filter.png" alt="Glitch Filtering with Flip-Flops" width="600"/>
+  <img src="Images/glitch.png" alt="Glitch Filtering with Flip-Flops" width="600"/>
 </p>
 
 ---
