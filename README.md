@@ -1,81 +1,120 @@
-# 🚀 Week 1 – RISC-V Reference SoC Tapeout Program  
-
 <div align="center">
+  <h1>🌟 Week 1 — RTL Design & Optimization</h1>
+  <p>
+    Welcome to <b>Week 1</b> of our journey into <b>RTL design and optimization</b>.  
+    This week focuses on building a strong foundation in <b>digital circuits</b>, 
+    <b>combinational and sequential design</b>, and <b>optimization techniques</b>.  
+    Hands-on labs with Verilog and Yosys help learners understand synthesis, simulation, 
+    and circuit optimization in real scenarios.
+  </p>
 
-![RISC-V](https://img.shields.io/badge/RISC--V-SoC%20Basics-purple?style=for-the-badge&logo=riscv)  
-![Open Source](https://img.shields.io/badge/Open--Source-EDA-red?style=for-the-badge&logo=opensourceinitiative)  
-![Week 1](https://img.shields.io/badge/Week-1-yellow?style=for-the-badge)  
-![Hands On](https://img.shields.io/badge/Learning-Hands%20On-brightgreen?style=for-the-badge)  
-
-</div>  
-
----
-
-## 📄 Description  
-Week 1 covers environment setup, open-source EDA tool installation, and Verilog RTL basics. Participants explore **iverilog, GTKWave, and Yosys** with Sky130 PDKs, running labs from RTL coding to synthesis, building the foundation for digital design.  
-
----
-
-## 📅 Topics & Repository Links  
-
-<div align="center">
-
-| 📆 Day | 🎯 Focus Area | 📂 Repo Folder |
-|--------|---------------|----------------|
-| **Day 1** | 🖥️ Linux Environment & Setup | [Day-1](https://github.com/Senbagaseelan18/RISC-V-SOC-Tapeout-Week-1/tree/main/Day-1) |
-| **Day 2** | ⚙️ Installing Open-Source Tools | [Day-2](https://github.com/Senbagaseelan18/RISC-V-SOC-Tapeout-Week-1/tree/main/Day-2) |
-| **Day 3** | 📜 Verilog RTL Fundamentals | [Day-3](https://github.com/Senbagaseelan18/RISC-V-SOC-Tapeout-Week-1/tree/main/Day-3) |
-| **Day 4** | 🧪 Simulation & Testbenches (iverilog + GTKWave) | [Day-4](https://github.com/Senbagaseelan18/RISC-V-SOC-Tapeout-Week-1/tree/main/Day-4) |
-| **Day 5** | 🔧 RTL Synthesis using Yosys & Sky130 | [Day-5](https://github.com/Senbagaseelan18/RISC-V-SOC-Tapeout-Week-1/tree/main/Day-5) |
-
+  <img src="https://img.shields.io/badge/Week1-Overview-blueviolet?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Tools-Yosys-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Language-Verilog-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Simulation-GTKWave-green?style=for-the-badge" />
 </div>
 
 ---
 
-## 🎯 Learning Outcomes  
+## 📑 Table of Contents
 
-- ✅ Understand **basics of Verilog RTL design** and simulation flow  
-- ✅ Write **testbenches** and simulate using **iverilog**  
-- ✅ Visualize simulation outputs with **GTKWave**  
-- ✅ Perform **logic synthesis using Yosys** with Sky130 PDKs  
-- ✅ Analyze synthesized netlists and recognize **gate-level representations**  
-- ✅ Build confidence in moving from **RTL → simulation → synthesis**  
-
----
-
-## 🌟 Week 1 Highlights  
-
-- 🚀 First exposure to **open-source digital design tools**  
-- 📝 Hands-on labs with **iverilog** and **GTKWave** for simulation & debugging  
-- 🔧 Practical experience using **Yosys** for RTL synthesis  
-- 🏗️ Designed and synthesized a **2:1 multiplexer** with Sky130 libraries  
-- 🔍 Understood the importance of **testbenches and waveform analysis**  
-- 🧩 Strong foundation for **RTL-to-GDSII flow** in later weeks  
+| Day | Topic | Subtopics | Description |
+|-----|-------|-----------|-------------|
+| [Day 1](Day-1.md) | Introduction to RTL & Digital Design | Combinational vs Sequential, RTL basics, Clocks & Resets, Verilog coding | Learned fundamental concepts of digital design, RTL coding styles, and simulation setup. |
+| [Day 2](Day-2.md) | Combinational Logic & Timing Analysis | Gates, Logic Levels, Propagation Delay, Timing Analysis, Lab: Basic Combinational Circuits | Explored gate-level logic, timing delays, and performing functional and timing simulations using Yosys & GTKWave. |
+| [Day 3](Day-3.md) | Introduction to Optimization | Constant Propagation, Boolean Simplification, Sequential Constant Propagation, Flip-Flop Optimization | Learned combinational and sequential optimization techniques, reducing gate/transistor count, and improving area & power. |
+| [Day 4](Day-4.md) | GLS, Blocking vs Non-Blocking, Synth-Sim Mismatch | Gate-Level Simulation (GLS), Blocking vs Non-blocking Assignments, Synth-Sim Differences, Lab: DFF & Counter Simulations | Understood timing behavior in synthesized circuits, differences between RTL and GLS, and how to write proper Verilog for synthesis. |
+| [Day 5](Day-5.md) | Advanced Optimization Techniques | State Optimization, Cloning, Retiming, Counter Optimizations, Lab: Sequential Design Optimization | Explored advanced sequential optimizations, improving critical paths, reducing flip-flops, and learning practical RTL design improvements. |
 
 ---
 
-## 🙏 Acknowledgements  
+## 🛠️ Tools & Software Learned
 
-- **Program Mentors**: [Kunal Ghosh](https://github.com/kunalg123) & VSD Team  
-- **Institutional Support**:  
-  - 🌐 RISC-V International — Open ISA leadership  
-  - 🇮🇳 India Semiconductor Mission (ISM) — National semiconductor initiatives  
-  - 🏭 VLSI Society of India — Professional development & guidance  
-  - 🔧 [Efabless](https://github.com/efabless) — Open-source silicon & tapeout  
-
----
-
-## 🔗 Useful Links  
-
-[![VSD Website](https://img.shields.io/badge/VSD-Official%20Website-blue?style=flat-square)](https://vsdiat.vlsisystemdesign.com/)  
-[![RISC-V](https://img.shields.io/badge/RISC--V-International-green?style=flat-square)](https://riscv.org/)  
-[![Efabless](https://img.shields.io/badge/Efabless-Platform-orange?style=flat-square)](https://efabless.com/)  
+- **Yosys:** RTL synthesis, optimization, netlist generation, gate-level visualization.  
+- **GTKWave:** Waveform viewer for simulation and verification of Verilog designs.  
+- **Verilog:** RTL coding for combinational and sequential logic, including lab modules.  
+- **SkyWater PDK (Optional):** Standard cell library for gate-level synthesis and transistor-level analysis.  
+- **Gvim/VSCode:** Code editor for Verilog development and visualization.  
 
 ---
 
-## 👨‍💻 Participant  
+## ✅ Key Concepts Covered
 
-**Senbagaseelan V**  
-📧 senbagaseelan2005@gmail.com  
+### 🔹 Digital Design Basics
+- Difference between **combinational** and **sequential circuits**  
+- **Flip-flops, latches, and registers**  
+- **Clocking, resets, and timing**  
 
-> Documenting my journey through RISC-V SoC Tapeout using open-source VSD tools, with weekly progress, task documentation, and hands-on SoC design experience.  
+### 🔹 Combinational Logic Design
+- Boolean expressions, **Karnaugh Maps**, and truth tables  
+- **Logic simplification**: AND-OR-NOT, NAND/NOR implementations  
+- Understanding **propagation delay** and critical path  
+
+### 🔹 Sequential Logic Design
+- DFF, TFF, JKFF, and counters  
+- Synchronous vs asynchronous resets  
+- **State machines** and **state transitions**  
+
+### 🔹 RTL & Optimization
+- **Constant propagation** to reduce logic  
+- **Boolean logic simplification** to reduce gate/transistor count  
+- **Sequential constant propagation** to optimize flip-flops  
+- Removing **unused outputs** to reduce area & power  
+- Advanced: **state minimization, cloning, retiming** for performance improvement  
+
+### 🔹 Simulation & Synthesis
+- Writing testbenches for functional verification  
+- Performing **RTL simulation** with GTKWave  
+- Synthesizing RTL to **gate-level netlist** using Yosys  
+- Comparing **RTL vs gate-level behavior**  
+
+---
+
+## 🧩 Labs and Hands-On Exercises
+
+- **Day 1:** Basic combinational circuits and Verilog coding  
+- **Day 2:** Propagation delay simulation and verification  
+- **Day 3:** Constant propagation and Boolean simplification labs (`opt_check`, `dff_const`)  
+- **Day 4:** GLS, blocking vs non-blocking assignment examples, counter simulations  
+- **Day 5:** Sequential optimization labs (`counter_opt`, `counter_opt2`), state reduction, retiming  
+
+---
+
+## 📚 References  
+
+1. [Icarus Verilog](http://iverilog.icarus.com/) – Simulation.  
+2. [GTKWave](http://gtkwave.sourceforge.net/) – Waveform visualization.  
+3. [Yosys HQ](https://yosyshq.net/yosys/) – Synthesis & optimization.  
+4. [SkyWater Sky130 PDK](https://skywater-pdk.readthedocs.io/) – Cell libraries.  
+5. Sudip Misra NPTEL Course – *Industry 4.0 and IIoT (Verilog Synthesis Part)*.
+
+---
+
+## Acknowledgments  
+
+I would like to sincerely acknowledge and thank:  
+
+- **Mr. Kunal Ghosh (Founder, VSD – VLSI System Design)**  
+  For his exceptional mentorship, guidance, and vision in enabling students to learn *RTL design, synthesis, and open-source VLSI flows*.  
+
+- **VSD Team**  
+  For curating the workshop content and providing continuous learning resources.  
+
+- **Open-Source EDA Community**  
+  For making powerful tools freely available, including:  
+  - 🖥️ [Icarus Verilog](http://iverilog.icarus.com/)  
+  - 📊 [GTKWave](http://gtkwave.sourceforge.net/)  
+  - ⚙️ [Yosys](https://yosyshq.net/yosys/)  
+
+- **Faculty & Peers from the VLSI Department**  
+  For their constant encouragement, support, and collaboration during this learning journey.  
+
+---
+
+✨ This repository is dedicated to the spirit of **open-source hardware education** and the belief that *accessible knowledge can empower innovation in VLSI design*.  
+
+---
+
+<div align="center">
+  <p>Week 1 Complete: Days 1 to 5 – Strong Foundation in RTL Design, Simulation, and Optimization</p>
+</div>
