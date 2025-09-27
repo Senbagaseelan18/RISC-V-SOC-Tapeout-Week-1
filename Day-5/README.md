@@ -212,7 +212,7 @@ iverilog incomp_if.v tb_incomp_if.v
 ./a.out
 gtkwave tb_incomp_if.vcd
 ```
-<p align="center"> <img src="Images/gtk_ncomp_if.png?raw=true" alt="GTKWave - incom_if" width="700"/> </p>
+<p align="center"> <img src="Images/gtk_ncomp_if.png?raw=true" alt="GTKWave - incom_if" width="1000"/> </p>
 
 ### Observation:
 
@@ -258,7 +258,7 @@ iverilog incomp_if2.v tb_incomp_if2.v
 ./a.out
 gtkwave tb_incomp_if2.vcd
 ```
-<p align="center"> <img src="Images/gtk_incomp_if2.png?raw=true" alt="GTKWave - incom_if2" width="700"/> </p>
+<p align="center"> <img src="Images/gtk_incomp_if2.png?raw=true" alt="GTKWave - incom_if2" width="1000"/> </p>
 
 ## Synthesis with Yosys
 ```yosys
