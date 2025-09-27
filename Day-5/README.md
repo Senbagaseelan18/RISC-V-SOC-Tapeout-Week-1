@@ -75,7 +75,7 @@ end
 
 -  ❌ Bad Practice: Using incomplete if in combinational blocks.
 
-<p align="center"> <img src="Images/d2.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="Images/3.png?raw=true" alt="Inferred latch" width="700"/> </p>
+<p align="center"> <img src="Images/2.png?raw=true" alt="Danger with if" width="700"/> </p> <p align="center"> <img src="Images/3.png?raw=true" alt="Inferred latch" width="700"/> </p>
 
 
 ## C) Valid Usage in Sequential Logic
