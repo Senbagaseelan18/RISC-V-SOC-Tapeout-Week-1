@@ -16,15 +16,16 @@
 ---
 # 📑 Table of Contents — Day 5
 
-- [1) Conditional Constructs in Verilog](#1-conditional-constructs-in-verilog)
-- [2) The case Statement in Verilog](#2-the-case-statement-in-verilog)
-- [3) Labs on Incomplete If-Case](#3-labs-on-incomplete-if-case)
-- [4) Labs on Incomplete & Overlapping Case Statements](#4-labs-on-incomplete--overlapping-case-statements)
-- [5) Loops in Verilog: Procedural & Generate](#5-loops-in-verilog-procedural--generate)
-- [6) Labs on for Loop & for-generate Constructs](#6-labs-on-for-loop--for-generate-constructs)
-- [Day 5 — Summary: Conditional & Loop Constructs in Verilog](#day-5-summary-conditional--loop-constructs-in-verilog)
+- [1 Conditional Constructs in Verilog](#1-conditional-constructs-in-verilog)
+- [2 The case Statement in Verilog](#2-the-case-statement-in-verilog)
+- [3 Labs on Incomplete If-Case](#3-labs-on-incomplete-if-case)
+- [4 Labs on Incomplete and Overlapping Case Statements](#4-labs-on-incomplete-and-overlapping-case-statements)
+- [5 Loops in Verilog Procedural and Generate](#5-loops-in-verilog-procedural-and-generate)
+- [6 Labs on for Loop and for-generate Constructs](#6-labs-on-for-loop-and-for-generate-constructs)
+- [Day 5 Summary Conditional and Loop Constructs in Verilog](#day-5-summary-conditional-and-loop-constructs-in-verilog)
 
-  ### 1) 🔀 Conditional Constructs in Verilog</h1>
+
+### 1 Conditional Constructs in Verilog
 
 
 Conditional logic is at the heart of hardware design in Verilog. Designers use **`if` and `case` statements** to express **decision-making behavior**. These constructs are directly synthesized into hardware, so **how you write them impacts the resulting circuit**.  
@@ -89,7 +90,7 @@ end
 ```
 <p align="center"> <img src="Images/Valid_infered_latch.png?raw=true" alt="Valid inferred latch" width="700"/> </p>
 
-## 🔹 2) The case Statement in Verilog
+### 2 The case Statement in Verilog
 
 The `case` statement provides a **structured way** to select between multiple options based on a **selector signal**.
 
@@ -160,7 +161,7 @@ end
   <img src="Images/over.png" />
 </p>
 
-## 3) 🧪 Labs on Incomplete If-Case  
+### 3 Labs on Incomplete If-Case 
 
 In this lab, we explore **how incomplete `if` statements** can lead to **inferred latches** in combinational logic.  
 We'll simulate the designs using **Icarus Verilog + GTKWave** and observe synthesized hardware using **Yosys**.
@@ -258,7 +259,7 @@ show
   ⚡ Observation: Even with multiple conditions (if-else if), the absence of a final else causes synthesis to infer a latch, highlighting a common pitfall in combinational logic design.
 
 
-## 4) 🧪 Labs on Incomplete & Overlapping Case Statements  
+### 4 Labs on Incomplete and Overlapping Case Statements  
 
 In this lab, we explore how **incomplete, overlapping, or partially assigned case statements** can affect **hardware synthesis** in Verilog.  
 We'll simulate the designs using **Icarus Verilog + GTKWave** and synthesize using **Yosys** to observe inferred latches and hardware mapping.
@@ -406,8 +407,7 @@ show
 ⚠️ Observation: Partial assignments can also infer latches. Always assign all outputs in every case branch to ensure deterministic behavior.
 
 
-## 5) 🔁 Loops in Verilog: Procedural & Generate  
-
+### 5 Loops in Verilog Procedural and Generate
 Loops are essential in **hardware design** for describing both **behavioral logic** and **structural replication**.  
 Verilog supports two primary looping constructs:
 
@@ -499,7 +499,7 @@ endmodule
 | **Use Case**               | Iterative assignments, MUX selection   | Arrays of gates, adders, repeated modules |
 
 
-## 6) 🧪 Labs on `for` Loop & `for-generate` Constructs  
+### 6 Labs on for Loop and for-generate Constructs  
 
 In this lab, we explore **iterative Verilog constructs** that enable both **behavioral** and **structural hardware modeling**.  
 We will implement, simulate, and analyze different designs using **procedural `for` loops** (inside `always` blocks) and **`for-generate` loops** (for structural replication).
@@ -631,7 +631,7 @@ This RCA is implemented by **structurally instantiating multiple full-adder modu
 <p align="center"> <img src="Images/netlist_rca.png?raw=true" alt="rca_generate" width="700"/> </p>
 
 
-# 🌟 Day 5 — Summary: Conditional & Loop Constructs in Verilog
+### Day 5 Summary Conditional and Loop Constructs in Verilog
 
 Day 5 focused on **decision-making constructs** (`if`, `case`) and **iterative constructs** (`for` loops and `for-generate`) in Verilog. These constructs are essential for writing **predictable, synthesizable hardware designs**.  
 
