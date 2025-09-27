@@ -1,7 +1,21 @@
-# 🛠️ Day 1 – Introduction to Verilog RTL Design & Simulation
+<div align="center">
+  <h1>🛠️ Day 1 — Introduction to Verilog RTL Design & Simulation</h1>
+  <p>
+    In <b>Day 1</b>, we begin with the foundations of <b>Verilog RTL design</b>,  
+    explore <b>simulation using Icarus Verilog (iverilog)</b>, and learn  
+    <b>waveform analysis with GTKWave</b>.  
+    We also cover the basics of <b>logic synthesis using Yosys</b>, including  
+    <b>netlist generation</b> and <b>technology mapping</b>.  
+    Hands-on labs make concepts practical and easy to follow.
+  </p>
 
-Welcome to **Day 1** of the RTL Workshop!  
-Today, you'll learn **Verilog**, open-source simulation with **Icarus Verilog (iverilog)**, and waveform analysis with **GTKWave**. This guide focuses on practical labs, essential concepts, and hands-on exercises.
+  <img src="https://img.shields.io/badge/Week1-Day1-darkgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Verilog-Simulation-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Icarus-Verilog_iverilog-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Waveform-GTKWave-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Yosys-Logic_Synthesis-yellow?style=for-the-badge" />
+</div>
+
 
 ---
 
