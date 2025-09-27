@@ -16,13 +16,15 @@
 ---
 # 📑 Table of Contents — Day 5
 
-- [1 Conditional Constructs in Verilog](#1-conditional-constructs-in-verilog)
-- [2 The case Statement in Verilog](#2-the-case-statement-in-verilog)
-- [3 Labs on Incomplete If-Case](#3-labs-on-incomplete-if-case)
-- [4 Labs on Incomplete and Overlapping Case Statements](#4-labs-on-incomplete-and-overlapping-case-statements)
-- [5 Loops in Verilog Procedural and Generate](#5-loops-in-verilog-procedural-and-generate)
-- [6 Labs on for Loop and for-generate Constructs](#6-labs-on-for-loop-and-for-generate-constructs)
-- [Day 5 Summary Conditional and Loop Constructs in Verilog](#day-5-summary-conditional-and-loop-constructs-in-verilog)
+| Section | Subheadings |
+|---------|-------------|
+| [1️⃣ Conditional Constructs in Verilog](#1-conditional-constructs-in-verilog) | - Priority Logic (`if-else if-else`) <br> - Incomplete `if` Statements <br> - Sequential Logic Usage |
+| [2️⃣ The case Statement in Verilog](#2-the-case-statement-in-verilog) | - Basic Case Implementation <br> - Common Pitfalls <br> - Overlapping Cases |
+| [3️⃣ Labs on Incomplete If-Case](#3-labs-on-incomplete-if-case) | - incomp_if <br> - incomp_if2 |
+| [4️⃣ Labs on Incomplete and Overlapping Case Statements](#4-labs-on-incomplete-and-overlapping-case-statements) | - incomp_case <br> - comp_case <br> - bad_case <br> - partial_case_assign |
+| [5️⃣ Loops in Verilog: Procedural & Generate](#5-loops-in-verilog-procedural-and-generate) | - Procedural `for` Loop <br> - generate `for` Loop <br> - Comparison Table |
+| [6️⃣ Labs on `for` Loop & `for-generate` Constructs](#6-labs-on-for-loop-and-for-generate-constructs) | - MUX Using Procedural `for` <br> - DEMUX Using Case <br> - DEMUX Using Procedural `for` <br> - 8-bit Ripple Carry Adder |
+| [🌟 Day 5 Summary: Conditional & Loop Constructs in Verilog](#day-5-summary-conditional-and-loop-constructs-in-verilog) | - Key Takeaways <br> - Best Practices <br> - Labs Observations |
 
 
 ### 1 Conditional Constructs in Verilog
