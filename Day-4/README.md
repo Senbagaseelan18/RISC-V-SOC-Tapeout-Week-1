@@ -15,24 +15,14 @@
 
 ---
 
-## 🔹 Table of Contents
+# 📑 Table of Contents — Day 4
 
-1. [GLS Concept and Flow Using Icarus Verilog](#gls-concept-and-flow-using-icarus-verilog)  
-   - Why GLS?  
-   - GLS with Verilog  
-
-2. [Synthesis vs Simulation Mismatch](#synthesis-vs-simulation-mismatch)  
-   - Missing Sensitivity List  
-   - Blocking vs Non-Blocking Assignments  
-   - Non-Standard Verilog Coding  
-
-3. [Labs on GLS and Synthesis Simulation Mismatch](#labs-on-gls-and-synthesis-simulation-mismatch)  
-   - `ternary_operator_mux.v`  
-   - `bad_mux.v`  
-
-4. [Labs on Synth-Sim Mismatch for Blocking Statement](#labs-on-synth-sim-mismatch-for-blocking-statement)  
-   - `blocking_caveat.v`  
-   - Corrected Non-Blocking Example  
+| Section | Subheadings |
+|---------|-------------|
+| [1️⃣ GLS Concept and Flow using Icarus Verilog](#1-gls-concept-and-flow-using-icarus-verilog) | - Why GLS? <br> - GLS with Verilog |
+| [2️⃣ Synthesis-Simulation Mismatch](#2-synthesis-simulation-mismatch) | - Missing Sensitivity List <br> - Blocking vs Non-Blocking Assignments <br> - Non-Standard Verilog Coding |
+| [3️⃣ 🧪 Labs on GLS and Synthesis Simulation Mismatch](#3-labs-on-gls-and-synthesis-simulation-mismatch) | - `ternary_operator_mux.v` <br> - `bad_mux.v` |
+| [4️⃣ Labs on Synth-Sim Mismatch for Blocking Statement](#4-labs-on-synth-sim-mismatch-for-blocking-statement) | - `blocking_caveat.v` <br> - Corrected Non-Blocking Example |
 
 
 ---
