@@ -15,32 +15,39 @@
 
 ---
 
-## 📑 Table of Contents  
+# 📑 Table of Contents — Day 5: Control Constructs & Looping in Verilog
 
--# 📘 Table of Contents — Day 5
+| Section | Subsection | Description |
+|---------|-----------|-------------|
+| [1️⃣ Conditional Constructs in Verilog](#1-conditional-constructs-in-verilog) | [The `if` Statement](#the-if-statement-in-verilog) | Priority-based logic using `if-else` |
+|  | [Priority Logic Implementation](#a-priority-logic-implementation) | Synthesizes to priority multiplexers |
+|  | [Incomplete if Statements – Danger in Combinational Logic](#b-incomplete-if-statements--danger-in-combinational-logic) | Can cause inferred latches |
+|  | [Valid Usage in Sequential Logic](#c-valid-usage-in-sequential-logic) | Holds state safely |
+|  | [The `case` Statement](#2-the-case-statement-in-verilog) | Structured multi-option selection |
+|  | [Basic Implementation](#a-basic-implementation) | Selector-driven multiplexer |
+|  | [Common Pitfalls & Solutions](#b-common-pitfalls--solutions-for-case) | Handling incomplete/overlapping cases |
+| [2️⃣ Labs on Incomplete If-Case](#3-🧪-labs-on-incomplete-if-case) | [Commands Overview](#⛏️-commands-overview) | RTL simulation & synthesis workflow |
+|  | [`incomp_if` — Incomplete If](#a-—-incomp_if-incomplete-if-) | Inferred latch demonstration |
+|  | [`incomp_if2` — Incomplete If-Else If](#b-incomp_if2-incomplete-if-else-if-) | Multiple conditions, missing final else |
+| [3️⃣ Labs on Incomplete & Overlapping Case Statements](#4-🧪-labs-on-incomplete--overlapping-case-statements) | [`incomp_case` — Incomplete Case](#a-—-incomp_case-incomplete-case) | Missing cases → latch inference |
+|  | [`comp_case` — Complete Case](#b-—-comp_case-complete-case) | Default handles all selectors |
+|  | [`bad_case` — Ambiguous / Overlapping Case](#c-—-bad_case-ambiguous--overlapping-case) | Overlapping selectors → unpredictable |
+|  | [`partial_case_assign` — Partial Assignment](#d-—-partial_case_assign-partial-case-assignment) | All outputs must be assigned |
+| [4️⃣ Loops in Verilog: Procedural & Generate](#5-🔁-loops-in-verilog-procedural--generate) | [Procedural `for` Loop](#1️⃣-procedural-for-loop-behavioral) | Iterative behavioral logic |
+|  | [Example: 32×1 MUX](#🔹-example-321-multiplexer-using-procedural-for) | Sequential evaluation of inputs |
+|  | [`for-generate` Loop](#2️⃣-generate-for-loop-structural--hardware-replication) | Structural replication of hardware |
+|  | [Example 1: Array of AND Gates](#🔹-example-1-array-of-and-gates) | Gate-level replication |
+|  | [Example 2: N-bit Ripple Carry Adder](#🔹-example-2-n-bit-ripple-carry-adder) | Full-adder chain using generate loop |
+|  | [Procedural vs Generate Comparison](#📊-procedural-for-vs-generate-for-loops-in-verilog) | Behavioral vs structural difference |
+| [5️⃣ Labs on `for` Loop & `for-generate`](#6-🧪-labs-on-for-loop--for-generate-constructs) | [MUX Using Procedural `for` Loop](#1-mux-using-procedural-for-loop) | Behavioral MUX |
+|  | [DEMUX Using Case Statement](#2-demux-using-case-statement) | Case-based DEMUX |
+|  | [DEMUX Using for-generate](#3-demux-using-for-generate) | Iterative DEMUX for larger buses |
+|  | [8-bit Ripple Carry Adder (RCA)](#4️-8-bit-ripple-carry-adder-rca-using-for-generate) | Structural scalable RCA |
+| [6️⃣ Day 5 Summary](#🌟-day-5-—-summary-conditional--loop-constructs-in-verilog) | - | Best practices & observations |
 
-| 🔢 # | 📂 Topic | 🔗 Link |
-|------|----------|---------|
-| 1 | **Decision-Making Constructs** | [Go to Section](#1-decision-making-constructs) |
-| 1.1 | ➡️ `if-else` Statements | [Go to Section](#11-if-else-statements) |
-| 1.2 | ➡️ `case` Statements | [Go to Section](#12-case-statements) |
-| 1.3 | ⚠️ Incomplete Constructs → Latch Inference | [Go to Section](#13-incomplete-constructs--latch-inference) |
-| 2 | **Looping Constructs** | [Go to Section](#2-looping-constructs) |
-| 2.1 | ➡️ `for` Loops (Behavioral Iteration) | [Go to Section](#21-for-loops-behavioral-iteration) |
-| 2.2 | ➡️ `generate` Loops (Structural Replication) | [Go to Section](#22-generate-loops-structural-replication) |
-| 3 | **Synthesis Considerations** | [Go to Section](#3-synthesis-considerations) |
-| 3.1 | ✅ Loop Unrolling in Hardware | [Go to Section](#31-loop-unrolling-in-hardware) |
-| 3.2 | ⚡ Optimization & RTL Scalability | [Go to Section](#32-optimization--rtl-scalability) |
-| 4 | **Labs & Hands-On** | [Go to Section](#4-labs--hands-on) |
-| 4.1 | 🧪 Lab: `if-else` & `case` Decision Testing | [Go to Section](#41-lab-if-else--case-decision-testing) |
-| 4.2 | 🧪 Lab: Loop-Based Counter Design | [Go to Section](#42-lab-loop-based-counter-design) |
-| 4.3 | 🧪 Lab: Generate-Based Multiplexer Array | [Go to Section](#43-lab-generate-based-multiplexer-array) |
 
----
+  ### 1) 🔀 Conditional Constructs in Verilog</h1>
 
-<div align="center">
-  <h1>🔀 Conditional Constructs in Verilog</h1>
-</div>
 
 Conditional logic is at the heart of hardware design in Verilog. Designers use **`if` and `case` statements** to express **decision-making behavior**. These constructs are directly synthesized into hardware, so **how you write them impacts the resulting circuit**.  
 
