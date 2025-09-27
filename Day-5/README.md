@@ -175,16 +175,6 @@ end
   <img src="Images/over.png" />
 </p>
 
-
-
-## 2️⃣ Case Studies on Incomplete Constructs  
-
-- **Incomplete If:** Missing `else` → causes **latch inference**.  
-- **Incomplete Case:** Missing `default` → causes **latch inference**.  
-- **Overlapping Case:** Multiple matches → **ambiguous synthesis result**.  
-
----
-
 ## 3️⃣ Looping Constructs in Verilog  
 
 ### 🔹 Procedural For Loop  
