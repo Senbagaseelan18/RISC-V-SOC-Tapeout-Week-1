@@ -229,7 +229,7 @@ synth -top incomp_if
 abc -liberty ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
-<p align="center"> <img src="Images/dlatch_infered.png?raw=true" alt="Dlatch inferred" width="700"/> </p> <p align="center"> <img src="Images/incomp_if_netlist.png?raw=true" alt="incomp_if netlist" width="700"/> </p>
+</p> <p align="center"> <img src="Images/incomp_if_netlist.png?raw=true" alt="incomp_if netlist" width="700"/> </p>
 
 ✅ Observation: The synthesized netlist clearly shows an inferred D-latch, caused by incomplete conditional logic.
 
@@ -271,9 +271,6 @@ show
 <p align="center"> <img src="Images/incomp_if2_netlist.png?raw=true" alt="incomp_if2 netlist" width="700"/>
 
   ⚡ Observation: Even with multiple conditions (if-else if), the absence of a final else causes synthesis to infer a latch, highlighting a common pitfall in combinational logic design.
-
-<p align="center"> <img src="Images/Overlappinge" /> </p> 
-
 
 ## 3️⃣ Looping Constructs in Verilog  
 
